@@ -30,9 +30,10 @@
         {
             this.textBoxURL = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridPodcast = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxNamn = new System.Windows.Forms.TextBox();
             this.newPodcastBtn = new System.Windows.Forms.Button();
             this.removePodcastBtn = new System.Windows.Forms.Button();
             this.savePodcastBtn = new System.Windows.Forms.Button();
@@ -42,6 +43,7 @@
             this.comboBoxCategory = new System.Windows.Forms.ComboBox();
             this.comboBoxInterval = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.renameBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.removeCategoryBtn = new System.Windows.Forms.Button();
             this.saveCategoryBtn = new System.Windows.Forms.Button();
@@ -51,22 +53,21 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxPodcast = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.renameBtn = new System.Windows.Forms.Button();
+            this.dataGridPodcast = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPodcast)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPodcast)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxURL
             // 
-            this.textBoxURL.Location = new System.Drawing.Point(18, 42);
+            this.textBoxURL.Location = new System.Drawing.Point(18, 64);
             this.textBoxURL.Name = "textBoxURL";
             this.textBoxURL.Size = new System.Drawing.Size(265, 22);
             this.textBoxURL.TabIndex = 1;
@@ -78,31 +79,24 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Location = new System.Drawing.Point(12, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(624, 206);
+            this.panel1.Size = new System.Drawing.Size(1106, 254);
             this.panel1.TabIndex = 3;
-            // 
-            // dataGridPodcast
-            // 
-            this.dataGridPodcast.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridPodcast.Location = new System.Drawing.Point(21, 54);
-            this.dataGridPodcast.Name = "dataGridPodcast";
-            this.dataGridPodcast.RowHeadersWidth = 51;
-            this.dataGridPodcast.RowTemplate.Height = 24;
-            this.dataGridPodcast.Size = new System.Drawing.Size(582, 126);
-            this.dataGridPodcast.TabIndex = 11;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(18, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(66, 17);
+            this.label7.Size = new System.Drawing.Size(40, 17);
             this.label7.TabIndex = 3;
-            this.label7.Text = "Podcasts";
+            this.label7.Text = "Feed";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.textBoxNamn);
             this.panel2.Controls.Add(this.newPodcastBtn);
             this.panel2.Controls.Add(this.removePodcastBtn);
             this.panel2.Controls.Add(this.savePodcastBtn);
@@ -112,16 +106,32 @@
             this.panel2.Controls.Add(this.comboBoxCategory);
             this.panel2.Controls.Add(this.comboBoxInterval);
             this.panel2.Controls.Add(this.textBoxURL);
-            this.panel2.Location = new System.Drawing.Point(12, 239);
+            this.panel2.Location = new System.Drawing.Point(12, 287);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(624, 161);
+            this.panel2.Size = new System.Drawing.Size(1106, 113);
             this.panel2.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(337, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 17);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Name";
+            // 
+            // textBoxNamn
+            // 
+            this.textBoxNamn.Location = new System.Drawing.Point(340, 64);
+            this.textBoxNamn.Name = "textBoxNamn";
+            this.textBoxNamn.Size = new System.Drawing.Size(173, 22);
+            this.textBoxNamn.TabIndex = 12;
             // 
             // newPodcastBtn
             // 
-            this.newPodcastBtn.Location = new System.Drawing.Point(377, 75);
+            this.newPodcastBtn.Location = new System.Drawing.Point(757, 45);
             this.newPodcastBtn.Name = "newPodcastBtn";
-            this.newPodcastBtn.Size = new System.Drawing.Size(75, 39);
+            this.newPodcastBtn.Size = new System.Drawing.Size(101, 40);
             this.newPodcastBtn.TabIndex = 11;
             this.newPodcastBtn.Text = "New";
             this.newPodcastBtn.UseVisualStyleBackColor = true;
@@ -129,9 +139,9 @@
             // 
             // removePodcastBtn
             // 
-            this.removePodcastBtn.Location = new System.Drawing.Point(541, 75);
+            this.removePodcastBtn.Location = new System.Drawing.Point(983, 45);
             this.removePodcastBtn.Name = "removePodcastBtn";
-            this.removePodcastBtn.Size = new System.Drawing.Size(66, 41);
+            this.removePodcastBtn.Size = new System.Drawing.Size(107, 41);
             this.removePodcastBtn.TabIndex = 6;
             this.removePodcastBtn.Text = "Ta bort";
             this.removePodcastBtn.UseVisualStyleBackColor = true;
@@ -139,9 +149,9 @@
             // 
             // savePodcastBtn
             // 
-            this.savePodcastBtn.Location = new System.Drawing.Point(458, 75);
+            this.savePodcastBtn.Location = new System.Drawing.Point(864, 44);
             this.savePodcastBtn.Name = "savePodcastBtn";
-            this.savePodcastBtn.Size = new System.Drawing.Size(77, 39);
+            this.savePodcastBtn.Size = new System.Drawing.Size(113, 41);
             this.savePodcastBtn.TabIndex = 6;
             this.savePodcastBtn.Text = "Save";
             this.savePodcastBtn.UseVisualStyleBackColor = true;
@@ -150,7 +160,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(538, 17);
+            this.label3.Location = new System.Drawing.Point(654, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 17);
             this.label3.TabIndex = 10;
@@ -159,7 +169,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(374, 17);
+            this.label2.Location = new System.Drawing.Point(527, 44);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 17);
             this.label2.TabIndex = 9;
@@ -168,7 +178,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 22);
+            this.label1.Location = new System.Drawing.Point(18, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 17);
             this.label1.TabIndex = 6;
@@ -177,10 +187,11 @@
             // comboBoxCategory
             // 
             this.comboBoxCategory.FormattingEnabled = true;
-            this.comboBoxCategory.Location = new System.Drawing.Point(540, 37);
+            this.comboBoxCategory.Location = new System.Drawing.Point(657, 64);
             this.comboBoxCategory.Name = "comboBoxCategory";
             this.comboBoxCategory.Size = new System.Drawing.Size(67, 24);
             this.comboBoxCategory.TabIndex = 7;
+            this.comboBoxCategory.SelectedIndexChanged += new System.EventHandler(this.comboBoxCategory_SelectedIndexChanged);
             // 
             // comboBoxInterval
             // 
@@ -193,7 +204,7 @@
             "4",
             "5",
             "6"});
-            this.comboBoxInterval.Location = new System.Drawing.Point(377, 37);
+            this.comboBoxInterval.Location = new System.Drawing.Point(530, 64);
             this.comboBoxInterval.Name = "comboBoxInterval";
             this.comboBoxInterval.Size = new System.Drawing.Size(112, 24);
             this.comboBoxInterval.TabIndex = 6;
@@ -208,10 +219,20 @@
             this.panel3.Controls.Add(this.newCategoryBtn);
             this.panel3.Controls.Add(this.categoryTextBox);
             this.panel3.Controls.Add(this.listBoxCategory);
-            this.panel3.Location = new System.Drawing.Point(662, 27);
+            this.panel3.Location = new System.Drawing.Point(508, 434);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(456, 373);
+            this.panel3.Size = new System.Drawing.Size(610, 279);
             this.panel3.TabIndex = 5;
+            // 
+            // renameBtn
+            // 
+            this.renameBtn.Location = new System.Drawing.Point(506, 214);
+            this.renameBtn.Name = "renameBtn";
+            this.renameBtn.Size = new System.Drawing.Size(75, 33);
+            this.renameBtn.TabIndex = 11;
+            this.renameBtn.Text = "Rename";
+            this.renameBtn.UseVisualStyleBackColor = true;
+            this.renameBtn.Click += new System.EventHandler(this.renameBtn_Click);
             // 
             // label8
             // 
@@ -224,7 +245,7 @@
             // 
             // removeCategoryBtn
             // 
-            this.removeCategoryBtn.Location = new System.Drawing.Point(202, 315);
+            this.removeCategoryBtn.Location = new System.Drawing.Point(202, 214);
             this.removeCategoryBtn.Name = "removeCategoryBtn";
             this.removeCategoryBtn.Size = new System.Drawing.Size(84, 34);
             this.removeCategoryBtn.TabIndex = 9;
@@ -234,7 +255,7 @@
             // 
             // saveCategoryBtn
             // 
-            this.saveCategoryBtn.Location = new System.Drawing.Point(108, 316);
+            this.saveCategoryBtn.Location = new System.Drawing.Point(108, 214);
             this.saveCategoryBtn.Name = "saveCategoryBtn";
             this.saveCategoryBtn.Size = new System.Drawing.Size(88, 33);
             this.saveCategoryBtn.TabIndex = 8;
@@ -244,7 +265,7 @@
             // 
             // newCategoryBtn
             // 
-            this.newCategoryBtn.Location = new System.Drawing.Point(13, 316);
+            this.newCategoryBtn.Location = new System.Drawing.Point(13, 214);
             this.newCategoryBtn.Name = "newCategoryBtn";
             this.newCategoryBtn.Size = new System.Drawing.Size(89, 33);
             this.newCategoryBtn.TabIndex = 8;
@@ -254,9 +275,9 @@
             // 
             // categoryTextBox
             // 
-            this.categoryTextBox.Location = new System.Drawing.Point(13, 287);
+            this.categoryTextBox.Location = new System.Drawing.Point(13, 186);
             this.categoryTextBox.Name = "categoryTextBox";
-            this.categoryTextBox.Size = new System.Drawing.Size(424, 22);
+            this.categoryTextBox.Size = new System.Drawing.Size(568, 22);
             this.categoryTextBox.TabIndex = 7;
             // 
             // listBoxCategory
@@ -265,7 +286,7 @@
             this.listBoxCategory.ItemHeight = 16;
             this.listBoxCategory.Location = new System.Drawing.Point(13, 32);
             this.listBoxCategory.Name = "listBoxCategory";
-            this.listBoxCategory.Size = new System.Drawing.Size(424, 228);
+            this.listBoxCategory.Size = new System.Drawing.Size(568, 148);
             this.listBoxCategory.TabIndex = 6;
             // 
             // panel4
@@ -274,7 +295,7 @@
             this.panel4.Controls.Add(this.textBoxPodcast);
             this.panel4.Location = new System.Drawing.Point(12, 434);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(624, 279);
+            this.panel4.Size = new System.Drawing.Size(490, 279);
             this.panel4.TabIndex = 6;
             // 
             // textBoxPodcast
@@ -283,7 +304,7 @@
             this.textBoxPodcast.ItemHeight = 16;
             this.textBoxPodcast.Location = new System.Drawing.Point(18, 13);
             this.textBoxPodcast.Name = "textBoxPodcast";
-            this.textBoxPodcast.Size = new System.Drawing.Size(589, 244);
+            this.textBoxPodcast.Size = new System.Drawing.Size(454, 244);
             this.textBoxPodcast.TabIndex = 0;
             // 
             // label4
@@ -295,58 +316,54 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Podcast avsnitt";
             // 
-            // panel5
+            // dataGridPodcast
             // 
-            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.textBoxDescription);
-            this.panel5.Controls.Add(this.label6);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(662, 434);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(456, 279);
-            this.panel5.TabIndex = 8;
+            this.dataGridPodcast.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPodcast.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.dataGridPodcast.Location = new System.Drawing.Point(21, 36);
+            this.dataGridPodcast.Name = "dataGridPodcast";
+            this.dataGridPodcast.RowHeadersWidth = 51;
+            this.dataGridPodcast.RowTemplate.Height = 24;
+            this.dataGridPodcast.Size = new System.Drawing.Size(1069, 199);
+            this.dataGridPodcast.TabIndex = 4;
             // 
-            // textBoxDescription
+            // Column1
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(13, 51);
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(424, 22);
-            this.textBoxDescription.TabIndex = 3;
+            this.Column1.HeaderText = "Name";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
             // 
-            // label6
+            // Column2
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 30);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(157, 17);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Beskrivning av avsnitt...";
+            this.Column2.HeaderText = "Interval";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
             // 
-            // label5
+            // Column3
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 13);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(108, 17);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Podcast avsnitt ";
+            this.Column3.HeaderText = "AmountOfEpisodes";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
             // 
-            // renameBtn
+            // Column4
             // 
-            this.renameBtn.Location = new System.Drawing.Point(362, 316);
-            this.renameBtn.Name = "renameBtn";
-            this.renameBtn.Size = new System.Drawing.Size(75, 33);
-            this.renameBtn.TabIndex = 11;
-            this.renameBtn.Text = "Rename";
-            this.renameBtn.UseVisualStyleBackColor = true;
-            this.renameBtn.Click += new System.EventHandler(this.renameBtn_Click);
+            this.Column4.HeaderText = "Category";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1130, 725);
-            this.Controls.Add(this.panel5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -356,14 +373,12 @@
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridPodcast)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridPodcast)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,15 +404,17 @@
         private System.Windows.Forms.Button saveCategoryBtn;
         private System.Windows.Forms.Button newCategoryBtn;
         private System.Windows.Forms.TextBox categoryTextBox;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DataGridView dataGridPodcast;
-        private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button newPodcastBtn;
         private System.Windows.Forms.Button renameBtn;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxNamn;
+        private System.Windows.Forms.DataGridView dataGridPodcast;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }
 

@@ -21,8 +21,8 @@ namespace DAL
         {
             reader = new RSSFeedReader();
             this.list = list;
-
         }
+
         public virtual void Create(T entity) 
         {
             list.Add(entity);
@@ -41,12 +41,22 @@ namespace DAL
         }
         public abstract void SaveChanges();
 
+        public virtual void Update(string newName, int interval, Category category, int index)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(int index, T entity)
         {
             throw new NotImplementedException();
         }
 
-        public virtual void Update(string index, string entity)
+        public virtual void Update(string newItem, int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(string index, string entity)
         {
             throw new NotImplementedException();
         }
