@@ -12,9 +12,8 @@ namespace DAL
     public class RSSFeedReader
     {
         private readonly string URL;
-        public RSSFeedReader(string url)
+        public RSSFeedReader()
         {
-            this.URL = url;
         }
 
         public string GetDescription()

@@ -11,59 +11,33 @@ namespace DAL.Repositories
 {
     public class PodcastRepository : Feed<Podcast>
     {
-        private List<Podcast> podcastList;
-        public PodcastRepository(string url) : base(url)
+        public PodcastRepository() : base(new List<Podcast>())
         {
-            podcastList = new List<Podcast>();
-            podcastList = GetAll();
         }
-        public void Create(Podcast entity)
+        public override void Create(Podcast entity)
         {
-            podcastList.Add(entity);
-            SaveChanges();
+            base.Create(entity);
+        }
+        public override void Delete(Podcast entity)
+        {
+            base.Delete(entity);
         }
         public override void Delete(int index)
         {
-            podcastList.RemoveAt(index);
-            SaveChanges();
+            base.Delete(index);
         }
-        public void UpdatePodcastName(int podcast, string name)
+        public override List<Podcast> GetAll()
         {
-            podcastList[podcast].setName(name);
+            return base.GetAll();
         }
-        public void UpdatePodcastCategory(int podcast, Category category)
+        public override void Update(int index, Podcast entity)
         {
-            podcastList[podcast].setCategory(category);
+            base.Update(index, entity);
         }
 
-        public List<Episode> GetEpisodes(int podcast)
+        public override void SaveChanges()
         {
-            return podcastList[podcast].GetEpisode();
+            throw new NotImplementedException();
         }
-        public List<Podcast> GetAll()
-        {
-            return podcastList;
-        }
-        public void Update(int index, Podcast entity)
-        {
-            //Update code.
-        }
-
-        public void SaveChanges()
-        {
-            //Save code.
-        }
-        public Podcast GetByName(string name)
-        {
-            //Get podcast by name.
-            return null;
-        }
-
-        public int GetIndex(string name)
-        {
-            //Get podcast by index.
-            return 0;
-        }
-        
     }
 }

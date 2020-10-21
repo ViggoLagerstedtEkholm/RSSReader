@@ -9,29 +9,25 @@ namespace BL
     {
         private PodcastRepository podcastRepository;
 
-        public PodcastController(string url)
+        public PodcastController()
         {
-            podcastRepository = new PodcastRepository(url);
+            podcastRepository = new PodcastRepository();
         }
 
         public void CreatePodcastObject(string name, string pn, string address, string objectType)
         {
             //podcastRepository.Create(new Podcast(""));
         }
-
         public List<Podcast> RetrieveAllPodcasts()
         {
 
             return null;
         }
-
         public void UpdatePodcastName(Podcast podcast, string name)
         {
-            podcastRepository.UpdatePodcastName(6, name);
+           // podcastRepository.UpdatePodcastName(6, name);
 
         }
-
-
         public void DeletePodcast(string name)
         {
 

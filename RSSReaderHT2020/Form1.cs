@@ -26,12 +26,22 @@ namespace RSSReaderHT2020
         public Form1()
         {
             InitializeComponent();
+            createControllers();
             setComponentStates();
+        }
+
+        private void createControllers()
+        {
+            this.podcastController = new PodcastController();
+            this.categoryContoller = new CategoryContoller();
         }
 
         private void setComponentStates()
         {
-            //comboBoxInterval
+            for(int i = 0; i < intervalNumbers.Length; i++)
+            {
+                comboBoxInterval.Items.Add(intervalNumbers[i]);
+            }
         }
 
         private void btnFetch_Click(object sender, EventArgs e)
@@ -77,13 +87,17 @@ namespace RSSReaderHT2020
         //Category
         private void newCategoryBtn_Click(object sender, EventArgs e)
         {
+            listBoxCategory.Items.Clear();
             Console.WriteLine("Test");
             if (!Validator.isNullorEmpty(categoryTextBox))
             {
-                //this.podcastController = new PodcastController(textBoxURL.Text);
-                //this.categoryContoller = new CategoryContoller(textBoxURL.Text);
                 //Podcast podcast = new Podcast(textBoxURL, );
-                Console.WriteLine("Test2");
+                categoryContoller.CreateCategoryObject(categoryTextBox.Text);
+
+                foreach(Category cat in categoryContoller.RetrieveAllCategories())
+                {
+                    listBoxCategory.Items.Add(cat.namn);
+                }
             }
             else
             {
@@ -98,7 +112,18 @@ namespace RSSReaderHT2020
 
         private void removeCategoryBtn_Click(object sender, EventArgs e)
         {
+            string category = listBoxCategory.GetItemText(listBoxCategory.SelectedItem);
+            Console.WriteLine("Category: " + category);
+            //Validering
 
+            categoryContoller.DeleteCategory(category);
+
+            listBoxCategory.Items.Clear();
+
+            foreach (Category cat in categoryContoller.RetrieveAllCategories())
+            {
+                listBoxCategory.Items.Add(cat.namn);
+            }
         }
     }
 }
