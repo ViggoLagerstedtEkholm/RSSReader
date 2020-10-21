@@ -55,6 +55,7 @@
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.renameBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPodcast)).BeginInit();
             this.panel2.SuspendLayout();
@@ -200,6 +201,7 @@
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.renameBtn);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.removeCategoryBtn);
             this.panel3.Controls.Add(this.saveCategoryBtn);
@@ -329,6 +331,16 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Podcast avsnitt ";
             // 
+            // renameBtn
+            // 
+            this.renameBtn.Location = new System.Drawing.Point(362, 316);
+            this.renameBtn.Name = "renameBtn";
+            this.renameBtn.Size = new System.Drawing.Size(75, 33);
+            this.renameBtn.TabIndex = 11;
+            this.renameBtn.Text = "Rename";
+            this.renameBtn.UseVisualStyleBackColor = true;
+            this.renameBtn.Click += new System.EventHandler(this.renameBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -385,6 +397,7 @@
         private System.Windows.Forms.DataGridView dataGridPodcast;
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button newPodcastBtn;
+        private System.Windows.Forms.Button renameBtn;
     }
 }
 

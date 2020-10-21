@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using Microsoft.SqlServer.Server;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
@@ -29,10 +30,10 @@ namespace DAL.Repositories
         {
             return base.GetAll();
         }
-        public override void Update(int index, Category entity)
-        {
-            base.Update(index, entity);
-        }
+        //public override void Update(string t, string a)
+        //{
+            
+        //}
         public override void SaveChanges()
         {
             throw new NotImplementedException();

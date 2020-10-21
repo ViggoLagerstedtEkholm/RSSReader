@@ -2,6 +2,7 @@
 using DAL.Repositories;
 using Model;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace BL
 {
@@ -13,24 +14,26 @@ namespace BL
         {
             podcastRepository = new PodcastRepository();
         }
-
-        public void CreatePodcastObject(string name, string pn, string address, string objectType)
+        public void CreatePodcastObject(string url, string name, int interval, Category category, List<Episode> episodes)
         {
-            //podcastRepository.Create(new Podcast(""));
+            podcastRepository.Create(new Podcast(url, category, interval, episodes, name));
         }
         public List<Podcast> RetrieveAllPodcasts()
         {
-
-            return null;
+            return podcastRepository.GetAll();
         }
-        public void UpdatePodcastName(Podcast podcast, string name)
+        public void UpdatePodcastName(string newName, string currentName)
         {
-           // podcastRepository.UpdatePodcastName(6, name);
-
+            podcastRepository.Update(newName, currentName);
         }
-        public void DeletePodcast(string name)
+        public void DeletePodcast(int index)
         {
+            podcastRepository.Delete(index);
+        }
 
+        public void DeletePodcast(Podcast podcast)
+        {
+            podcastRepository.Delete(podcast);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace RSSReader
 {
     public class Validator
     {
-        public static bool isNullorEmpty(TextBox textBox)
+        public bool isNullorEmpty(TextBox textBox)
         {
             bool result = true;
 

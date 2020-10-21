@@ -10,7 +10,7 @@ namespace DAL.Repositories
     {
         void Create(T entity);
         void Delete(int index);
-        void Update(int index, T entity);
+        void Update(string index, string entity);
         void SaveChanges();
         List<T> GetAll();
     }
