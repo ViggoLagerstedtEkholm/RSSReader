@@ -13,7 +13,7 @@ namespace RSSReader
         {
             bool result = true;
 
-            if (String.IsNullOrEmpty(textBox.Text))
+            if (!String.IsNullOrEmpty(textBox.Text))
             {
                 result = false;
             }

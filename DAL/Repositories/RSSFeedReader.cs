@@ -33,6 +33,9 @@ namespace DAL
             await Task.Run(() =>
             {
                 //Get episodes from feed.
+
+                //Use lambda expressions.
+
             });
 
             return episodeList;

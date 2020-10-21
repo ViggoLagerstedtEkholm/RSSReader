@@ -55,6 +55,7 @@
     <Compile Include="Repositories\IRepositories.cs" />
     <Compile Include="Repositories\PodcastRepository.cs" />
     <Compile Include="Repositories\RSSFeedReader.cs" />
+    <Compile Include="Repositories\ExceptionHandler.cs" />
     <Compile Include="Serialize\BINARYSerializer.cs" />
     <Compile Include="Serialize\ISerializers.cs" />
     <Compile Include="Serialize\JSONSerializer.cs" />
