@@ -1,7 +1,9 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,42 +11,29 @@ namespace DAL.Repositories
 {
     public class CategoryRepository : Feed<Category>
     {
-        private List<Category> categoryList;
-        public CategoryRepository(string url) : base(url)
+        public CategoryRepository() : base(new List<Category>())
+        {}
+        public override void Create(Category entity)
         {
-            categoryList = new List<Category>();
-            categoryList = GetAll();
+            list.Add(entity);
         }
-
-        public void Create(Category entity)
+        public override void Delete(Category entity)
         {
-            throw new NotImplementedException();
+            base.Delete(entity);
         }
-
-        public void Delete(int index)
+        public override void Delete(int index)
         {
-            //Remove all podcast with this same category!
-            //Warn the user!
-            throw new NotImplementedException();
+            base.Delete(index);
         }
-
-        public List<Category> GetAll()
+        public override List<Category> GetAll()
         {
-            return categoryList;
+            return base.GetAll();
         }
-
-        public void SaveChanges()
+        public override void Update(int index, Category entity)
         {
-            throw new NotImplementedException();
+            base.Update(index, entity);
         }
-
-        public List<Category> SortByCategory()
-        {
-            
-            throw new NotImplementedException();
-        }
-
-        public void Update(int index, Category entity)
+        public override void SaveChanges()
         {
             throw new NotImplementedException();
         }

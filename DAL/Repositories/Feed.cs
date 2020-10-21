@@ -13,21 +13,36 @@ namespace DAL
 {
     abstract public class Feed<T> : IRepositories<T>
     {
-        private RSSFeedReader reader;
-        private ISerializers<Podcast> objectSerializer;
-        public Feed(string url)
+        public RSSFeedReader reader;
+        //public ISerializers<T> objectSerializer;
+        public List<T> list;
+
+        public Feed(List<T> list)
         {
-            reader = new RSSFeedReader(url);
+            reader = new RSSFeedReader();
+            this.list = list;
+
         }
-        public virtual void Create(T entity)
-        {throw new NotImplementedException();}
-        public virtual void Delete(T podcast) { }
-        public virtual void Delete(int index){}
-        public virtual List<T> GetAll()
-        { throw new NotImplementedException();}
-        public virtual void SaveChanges()
-        {throw new NotImplementedException();}
-        public virtual void Update(int index, T entity)
-        {throw new NotImplementedException();}
+        public virtual void Create(T entity) 
+        {
+            list.Add(entity);
+        }
+        public virtual void Delete(T entity) 
+        {
+            list.Remove(entity);        
+        }
+        public virtual void Delete(int index)
+        {
+            list.RemoveAt(index);
+        }
+        public virtual List<T> GetAll() 
+        {
+            return list;
+        }
+        public abstract void SaveChanges();
+        public virtual void Update(int index, T entity) 
+        {
+            list[index] = entity;
+        }
     }
 }

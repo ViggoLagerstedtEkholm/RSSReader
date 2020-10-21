@@ -13,24 +13,35 @@ namespace BL
     {
         private CategoryRepository categoryRepository;
 
-        public CategoryContoller(string url)
+        public CategoryContoller()
         {
-            categoryRepository = new CategoryRepository(url);
+            categoryRepository = new CategoryRepository();
         }
 
-        public void CreateCategoryObject(string name, string pn, string address, string objectType)
+        public void CreateCategoryObject(string name)
         {
+            categoryRepository.Create(new Category(name));
         }
-        public List<Podcast> RetrieveAllCategories()
+        public List<Category> RetrieveAllCategories()
         {
-            return null;
+            return categoryRepository.GetAll();
         }
         public void UpdateCategoryName(string name)
         {
-
+            //categoryRepository.Update(name);
         }
         public void DeleteCategory(string name)
         {
+            Console.WriteLine("Selected name to remove: " + name);
+            List<Category> list = categoryRepository.GetAll();
+
+            foreach(Category aCategory in list.ToList())
+            {
+                if (aCategory.namn.Equals(name))
+                {
+                    categoryRepository.Delete(aCategory);
+                }
+            }
 
         }
     }
