@@ -63,10 +63,16 @@ namespace BL
                                     podcastController.DeletePodcast(i);
                                 }
                             }
+                            else
+                            {
+                                Console.WriteLine("Reached!");
+                                categoryRepository.Delete(aCategory);
+                            }
                         }
                     }
                     else
                     {
+                        Console.WriteLine("Reached!");
                         categoryRepository.Delete(aCategory);
                     }
                 }
