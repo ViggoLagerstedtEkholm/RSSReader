@@ -50,9 +50,9 @@ namespace BL
                 {
                     if (podcastController.RetrieveAllPodcasts().ToList().Count > 0)
                     {
-                        foreach (Podcast podcast in podcastController.RetrieveAllPodcasts().ToList())
+                        for(int i = 0; i < podcastController.RetrieveAllPodcasts().ToList().Count; i++)
                         {
-                            if (podcast.GetCategory().namn.Equals(name))
+                            if (podcastController.RetrieveAllPodcasts()[i].GetCategory().namn.Equals(name))
                             {
                                 var confirmResult = MessageBox.Show("Are you sure you want to delete all podcasts with selected category?",
                                          "Confirm Delete!!",
@@ -60,7 +60,7 @@ namespace BL
                                 if (confirmResult == DialogResult.Yes)
                                 {
                                     categoryRepository.Delete(aCategory);
-                                    podcastController.DeletePodcast(podcast);
+                                    podcastController.DeletePodcast(i);
                                 }
                             }
                         }
