@@ -30,15 +30,11 @@ namespace DAL.Repositories
         {
             return base.GetAll();
         }
-        public override void Update(string newName, string currentName)
+        public override void Update(string newName, int interval, Category category, int index)
         {
-            foreach(Podcast aPodcast in list)
-            {
-                if (aPodcast.GetName().Equals(currentName))
-                {
-                    aPodcast.setName(newName);
-                }
-            }
+            list[index].setName(newName);
+            list[index].setCategory(category);
+            list[index].SetupdatingInterval(interval);
         }
 
         public override void SaveChanges()

@@ -31,6 +31,11 @@ namespace Model
             this.episodes = episodes;
             this.name = name;
         }
+
+        public Podcast()
+        {
+
+        }
         public void setName(string name)
         {
             this.name = name;
@@ -43,9 +48,18 @@ namespace Model
         {
             this.episodes = episodes;
         }
+
+        public void SetupdatingInterval(int interval)
+        {
+            this.updatingInterval = interval;
+        }
         public string GetName()
         {
             return this.name;
+        }
+        public int GetUpdatingInterval()
+        {
+            return this.updatingInterval;
         }
         public List<Episode> GetEpisode()
         {

@@ -35,8 +35,8 @@ namespace RSSReaderHT2020
 
         private void createControllers()
         {
-            this.podcastController = new PodcastController();
             this.categoryContoller = new CategoryContoller();
+            this.podcastController = new PodcastController();
         }
 
         private void setComponentStates()
@@ -70,18 +70,37 @@ namespace RSSReaderHT2020
             }
         }
 
+        private void insertRows()
+        {
+            dataGridPodcast.Rows.Clear();
+
+            foreach(Podcast aPodcast in podcastController.RetrieveAllPodcasts())
+            {
+                dataGridPodcast.Rows.Add(aPodcast.GetName(), aPodcast.GetUpdatingInterval(), 1, aPodcast.GetCategory().namn);
+            }
+        }
+
         private void btnFetch_Click(object sender, EventArgs e)
         {
         
-
         }
 
-        //Podcast 
-        private void newPodcastBtn_Click(object sender, EventArgs e)
+        //Podcast https://api.sr.se/api/rss/pod/3795
+        private async void newPodcastBtn_Click(object sender, EventArgs e)
         {
             if (!validator.isNullorEmpty(textBoxURL))
             {
-                podcastController.CreatePodcastObject(textBoxURL.Text, "test", 1, null, null);
+                int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
+
+                //Validera!
+                Podcast podcast = await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString());
+
+                insertRows();
+
+                foreach (Episode episode in podcast.GetEpisode())
+                {
+                    textBoxPodcast.Items.Add(episode.description);
+                }
             }
             else
             {
@@ -91,11 +110,24 @@ namespace RSSReaderHT2020
 
         private void savePodcastBtn_Click(object sender, EventArgs e)
         {
+            string category = comboBoxCategory.SelectedItem.ToString();
+            int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
+            string name = textBoxNamn.Text;
+            int selectedPodcast = dataGridPodcast.CurrentRow.Index;
+
+            podcastController.UpdatePodcast(name, interval, new Category(category), selectedPodcast);
+
+            insertRows();
 
         }
 
         private void removePodcastBtn_Click(object sender, EventArgs e)
         {
+            int selectedPodcast = dataGridPodcast.CurrentRow.Index;
+
+            podcastController.DeletePodcast(selectedPodcast);
+
+            insertRows();
 
         }
 
@@ -106,7 +138,6 @@ namespace RSSReaderHT2020
             Console.WriteLine("Test");
             if (!validator.isNullorEmpty(categoryTextBox))
             {
-                //Podcast podcast = new Podcast(textBoxURL, );
                 categoryContoller.CreateCategoryObject(categoryTextBox.Text);
 
                 foreach(Category cat in categoryContoller.RetrieveAllCategories())
@@ -134,7 +165,8 @@ namespace RSSReaderHT2020
             //Validering
 
             categoryContoller.DeleteCategory(selectedCategory, podcastController);
-
+            comboBoxCategory.Items.Clear();
+            insertRows();
             update();
         }
 
@@ -144,9 +176,26 @@ namespace RSSReaderHT2020
             string input = Interaction.InputBox("Prompt", "Title", "Default", 100, 100);
 
             categoryContoller.RenameCategory(selectedCategory, input);
-
-
+            comboBoxCategory.Items.Clear();
+            comboBoxCategory.SelectedIndex = comboBoxCategory.FindStringExact(input);
+            insertCategories();
             update();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            //podcastController.
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
