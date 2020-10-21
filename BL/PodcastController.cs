@@ -27,7 +27,8 @@ namespace BL
 
         public void UpdatePodcastName(Podcast podcast, string name)
         {
-            podcastRepository.
+            podcastRepository.UpdatePodcastName(6, name);
+
         }
 
 
