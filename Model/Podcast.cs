@@ -43,6 +43,10 @@ namespace Model
         {
             this.episodes = episodes;
         }
+        public string GetName()
+        {
+            return this.name;
+        }
         public List<Episode> GetEpisode()
         {
             return this.episodes;

@@ -40,9 +40,15 @@ namespace DAL
             return list;
         }
         public abstract void SaveChanges();
-        public virtual void Update(int index, T entity) 
+
+        public void Update(int index, T entity)
         {
-            list[index] = entity;
+            throw new NotImplementedException();
+        }
+
+        public virtual void Update(string index, string entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

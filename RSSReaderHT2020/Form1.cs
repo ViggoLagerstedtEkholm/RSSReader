@@ -2,6 +2,7 @@
 using DAL;
 using DAL.Repositories;
 using DAL.Serialize;
+using Microsoft.VisualBasic;
 using Model;
 using RSSReader;
 using System;
@@ -22,10 +23,12 @@ namespace RSSReaderHT2020
     {
         private PodcastController podcastController;
         private CategoryContoller categoryContoller;
+        private Validator validator;
         private readonly int[] intervalNumbers = new int[] { 1, 2, 5, 10, 20, 30, 60};
         public Form1()
         {
             InitializeComponent();
+            validator = new Validator();
             createControllers();
             setComponentStates();
         }
@@ -44,6 +47,29 @@ namespace RSSReaderHT2020
             }
         }
 
+        private void update()
+        {
+            listBoxCategory.Items.Clear();
+            
+            foreach (Category cat in categoryContoller.RetrieveAllCategories())
+            {
+                listBoxCategory.Items.Add(cat.namn);
+            }
+
+            insertCategories();
+        }
+
+        private void insertCategories()
+        {
+            comboBoxCategory.Items.Clear();
+
+            for (int i = 0; i < listBoxCategory.Items.Count; i++)
+            {
+                comboBoxCategory.Items.Add(listBoxCategory.Items[i]);
+                Console.WriteLine("item:: " + listBoxCategory.Items[i]);
+            }
+        }
+
         private void btnFetch_Click(object sender, EventArgs e)
         {
         
@@ -53,20 +79,9 @@ namespace RSSReaderHT2020
         //Podcast 
         private void newPodcastBtn_Click(object sender, EventArgs e)
         {
-            XmlReader xmlReader = XmlReader.Create("https://api.sr.se/api/rss/pod/3795");
-            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
-            Console.WriteLine("Title: " + feed.Title.Text);
-            Console.WriteLine("Description: " + feed.Description.Text);
-            dataGridPodcast.Columns.Add("1", "Test 1");
-            dataGridPodcast.Columns.Add("2", "Test 2");
-            dataGridPodcast.Columns.Add("3", "Test 3");
-            dataGridPodcast.Rows.Add("Test", 1, 15);
-
-            if (!Validator.isNullorEmpty(textBoxURL))
+            if (!validator.isNullorEmpty(textBoxURL))
             {
-                //this.podcastController = new PodcastController(textBoxURL.Text);
-                //this.categoryContoller = new CategoryContoller(textBoxURL.Text);
-                //Podcast podcast = new Podcast(textBoxURL, );
+                podcastController.CreatePodcastObject(textBoxURL.Text, "test", 1, null, null);
             }
             else
             {
@@ -89,7 +104,7 @@ namespace RSSReaderHT2020
         {
             listBoxCategory.Items.Clear();
             Console.WriteLine("Test");
-            if (!Validator.isNullorEmpty(categoryTextBox))
+            if (!validator.isNullorEmpty(categoryTextBox))
             {
                 //Podcast podcast = new Podcast(textBoxURL, );
                 categoryContoller.CreateCategoryObject(categoryTextBox.Text);
@@ -98,6 +113,8 @@ namespace RSSReaderHT2020
                 {
                     listBoxCategory.Items.Add(cat.namn);
                 }
+
+                insertCategories();
             }
             else
             {
@@ -112,18 +129,24 @@ namespace RSSReaderHT2020
 
         private void removeCategoryBtn_Click(object sender, EventArgs e)
         {
-            string category = listBoxCategory.GetItemText(listBoxCategory.SelectedItem);
-            Console.WriteLine("Category: " + category);
+            string selectedCategory = listBoxCategory.GetItemText(listBoxCategory.SelectedItem);
+            Console.WriteLine("Category: " + selectedCategory);
             //Validering
 
-            categoryContoller.DeleteCategory(category);
+            categoryContoller.DeleteCategory(selectedCategory, podcastController);
 
-            listBoxCategory.Items.Clear();
+            update();
+        }
 
-            foreach (Category cat in categoryContoller.RetrieveAllCategories())
-            {
-                listBoxCategory.Items.Add(cat.namn);
-            }
+        private void renameBtn_Click(object sender, EventArgs e)
+        {
+            string selectedCategory = listBoxCategory.GetItemText(listBoxCategory.SelectedItem);
+            string input = Interaction.InputBox("Prompt", "Title", "Default", 100, 100);
+
+            categoryContoller.RenameCategory(selectedCategory, input);
+
+
+            update();
         }
     }
 }
