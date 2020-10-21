@@ -8,6 +8,7 @@ namespace Model
 {
     public class Episode
     {
+        public int name { get; set; }
         public string description { get; set; }
     }
 }

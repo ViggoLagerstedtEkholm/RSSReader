@@ -7,7 +7,7 @@ namespace BL
 {
     public class PodcastController
     {
-        private IPodcastRepository<Podcast> podcastRepository;
+        private PodcastRepository podcastRepository;
 
         public PodcastController(string url)
         {
@@ -16,6 +16,7 @@ namespace BL
 
         public void CreatePodcastObject(string name, string pn, string address, string objectType)
         {
+            //podcastRepository.Create(new Podcast(""));
         }
 
         public List<Podcast> RetrieveAllPodcasts()
@@ -24,9 +25,9 @@ namespace BL
             return null;
         }
 
-        public void UpdatePodcastName(string name)
+        public void UpdatePodcastName(Podcast podcast, string name)
         {
-
+            podcastRepository.
         }
 
 

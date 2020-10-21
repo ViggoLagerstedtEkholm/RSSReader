@@ -11,7 +11,7 @@ namespace BL
 {
     public class CategoryContoller
     {
-        private ICategoryRepository<Category> categoryRepository;
+        private CategoryRepository categoryRepository;
 
         public CategoryContoller(string url)
         {

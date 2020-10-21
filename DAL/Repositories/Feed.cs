@@ -1,4 +1,5 @@
 ﻿using DAL.Repositories;
+using DAL.Serialize;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -12,37 +13,21 @@ namespace DAL
 {
     abstract public class Feed<T> : IRepositories<T>
     {
-        RSSFeedReader reader;
+        private RSSFeedReader reader;
+        private ISerializers<Podcast> objectSerializer;
         public Feed(string url)
         {
             reader = new RSSFeedReader(url);
         }
-
-        public void Create(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
+        public virtual void Create(T entity)
+        {throw new NotImplementedException();}
         public virtual void Delete(T podcast) { }
-
-        public void Delete(int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<T> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(int index, T entity)
-        {
-            throw new NotImplementedException();
-        }
+        public virtual void Delete(int index){}
+        public virtual List<T> GetAll()
+        { throw new NotImplementedException();}
+        public virtual void SaveChanges()
+        {throw new NotImplementedException();}
+        public virtual void Update(int index, T entity)
+        {throw new NotImplementedException();}
     }
 }

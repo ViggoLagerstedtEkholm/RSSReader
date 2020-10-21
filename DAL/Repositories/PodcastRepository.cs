@@ -9,9 +9,8 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class PodcastRepository : Feed<Podcast>, IPodcastRepository<Podcast>
+    public class PodcastRepository : Feed<Podcast>
     {
-        private ISerializers<Podcast> objectSerializer;
         private List<Podcast> podcastList;
         public PodcastRepository(string url) : base(url)
         {
@@ -23,25 +22,37 @@ namespace DAL.Repositories
             podcastList.Add(entity);
             SaveChanges();
         }
-        public void Delete(int index)
+        public override void Delete(int index)
         {
             podcastList.RemoveAt(index);
             SaveChanges();
         }
+        public void UpdatePodcastName(int podcast, string name)
+        {
+            podcastList[podcast].setName(name);
+        }
+        public void UpdatePodcastCategory(int podcast, Category category)
+        {
+            podcastList[podcast].setCategory(category);
+        }
+
+        public List<Episode> GetEpisodes(int podcast)
+        {
+            return podcastList[podcast].GetEpisode();
+        }
         public List<Podcast> GetAll()
         {
             return podcastList;
-        }
-
-        public void SaveChanges()
-        {
-            //Save code.
         }
         public void Update(int index, Podcast entity)
         {
             //Update code.
         }
 
+        public void SaveChanges()
+        {
+            //Save code.
+        }
         public Podcast GetByName(string name)
         {
             //Get podcast by name.
