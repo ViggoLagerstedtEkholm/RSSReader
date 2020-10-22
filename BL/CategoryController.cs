@@ -78,5 +78,12 @@ namespace BL
                 }
             }
         }
+
+        public void saveCategory()
+        {
+            categoryRepository.SaveChanges(categoryRepository.GetAll());
+
+
+        }
     }
 }

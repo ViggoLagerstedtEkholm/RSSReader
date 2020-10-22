@@ -11,7 +11,7 @@ namespace DAL.Repositories
         void Create(T entity);
         void Delete(int index);
         void Update(string index, string entity);
-        void SaveChanges();
+        void SaveChanges(List<T> list);
         List<T> GetAll();
     }
 }

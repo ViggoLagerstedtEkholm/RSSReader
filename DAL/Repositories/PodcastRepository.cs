@@ -37,7 +37,7 @@ namespace DAL.Repositories
             list[index].SetupdatingInterval(interval);
         }
 
-        public override void SaveChanges()
+        public override void SaveChanges(List<Podcast> list)
         {
             throw new NotImplementedException();
         }
