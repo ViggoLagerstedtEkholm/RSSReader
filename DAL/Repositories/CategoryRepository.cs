@@ -16,7 +16,7 @@ namespace DAL.Repositories
     {
         public CategoryRepository() : base(new List<Category>())
         {
-            objectSerializer = new JSONSerializer<Category>();
+            objectSerializer = new XMLSerializer<Category>();
         }
         public override void Create(Category entity)
         {
@@ -33,6 +33,16 @@ namespace DAL.Repositories
         public override List<Category> GetAll()
         {
             return base.GetAll();
+        }
+        public void Update(string currentCategory, string newCategory)
+        {
+            foreach (Category aCategory in list)
+            {
+                if (aCategory.namn.Equals(currentCategory))
+                {
+                    aCategory.namn = newCategory;
+                }
+            }
         }
         public void SaveChanges()
         {

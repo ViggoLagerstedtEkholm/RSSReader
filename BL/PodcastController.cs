@@ -37,6 +37,11 @@ namespace BL
         {
             podcastRepository.Update(name, interval, category, index);
         }
+
+        public void UpdatePodcast(string currentCategory, string newCategory)
+        {
+            podcastRepository.Update(currentCategory, newCategory); 
+        }
         public void DeletePodcast(int index)
         {
             podcastRepository.Delete(index);

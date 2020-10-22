@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repositories\Constants.cs" />
     <Compile Include="Repositories\Feed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
@@ -57,7 +58,6 @@
     <Compile Include="Repositories\PodcastRepository.cs" />
     <Compile Include="Repositories\RSSFeedReader.cs" />
     <Compile Include="Repositories\ExceptionHandler.cs" />
-    <Compile Include="Serialize\BINARYSerializer.cs" />
     <Compile Include="Serialize\ISerializers.cs" />
     <Compile Include="Serialize\JSONSerializer.cs" />
     <Compile Include="Serialize\XMLSerializer.cs" />

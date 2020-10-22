@@ -27,16 +27,9 @@ namespace BL
         {
             return categoryRepository.GetAll();
         }
-
         public void RenameCategory(string currentNamne, string newName)
         {
-            foreach (Category aCategory in categoryRepository.GetAll().ToList())
-            {
-                if (aCategory.namn.Equals(currentNamne))
-                {
-                    aCategory.namn = newName;
-                }
-            }
+            categoryRepository.Update(currentNamne, newName);
         }
         public void DeleteCategory(string name, PodcastController podcastController)
         {

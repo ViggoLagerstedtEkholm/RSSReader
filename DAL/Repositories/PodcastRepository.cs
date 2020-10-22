@@ -13,7 +13,7 @@ namespace DAL.Repositories
     {
         public PodcastRepository() : base(new List<Podcast>())
         {
-            objectSerializer = new JSONSerializer<Podcast>();
+            objectSerializer = new XMLSerializer<Podcast>();
         }
         public override void Create(Podcast entity)
         {
@@ -36,6 +36,17 @@ namespace DAL.Repositories
             list[index].name= newName;
             list[index].category = category;
             list[index].updatingInterval = interval;
+        }
+
+        public void Update(string currentCategory, string newCategory)
+        {
+            foreach(Podcast podcast in list)
+            {
+                if (podcast.category.namn.Equals(currentCategory))
+                {
+                    podcast.category.namn = newCategory;
+                }
+            }
         }
 
         public void SaveChanges()
