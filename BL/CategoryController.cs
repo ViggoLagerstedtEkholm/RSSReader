@@ -61,6 +61,7 @@ namespace BL
                                 {
                                     categoryRepository.Delete(aCategory);
                                     podcastController.DeletePodcast(i);
+                                    podcastController.SavePodcastData();
                                 }
                             }
                             else
