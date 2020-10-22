@@ -11,69 +11,35 @@ namespace DAL.Serialize
 {
     public class XMLSerializer<T> : ISerializers<T>
     {
+        private string designatedFileFolder;
         public XMLSerializer()
-        {}
+        {
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            designatedFileFolder = projectDirectory + @"\SavedFiles";
+        }
 
          
-        public void Serialize<T>(T serializeObject, string filePath, bool append, string fileName)
+        public void Serialize<T>(T serializeObject, string name, bool append)
         {
-            if (serializeObject == null) { return; }
-            string submittedFilePath = filePath + fileName + ".XML";
-            TextWriter writer = null;
-            try
+            XmlSerializer xmlSerializer = new XmlSerializer(serializeObject.GetType());
+            using (FileStream outFile = new FileStream(designatedFileFolder + @"\" + name + ".xml",
+                FileMode.Create, FileAccess.Write))
             {
-                var serializer = new XmlSerializer(typeof(T));
-                writer = new StreamWriter(submittedFilePath, append);
-                serializer.Serialize(writer, serializeObject);
-            }
-            finally
-            {
-                if (writer != null)
-                    writer.Close();
+                xmlSerializer.Serialize(outFile, serializeObject);
             }
         }
-        public T Deserialize(string path)
+
+        public List<T> DeserializeList(string name)
         {
-            if (string.IsNullOrEmpty(path)) { return default(T); }
-
-            string submittedFilePath =
-            Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Path\\myFile.txt.";
-
-            T objectOut = default(T);
-
-            try
+            List<T> objects;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
+            using(FileStream inFile = new FileStream(designatedFileFolder + @"\" + name + ".xml", 
+                FileMode.Open, FileAccess.Read))
             {
-                XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.Load(submittedFilePath);
-                string xmlString = xmlDocument.OuterXml;
-
-                using (StringReader read = new StringReader(xmlString))
-                {
-                    Type outType = typeof(T);
-
-                    XmlSerializer serializer = new XmlSerializer(outType);
-                    using (XmlReader reader = new XmlTextReader(read))
-                    {
-                        objectOut = (T)serializer.Deserialize(reader);
-                    }
-                }
+                objects = (List<T>) xmlSerializer.Deserialize(inFile);
             }
-            catch (Exception ex)
-            {
-                //Exception handling here.
-            }
-
-            return objectOut;
-        }
-
-        public List<T> DeserializeList(string path)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Serialize<T1>(T1 serializeObject, string name, bool append)
-        {
-            throw new NotImplementedException();
+            return objects;
         }
     }
 }

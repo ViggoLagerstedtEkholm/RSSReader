@@ -10,50 +10,48 @@ using System.Threading.Tasks;
 
 namespace DAL.Serialize
 {
-    class BINARYSerializer<T> : ISerializers<T>
+    public class BINARYSerializer<T> : ISerializers<T>
     {
         private BinaryFormatter formatter;
+        private string designatedFileFolder;
         public BINARYSerializer()
         {
             formatter = new BinaryFormatter();
+
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            designatedFileFolder = projectDirectory + @"\SavedFiles";
         }
-        public void Serialize<T>(T serializeObject, string filePath, bool append, string fileName)
+        public void Serialize<T>(T serializeObject, string name, bool append)
         {
             Console.WriteLine("File content: " + serializeObject.GetType());
-            using(FileStream outFile = new FileStream(filePath + fileName + ".txt", FileMode.Create, FileAccess.Write))
+            using(FileStream outFile = new FileStream(designatedFileFolder + @"\" + name + ".bin", FileMode.Create, FileAccess.Write))
             {
                 formatter.Serialize(outFile, serializeObject);
             }
         }
-
-        public T Deserialize(string path)
+        public List<T> DeserializeList(string name)
         {
-            T objectReturned;
+            List<T> objectReturned;
 
-            using (FileStream outFile = new FileStream("SortedData.bin", FileMode.Open, FileAccess.Read))
+            using (FileStream outFile = new FileStream(designatedFileFolder + @"\" + name + ".bin", FileMode.Open, FileAccess.Read))
             {
-                objectReturned = (T)formatter.Deserialize(outFile);
+                objectReturned = (List<T>)formatter.Deserialize(outFile);
             }
 
             return objectReturned;
         }
 
-        public List<T> DeserializeList(string path)
+        public T DeserializeLister(string name)
         {
-            throw new NotImplementedException();
-        }
+            T objectReturned;
 
-        public void SerializeList(List<T> list, string filePath, string fileName, bool append)
-        {
-            using (FileStream outFile = new FileStream(filePath + fileName + ".bin", FileMode.Create, FileAccess.Write))
+            using (FileStream outFile = new FileStream(designatedFileFolder + @"\" + name + ".bin", FileMode.Open, FileAccess.Read))
             {
-                formatter.Serialize(outFile, new Category("test"));
+                objectReturned = (T)formatter.Deserialize(outFile);
             }
-        }
 
-        public void Serialize<T1>(T1 serializeObject, string name, bool append)
-        {
-            throw new NotImplementedException();
+            return objectReturned;
         }
     }
 }

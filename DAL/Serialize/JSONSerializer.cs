@@ -34,8 +34,6 @@ namespace DAL.Serialize
             {
                 writer.Write(jsonData);
             }
-
-            Console.WriteLine(jsonData);
         }
         public List<T> DeserializeList(string name)
         {
