@@ -1,10 +1,12 @@
-﻿using Microsoft.SqlServer.Server;
+﻿using DAL.Serialize;
+using Microsoft.SqlServer.Server;
 using Model;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,8 +14,15 @@ namespace DAL.Repositories
 {
     public class CategoryRepository : Feed<Category>
     {
+        
+
+
         public CategoryRepository() : base(new List<Category>())
-        {}
+        {
+            objectSerializer = new BINARYSerializer<Category>();
+        }
+
+        
         public override void Create(Category entity)
         {
             list.Add(entity);
@@ -34,9 +43,14 @@ namespace DAL.Repositories
         //{
             
         //}
-        public override void SaveChanges()
+        public override void SaveChanges(List<Category> categoryList)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(list.Count);
+            foreach(Category cat in list)
+            {
+                Console.WriteLine(cat.namn);
+            }
+            objectSerializer.Serialize(new Category("test"), "C:\\Users\\Filip\\Desktop\\Sparade filer", true, "test");
         }
     }
 }

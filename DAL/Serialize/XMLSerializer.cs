@@ -71,7 +71,7 @@ namespace DAL.Serialize
             throw new NotImplementedException();
         }
 
-        public T[] SerializeList(List<T> list)
+        public void SerializeList(List<T> list, string filePath, string fileName, bool append)
         {
             throw new NotImplementedException();
         }

@@ -14,13 +14,14 @@ namespace DAL
     abstract public class Feed<T> : IRepositories<T>
     {
         public RSSFeedReader reader;
-        //public ISerializers<T> objectSerializer;
+        public ISerializers<T> objectSerializer;
         public List<T> list;
 
         public Feed(List<T> list)
         {
             reader = new RSSFeedReader();
             this.list = list;
+            
         }
 
         public virtual void Create(T entity) 
@@ -39,7 +40,10 @@ namespace DAL
         {
             return list;
         }
-        public abstract void SaveChanges();
+        public virtual void SaveChanges(List<T> list)
+        {
+            
+        }
 
         public virtual void Update(string newName, int interval, Category category, int index)
         {

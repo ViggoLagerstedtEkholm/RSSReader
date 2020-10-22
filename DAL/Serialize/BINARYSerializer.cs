@@ -1,4 +1,5 @@
 ﻿using DAL.Repositories;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,9 +42,12 @@ namespace DAL.Serialize
             throw new NotImplementedException();
         }
 
-        public T[] SerializeList(List<T> list)
+        public void SerializeList(List<T> list, string filePath, string fileName, bool append)
         {
-            throw new NotImplementedException();
+            using (FileStream outFile = new FileStream(filePath + fileName + ".bin", FileMode.Create, FileAccess.Write))
+            {
+                formatter.Serialize(outFile, new Category("test"));
+            }
         }
     }
 }

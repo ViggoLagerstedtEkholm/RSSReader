@@ -114,8 +114,18 @@ namespace RSSReaderHT2020
             int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
             string name = textBoxNamn.Text;
             int selectedPodcast = dataGridPodcast.CurrentRow.Index;
+            string selectedFolderPath = "";
 
             podcastController.UpdatePodcast(name, interval, new Category(category), selectedPodcast);
+
+            using (var saveDialog = new SaveFileDialog())
+            {
+                DialogResult result = saveDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                     selectedFolderPath = saveDialog.FileName;
+                }
+            }
 
             insertRows();
 
@@ -155,7 +165,16 @@ namespace RSSReaderHT2020
 
         private void saveCategoryBtn_Click(object sender, EventArgs e)
         {
-
+            string selectedFolderPath = "";
+            using (var saveDialog = new SaveFileDialog())
+            {
+                DialogResult result = saveDialog.ShowDialog();
+                if (result == DialogResult.OK)
+                {
+                    selectedFolderPath = saveDialog.FileName;
+                }
+            }
+            categoryContoller.saveCategory();
         }
 
         private void removeCategoryBtn_Click(object sender, EventArgs e)
