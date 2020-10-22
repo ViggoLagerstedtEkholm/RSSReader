@@ -52,7 +52,7 @@ namespace BL
                     {
                         for(int i = 0; i < podcastController.RetrieveAllPodcasts().ToList().Count; i++)
                         {
-                            if (podcastController.RetrieveAllPodcasts()[i].GetCategory().namn.Equals(name))
+                            if (podcastController.RetrieveAllPodcasts()[i].category.namn.Equals(name))
                             {
                                 var confirmResult = MessageBox.Show("Are you sure you want to delete all podcasts with selected category?",
                                          "Confirm Delete!!",
@@ -79,11 +79,14 @@ namespace BL
             }
         }
 
-        public void saveCategory()
+        public void saveCategoryData()
         {
-            categoryRepository.SaveChanges(categoryRepository.GetAll());
+            categoryRepository.SaveChanges();
+        }
 
-
+        public List<Category> GetAllCategoryData()
+        {
+            return categoryRepository.GetAllData();
         }
     }
 }

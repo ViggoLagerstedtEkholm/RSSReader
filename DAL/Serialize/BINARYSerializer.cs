@@ -19,7 +19,8 @@ namespace DAL.Serialize
         }
         public void Serialize<T>(T serializeObject, string filePath, bool append, string fileName)
         {
-            using(FileStream outFile = new FileStream(filePath + fileName + ".bin", FileMode.Create, FileAccess.Write))
+            Console.WriteLine("File content: " + serializeObject.GetType());
+            using(FileStream outFile = new FileStream(filePath + fileName + ".txt", FileMode.Create, FileAccess.Write))
             {
                 formatter.Serialize(outFile, serializeObject);
             }
@@ -37,7 +38,7 @@ namespace DAL.Serialize
             return objectReturned;
         }
 
-        public T[] DeserializeList()
+        public List<T> DeserializeList(string path)
         {
             throw new NotImplementedException();
         }
@@ -48,6 +49,11 @@ namespace DAL.Serialize
             {
                 formatter.Serialize(outFile, new Category("test"));
             }
+        }
+
+        public void Serialize<T1>(T1 serializeObject, string name, bool append)
+        {
+            throw new NotImplementedException();
         }
     }
 }

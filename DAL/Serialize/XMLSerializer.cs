@@ -18,7 +18,7 @@ namespace DAL.Serialize
         public void Serialize<T>(T serializeObject, string filePath, bool append, string fileName)
         {
             if (serializeObject == null) { return; }
-            string submittedFilePath = filePath + fileName + ".txt";
+            string submittedFilePath = filePath + fileName + ".XML";
             TextWriter writer = null;
             try
             {
@@ -66,12 +66,12 @@ namespace DAL.Serialize
             return objectOut;
         }
 
-        public T[] DeserializeList()
+        public List<T> DeserializeList(string path)
         {
             throw new NotImplementedException();
         }
 
-        public void SerializeList(List<T> list, string filePath, string fileName, bool append)
+        public void Serialize<T1>(T1 serializeObject, string name, bool append)
         {
             throw new NotImplementedException();
         }

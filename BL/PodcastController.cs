@@ -41,5 +41,15 @@ namespace BL
         {
             podcastRepository.Delete(index);
         }
+
+        public void SavePodcastData()
+        {
+            podcastRepository.SaveChanges();
+        }
+
+        public List<Podcast> GetPodcastData()
+        {
+            return podcastRepository.GetAllData();
+        }
     }
 }

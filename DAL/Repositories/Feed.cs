@@ -21,7 +21,6 @@ namespace DAL
         {
             reader = new RSSFeedReader();
             this.list = list;
-            
         }
 
         public virtual void Create(T entity) 
@@ -39,10 +38,6 @@ namespace DAL
         public virtual List<T> GetAll() 
         {
             return list;
-        }
-        public virtual void SaveChanges(List<T> list)
-        {
-            
         }
 
         public virtual void Update(string newName, int interval, Category category, int index)

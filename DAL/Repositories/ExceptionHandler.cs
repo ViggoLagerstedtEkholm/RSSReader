@@ -9,6 +9,8 @@ namespace DAL
     public class ExceptionHandler : Exception
     {
         public ExceptionHandler(string message) : base(message)
-        {}
+        {
+            //base.Message("test");
+        }
     }
 }

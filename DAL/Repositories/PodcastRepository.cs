@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class PodcastRepository : Feed<Podcast>
+    public class PodcastRepository : Feed<Podcast>, IDataHandler<Podcast>
     {
         public PodcastRepository() : base(new List<Podcast>())
         {
+            objectSerializer = new JSONSerializer<Podcast>();
         }
         public override void Create(Podcast entity)
         {
@@ -32,14 +33,22 @@ namespace DAL.Repositories
         }
         public override void Update(string newName, int interval, Category category, int index)
         {
-            list[index].setName(newName);
-            list[index].setCategory(category);
-            list[index].SetupdatingInterval(interval);
+            list[index].name= newName;
+            list[index].category = category;
+            list[index].updatingInterval = interval;
         }
 
-        public override void SaveChanges(List<Podcast> list)
+        public void SaveChanges()
         {
-            throw new NotImplementedException();
+            objectSerializer.Serialize(list, "Podcast", true);
+        }
+
+        public List<Podcast> GetAllData()
+        {
+            List<Podcast> test = objectSerializer.DeserializeList("Podcast");
+            list = test.ToList();
+
+            return test;
         }
     }
 }

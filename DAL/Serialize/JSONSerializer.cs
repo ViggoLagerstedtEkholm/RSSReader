@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Model;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,41 +15,39 @@ namespace DAL.Serialize
     {
         private JsonSerializer jsonSerializer;
         private JsonSerializerSettings settings;
+        private string designatedFileFolder;
         public JSONSerializer()
         {
             jsonSerializer = new JsonSerializer();
             settings = new JsonSerializerSettings { Formatting = Newtonsoft.Json.Formatting.Indented };
+
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
+            designatedFileFolder = projectDirectory + @"\SavedFiles";
         }
 
-        public void Serialize<T>(T serializeObject, string filePath, bool append, string fileName)
+        public void Serialize<T>(T serializeObject, string name, bool append)
         {
             string jsonData = JsonConvert.SerializeObject(serializeObject, settings);
 
-            using (StreamWriter writer = new StreamWriter(filePath + fileName + ".json"))
+            using (StreamWriter writer = new StreamWriter(designatedFileFolder + @"\" + name + ".json"))
             {
                 writer.Write(jsonData);
             }
-        }
-        public T Deserialize(string path)
-        {
-            T objectReturned;
 
-            using(StreamReader reader = File.OpenText("SortedData.json"))
+            Console.WriteLine(jsonData);
+        }
+        public List<T> DeserializeList(string name)
+        {
+            List<T> objectReturned = new List<T>();
+
+            using (StreamReader r = new StreamReader(designatedFileFolder + @"\" + name + ".json"))
             {
-                objectReturned = (T)jsonSerializer.Deserialize(reader, typeof(T));
+                string json = r.ReadToEnd();
+                objectReturned = JsonConvert.DeserializeObject<List<T>>(json);
             }
 
             return objectReturned;
-        }
-
-        public T[] DeserializeList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SerializeList(List<T> list, string filePath, string fileName, bool append)
-        {
-            throw new NotImplementedException();
         }
     }
 }

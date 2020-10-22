@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Text;
@@ -31,6 +32,24 @@ namespace RSSReaderHT2020
             validator = new Validator();
             createControllers();
             setComponentStates();
+            loadData();
+
+
+        }
+
+        private void loadData()
+        {
+            for (int i = 0; i< categoryContoller.GetAllCategoryData().Count; i++)
+            {
+                listBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
+                comboBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
+            }
+
+            foreach (Podcast pod in podcastController.GetPodcastData())
+            {
+                Console.WriteLine("test: " + pod.name);
+                dataGridPodcast.Rows.Add(pod.name, pod.updatingInterval, pod.amountOfEpisodes, pod.category.namn);
+            }
         }
 
         private void createControllers()
@@ -76,7 +95,7 @@ namespace RSSReaderHT2020
 
             foreach(Podcast aPodcast in podcastController.RetrieveAllPodcasts())
             {
-                dataGridPodcast.Rows.Add(aPodcast.GetName(), aPodcast.GetUpdatingInterval(), 1, aPodcast.GetCategory().namn);
+                dataGridPodcast.Rows.Add(aPodcast.name, aPodcast.updatingInterval, 1, aPodcast.category.namn);
             }
         }
 
@@ -97,7 +116,7 @@ namespace RSSReaderHT2020
 
                 insertRows();
 
-                foreach (Episode episode in podcast.GetEpisode())
+                foreach (Episode episode in podcast.episodes)
                 {
                     textBoxPodcast.Items.Add(episode.description);
                 }
@@ -118,14 +137,15 @@ namespace RSSReaderHT2020
 
             podcastController.UpdatePodcast(name, interval, new Category(category), selectedPodcast);
 
-            using (var saveDialog = new SaveFileDialog())
-            {
-                DialogResult result = saveDialog.ShowDialog();
-                if (result == DialogResult.OK)
-                {
-                     selectedFolderPath = saveDialog.FileName;
-                }
-            }
+            //using (var saveDialog = new SaveFileDialog())
+            //{
+            //    DialogResult result = saveDialog.ShowDialog();
+            //    if (result == DialogResult.OK)
+            //    {
+            //         selectedFolderPath = saveDialog.FileName;
+            //    }
+            //}
+            podcastController.SavePodcastData();
 
             insertRows();
 
@@ -174,7 +194,7 @@ namespace RSSReaderHT2020
                     selectedFolderPath = saveDialog.FileName;
                 }
             }
-            categoryContoller.saveCategory();
+            categoryContoller.saveCategoryData();
         }
 
         private void removeCategoryBtn_Click(object sender, EventArgs e)

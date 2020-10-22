@@ -12,17 +12,12 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class CategoryRepository : Feed<Category>
+    public class CategoryRepository : Feed<Category>, IDataHandler<Category>
     {
-        
-
-
         public CategoryRepository() : base(new List<Category>())
         {
-            objectSerializer = new BINARYSerializer<Category>();
+            objectSerializer = new JSONSerializer<Category>();
         }
-
-        
         public override void Create(Category entity)
         {
             list.Add(entity);
@@ -39,18 +34,16 @@ namespace DAL.Repositories
         {
             return base.GetAll();
         }
-        //public override void Update(string t, string a)
-        //{
-            
-        //}
-        public override void SaveChanges(List<Category> categoryList)
+        public void SaveChanges()
         {
-            Console.WriteLine(list.Count);
-            foreach(Category cat in list)
-            {
-                Console.WriteLine(cat.namn);
-            }
-            objectSerializer.Serialize(new Category("test"), "C:\\Users\\Filip\\Desktop\\Sparade filer", true, "test");
+            objectSerializer.Serialize(list, "Category", true);
+        }
+        public List<Category> GetAllData()
+        {
+            List<Category> test = objectSerializer.DeserializeList("Category");
+            list = test.ToList();
+
+            return test;
         }
     }
 }
