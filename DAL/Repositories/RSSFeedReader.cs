@@ -35,6 +35,7 @@ namespace DAL
             XmlReader xmlReader = XmlReader.Create(url);
             SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
 
+
             return 0; 
         }
         public async Task<List<Episode>> GetEpisodes(string url)

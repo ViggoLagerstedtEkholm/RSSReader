@@ -17,9 +17,5 @@ namespace Model
             this.name = name;
             this.description = description;
         }
-        public Episode()
-        {
-
-        }
     }
 }

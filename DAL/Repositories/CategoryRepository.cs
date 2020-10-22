@@ -16,7 +16,7 @@ namespace DAL.Repositories
     {
         public CategoryRepository() : base(new List<Category>())
         {
-            objectSerializer = new XMLSerializer<Category>();
+            objectSerializer = new JSONSerializer<Category>();
         }
         public override void Create(Category entity)
         {
