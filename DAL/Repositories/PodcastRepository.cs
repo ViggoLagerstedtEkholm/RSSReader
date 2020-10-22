@@ -40,12 +40,12 @@ namespace DAL.Repositories
 
         public void SaveChanges()
         {
-            objectSerializer.Serialize(list, "Podcast", true);
+            objectSerializer.Serialize(list, Constants.podcast.Value, true);
         }
 
         public List<Podcast> GetAllData()
         {
-            List<Podcast> test = objectSerializer.DeserializeList("Podcast");
+            List<Podcast> test = objectSerializer.DeserializeList(Constants.podcast.Value);
             list = test.ToList();
 
             return test;

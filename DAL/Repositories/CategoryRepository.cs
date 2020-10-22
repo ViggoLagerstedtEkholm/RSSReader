@@ -36,11 +36,11 @@ namespace DAL.Repositories
         }
         public void SaveChanges()
         {
-            objectSerializer.Serialize(list, "Category", true);
+            objectSerializer.Serialize(list, Constants.category.Value, true);
         }
         public List<Category> GetAllData()
         {
-            List<Category> test = objectSerializer.DeserializeList("Category");
+            List<Category> test = objectSerializer.DeserializeList(Constants.category.Value);
             list = test.ToList();
 
             return test;
