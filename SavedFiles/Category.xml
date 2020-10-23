@@ -1,12 +1,21 @@
 <?xml version="1.0"?>
 <ArrayOfCategory xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Category>
-    <namn>aa</namn>
+    <namn>NY</namn>
   </Category>
   <Category>
     <namn>bb</namn>
   </Category>
   <Category>
-    <namn>aa</namn>
+    <namn>NY</namn>
+  </Category>
+  <Category>
+    <namn>Nöje</namn>
+  </Category>
+  <Category>
+    <namn>aaa</namn>
+  </Category>
+  <Category>
+    <namn>Default</namn>
   </Category>
 </ArrayOfCategory>
