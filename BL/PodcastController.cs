@@ -22,9 +22,10 @@ namespace BL
             {
                 string description = podcastRepository.reader.GetDescription(url);
                 var episodesList= podcastRepository.reader.GetEpisodes(url);
-                podcastRepository.reader.GetAmountOfEpisodes(url);
+                int episodeAmount = podcastRepository.reader.GetAmountOfEpisodes(url);
 
-                podcastRepository.Create(podcast = new Podcast(url, new Category(category), interval, episodesList.Result, name));
+
+                podcastRepository.Create(podcast = new Podcast(url, new Category(category), interval, episodesList.Result, name, episodeAmount));
             });
 
             return podcast;
