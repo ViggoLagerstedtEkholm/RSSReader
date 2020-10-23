@@ -10,6 +10,10 @@ namespace Model
     public class Category
     {
         public string namn { get; set; }
+        public override string ToString()
+        {
+            return namn;
+        }
         public Category(string name)
         {
             this.namn = name;
