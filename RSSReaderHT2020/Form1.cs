@@ -6,6 +6,7 @@ using Microsoft.VisualBasic;
 using Model;
 using RSSReader;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,6 +27,8 @@ namespace RSSReaderHT2020
         private CategoryContoller categoryContoller;
         private Validator validator;
         private readonly int[] intervalNumbers = new int[] { 1, 2, 5, 10, 20, 30, 60};
+        private BindingSource podcastBindingSource = new BindingSource();
+
         public Form1()
         {
             InitializeComponent();
@@ -41,11 +44,15 @@ namespace RSSReaderHT2020
                 listBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
                 comboBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
             }
-
+           
             foreach (Podcast pod in podcastController.GetPodcastData())
             {
-                dataGridPodcast.Rows.Add(pod.name, pod.updatingInterval, pod.amountOfEpisodes, pod.category.namn);
+                podcastBindingSource.Add(pod);
             }
+
+            dataGridPodcast.DataSource = podcastBindingSource;
+
+
         }
         private void createControllers()
         {
@@ -91,8 +98,11 @@ namespace RSSReaderHT2020
 
             foreach(Podcast aPodcast in podcastController.RetrieveAllPodcasts())
             {
-                dataGridPodcast.Rows.Add(aPodcast.name, aPodcast.updatingInterval, 1, aPodcast.category.namn);
+                //dataGridPodcast.Rows.Add(aPodcast.name, aPodcast.updatingInterval, 1, aPodcast.category.namn);
+                podcastBindingSource.Add(aPodcast);
             }
+
+            dataGridPodcast.DataSource = podcastBindingSource;
         }
         //Podcast https://api.sr.se/api/rss/pod/3795
         private async void newPodcastBtn_Click(object sender, EventArgs e)
@@ -109,11 +119,6 @@ namespace RSSReaderHT2020
                         Podcast podcast = await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString());
 
                         insertRows();
-
-                        foreach (Episode episode in podcast.episodes)
-                        {
-                            textBoxPodcast.Items.Add(episode.description);
-                        }
                     }
                     else
                     {
@@ -204,6 +209,7 @@ namespace RSSReaderHT2020
 
                 categoryContoller.DeleteCategory(selectedCategory, podcastController);
                 comboBoxCategory.Items.Clear();
+                categoryContoller.saveCategoryData();
                 insertRows();
                 update();
             }
@@ -225,6 +231,8 @@ namespace RSSReaderHT2020
                     podcastController.UpdatePodcast(selectedCategory, newCategory);
                     comboBoxCategory.Items.Clear();
                     comboBoxCategory.SelectedIndex = comboBoxCategory.FindStringExact(newCategory);
+                    categoryContoller.saveCategoryData();
+                    podcastController.SavePodcastData();
                     insertRows();
                     insertCategories();
                     update();
@@ -238,6 +246,25 @@ namespace RSSReaderHT2020
             {
                 createInformationMessage("Select a category.");
             }
+        }
+
+        private void dataGridPodcast_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBoxPodcast.Items.Clear();
+
+            Podcast currentObject = (Podcast)dataGridPodcast.CurrentRow.DataBoundItem;
+
+            foreach(Episode episode in currentObject.episodes)
+            {
+
+                textBoxPodcast.Items.Add(episode.description);
+                
+            }
+
+            textBoxNamn.Text = currentObject.name;
+            textBoxURL.Text = currentObject.URL;
+            comboBoxInterval.SelectedItem = currentObject.updatingInterval;
+            comboBoxCategory.SelectedItem = currentObject.category.namn;
         }
     }
 }
