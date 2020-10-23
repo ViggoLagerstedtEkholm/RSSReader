@@ -44,14 +44,19 @@ namespace RSSReaderHT2020
                 listBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
                 comboBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
             }
-           
+
+            LoadPodcasts();
+
+        }
+
+        private void LoadPodcasts()
+        {
             foreach (Podcast pod in podcastController.GetPodcastData())
             {
                 podcastBindingSource.Add(pod);
             }
 
             dataGridPodcast.DataSource = podcastBindingSource;
-
 
         }
         private void createControllers()
@@ -115,8 +120,7 @@ namespace RSSReaderHT2020
                     {
                         int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
 
-                        //Validera!
-                        Podcast podcast = await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString());
+                        await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString());
 
                         insertRows();
                     }
@@ -150,6 +154,7 @@ namespace RSSReaderHT2020
 
                         podcastController.UpdatePodcast(name, interval, new Category(category), selectedPodcast);
                         podcastController.SavePodcastData();
+                        podcastBindingSource.Clear();
                         insertRows();
                     }
                     else
@@ -265,6 +270,51 @@ namespace RSSReaderHT2020
             textBoxURL.Text = currentObject.URL;
             comboBoxInterval.SelectedItem = currentObject.updatingInterval;
             comboBoxCategory.SelectedItem = currentObject.category.namn;
+        }
+
+        private void comboBoxSortera_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void FilterList(string findStr, BindingSource bs)
+        {
+            List<Podcast> podcasts = podcastController.GetPodcastData();
+
+            List<Podcast> filteredList = podcasts.FindAll(delegate (Podcast obj)
+            {
+                return obj.category.namn.Contains(findStr);
+            });
+
+            bs.DataSource = filteredList;
+
+            dataGridPodcast.DataSource = bs;
+        }
+
+        private void textBoxFilterCategory_TextChanged(object sender, EventArgs e)
+        {
+            string text = textBoxFilterCategory.Text;
+            if (text.Equals(""))
+            {
+                podcastBindingSource.Clear();
+
+                LoadPodcasts();
+            }
+            else
+            {
+                BindingSource bs = new BindingSource();
+                FilterList(text, bs);
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPodcast_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

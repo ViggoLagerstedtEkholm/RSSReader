@@ -5,7 +5,7 @@
     <category>
       <namn>bb</namn>
     </category>
-    <updatingInterval>10</updatingInterval>
+    <updatingInterval>2</updatingInterval>
     <episodes>
       <Episode>
         <name>#1552 - Matthew McConaughey</name>
@@ -7029,7 +7029,7 @@ The raw audio from Joe Rogan's weekly live USTREAM video show with Brian Reichle
 The raw audio from Joe Rogan's weekly live USTREAM video show with Brian Redban.</description>
       </Episode>
     </episodes>
-    <name>Joe rogan</name>
+    <name>Test555</name>
     <amountOfEpisodes>0</amountOfEpisodes>
   </Podcast>
   <Podcast>
@@ -8050,7 +8050,7 @@ The raw audio from Joe Rogan's weekly live USTREAM video show with Brian Redban.
   <Podcast>
     <URL>https://example.tumblr.com/rss</URL>
     <category>
-      <namn>NY</namn>
+      <namn>Nöje</namn>
     </category>
     <updatingInterval>2</updatingInterval>
     <episodes>
