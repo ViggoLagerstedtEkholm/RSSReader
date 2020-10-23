@@ -8,6 +8,7 @@ using System.ServiceModel.Syndication;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace DAL
 {
@@ -32,25 +33,39 @@ namespace DAL
         }
         public int GetAmountOfEpisodes(string url)
         {
-            XmlReader xmlReader = XmlReader.Create(url);
-            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
+            XDocument urlDocument = new XDocument();
+            int amountOfEpisodes = 0;
 
+            urlDocument = XDocument.Load(url);
+            var items = (from x in urlDocument.Descendants("item")select new 
+                        { 
+                            title = x.Element("title") 
+                        });
 
-            return 0; 
+            if (items != null)
+            {
+                foreach (var i in items)
+                {
+                    amountOfEpisodes++;
+                }
+            }
+            return amountOfEpisodes;
         }
+
+        //https://www.c-sharpcorner.com/UploadFile/70dbe6/fetch-rss-feed-content-from-linq-to-xml/
         public async Task<List<Episode>> GetEpisodes(string url)
         {
+            XDocument urlDocument = new XDocument();
             List<Episode> episodeList = new List<Episode>();
 
-            XmlReader xmlReader = XmlReader.Create(url);
-            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
-
+            urlDocument = XDocument.Load(url);
             await Task.Run(() =>
             {
-                foreach(SyndicationItem item in feed.Items)
-                {
-                    episodeList.Add(new Episode(item.Title.Text, item.Summary.Text));
-                }
+                episodeList = (from x in urlDocument.Descendants("item") select new Episode
+                              {
+                                   name = x.Element("title").Value,
+                                   description = x.Element("description").Value
+                               }).ToList();
             });
 
             return episodeList;
