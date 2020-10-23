@@ -18,13 +18,14 @@ namespace Model
         public List<Episode> episodes{ get; set; }
         public string name { get; set; }
         public int amountOfEpisodes { get; set; }
-        public Podcast(string URL, Category category,int updatingInterval, List<Episode> episodes, string name)
+        public Podcast(string URL, Category category,int updatingInterval, List<Episode> episodes, string name, int amountOfEpisodes)
         {
             this.URL = URL;
             this.category = category;
             this.updatingInterval = updatingInterval;
             this.episodes = episodes;
             this.name = name;
+            this.amountOfEpisodes = amountOfEpisodes;
         }
 
         public Podcast()
