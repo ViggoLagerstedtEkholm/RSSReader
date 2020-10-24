@@ -38,6 +38,20 @@ namespace DAL.Repositories
             list[index].updatingInterval = interval;
         }
 
+        public async void Update(string URL, IProgress<int> progress)
+        {
+            List<Episode> updatedEpisodes = await reader.GetEpisodes(URL, progress);
+
+            foreach (Podcast podcast in GetAll())
+            {
+                if (podcast.URL.Equals(URL))
+                {
+                    podcast.episodes = updatedEpisodes;
+                    podcast.amountOfEpisodes = reader.GetAmountOfEpisodes(URL);
+                }
+            }
+        }
+
         public void Update(string currentCategory, string newCategory)
         {
             foreach(Podcast podcast in list)
