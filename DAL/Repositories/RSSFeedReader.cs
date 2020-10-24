@@ -53,19 +53,20 @@ namespace DAL
         }
 
         //https://www.c-sharpcorner.com/UploadFile/70dbe6/fetch-rss-feed-content-from-linq-to-xml/
-        public async Task<List<Episode>> GetEpisodes(string url)
+        public async Task<List<Episode>> GetEpisodes(string url, IProgress<int> progress)
         {
-            XDocument urlDocument = new XDocument();
             List<Episode> episodeList = new List<Episode>();
 
-            urlDocument = XDocument.Load(url);
+            XmlReader xmlReader = XmlReader.Create(url);
+            SyndicationFeed feed = SyndicationFeed.Load(xmlReader);
+
             await Task.Run(() =>
             {
-                episodeList = (from x in urlDocument.Descendants("item") select new Episode
-                              {
-                                   name = x.Element("title").Value,
-                                   description = x.Element("description").Value
-                               }).ToList();
+                foreach (SyndicationItem item in feed.Items)
+                {
+                    progress.Report(episodeList.Count * 100 / feed.Items.Count());
+                    episodeList.Add(new Episode(item.Title.Text, item.Summary.Text));
+                }
             });
 
             return episodeList;
