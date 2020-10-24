@@ -1,6 +1,7 @@
 ﻿using DAL;
 using DAL.Repositories;
 using Model;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
@@ -15,15 +16,14 @@ namespace BL
         {
             podcastRepository = new PodcastRepository();
         }
-        public async Task<Podcast> CreatePodcastObject(string url, string name, int interval, string category)
+        public async Task<Podcast> CreatePodcastObject(string url, string name, int interval, string category, IProgress<int> progress)
         {
             Podcast podcast = new Podcast();
             await Task.Run(() =>
             {
                 string description = podcastRepository.reader.GetDescription(url);
-                var episodesList= podcastRepository.reader.GetEpisodes(url);
+                var episodesList= podcastRepository.reader.GetEpisodes(url, progress);
                 int episodeAmount = podcastRepository.reader.GetAmountOfEpisodes(url);
-
 
                 podcastRepository.Create(podcast = new Podcast(url, new Category(category), interval, episodesList.Result, name, episodeAmount));
             });
@@ -38,7 +38,10 @@ namespace BL
         {
             podcastRepository.Update(name, interval, category, index);
         }
-
+        public void UpdatePodcast(string URL, IProgress<int> progress)
+        {
+            podcastRepository.Update(URL, progress);
+        }
         public void UpdatePodcast(string currentCategory, string newCategory)
         {
             podcastRepository.Update(currentCategory, newCategory); 
