@@ -28,8 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.textBoxURL = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxFilterCategory = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.dataGridPodcast = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -54,8 +57,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxPodcast = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxFilterCategory = new System.Windows.Forms.TextBox();
+            this.loadProgressBar = new System.Windows.Forms.ProgressBar();
+            this.timeTracker = new System.Windows.Forms.Timer(this.components);
+            this.lblState = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPodcast)).BeginInit();
             this.panel2.SuspendLayout();
@@ -83,6 +87,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1078, 254);
             this.panel1.TabIndex = 3;
+            // 
+            // textBoxFilterCategory
+            // 
+            this.textBoxFilterCategory.Location = new System.Drawing.Point(928, 36);
+            this.textBoxFilterCategory.Name = "textBoxFilterCategory";
+            this.textBoxFilterCategory.Size = new System.Drawing.Size(137, 22);
+            this.textBoxFilterCategory.TabIndex = 7;
+            this.textBoxFilterCategory.TextChanged += new System.EventHandler(this.textBoxFilterCategory_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(925, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 17);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Filtrera efter kategori";
             // 
             // dataGridPodcast
             // 
@@ -226,19 +247,12 @@
             // comboBoxInterval
             // 
             this.comboBoxInterval.FormattingEnabled = true;
-            this.comboBoxInterval.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "3",
-            "4",
-            "5",
-            "6"});
             this.comboBoxInterval.Location = new System.Drawing.Point(487, 37);
             this.comboBoxInterval.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxInterval.Name = "comboBoxInterval";
             this.comboBoxInterval.Size = new System.Drawing.Size(112, 24);
             this.comboBoxInterval.TabIndex = 6;
+            this.comboBoxInterval.SelectedIndexChanged += new System.EventHandler(this.comboBoxInterval_SelectedIndexChanged);
             // 
             // panel3
             // 
@@ -345,7 +359,6 @@
             this.textBoxPodcast.Name = "textBoxPodcast";
             this.textBoxPodcast.Size = new System.Drawing.Size(1391, 340);
             this.textBoxPodcast.TabIndex = 0;
-            this.textBoxPodcast.SelectedIndexChanged += new System.EventHandler(this.textBoxPodcast_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -356,29 +369,32 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Podcast Episodes";
             // 
-            // label6
+            // loadProgressBar
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(925, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 17);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Filtrera efter kategori";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.loadProgressBar.Location = new System.Drawing.Point(1300, 772);
+            this.loadProgressBar.Name = "loadProgressBar";
+            this.loadProgressBar.Size = new System.Drawing.Size(136, 23);
+            this.loadProgressBar.TabIndex = 8;
             // 
-            // textBoxFilterCategory
+            // timeTracker
             // 
-            this.textBoxFilterCategory.Location = new System.Drawing.Point(928, 36);
-            this.textBoxFilterCategory.Name = "textBoxFilterCategory";
-            this.textBoxFilterCategory.Size = new System.Drawing.Size(137, 22);
-            this.textBoxFilterCategory.TabIndex = 7;
-            this.textBoxFilterCategory.TextChanged += new System.EventHandler(this.textBoxFilterCategory_TextChanged);
+            this.timeTracker.Tick += new System.EventHandler(this.timeTracker_Tick);
+            // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Location = new System.Drawing.Point(1078, 778);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(0, 17);
+            this.lblState.TabIndex = 9;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1451, 778);
+            this.ClientSize = new System.Drawing.Size(1451, 799);
+            this.Controls.Add(this.lblState);
+            this.Controls.Add(this.loadProgressBar);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -396,6 +412,7 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -428,6 +445,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxFilterCategory;
+        private System.Windows.Forms.ProgressBar loadProgressBar;
+        private System.Windows.Forms.Timer timeTracker;
+        private System.Windows.Forms.Label lblState;
     }
 }
 
