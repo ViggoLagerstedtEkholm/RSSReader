@@ -10,6 +10,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace RSSReaderHT2020
         private PodcastController podcastController;
         private CategoryContoller categoryContoller;
         private Validator validator;
-        private readonly int[] intervalNumbers = new int[] { 1, 2, 5, 10, 20, 30, 60};
+        private readonly int[] intervalNumbers = new int[] { 1, 2, 3};
         private BindingSource podcastBindingSource = new BindingSource();
 
         public Form1()
@@ -36,6 +37,7 @@ namespace RSSReaderHT2020
             createControllers();
             setComponentStates();
             loadData();
+            createTimer();
         }
         private void loadData()
         {
@@ -44,11 +46,8 @@ namespace RSSReaderHT2020
                 listBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
                 comboBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
             }
-
             LoadPodcasts();
-
         }
-
         private void LoadPodcasts()
         {
             foreach (Podcast pod in podcastController.GetPodcastData())
@@ -75,6 +74,8 @@ namespace RSSReaderHT2020
             {
                 comboBoxInterval.Items.Add(intervalNumbers[i]);
             }
+
+            lblState.Text = "Waiting...";
         }
         private void update()
         {
@@ -119,9 +120,11 @@ namespace RSSReaderHT2020
                     if (validator.ComboBoxHasSelected(comboBoxInterval) && validator.ComboBoxHasSelected(comboBoxCategory))
                     {
                         int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
-
-                        await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString());
-
+                        var progress = new Progress<int>();
+                        var watch = Stopwatch.StartNew();
+                        progress.ProgressChanged += ProgressReported;
+                        await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString(), progress);
+                        watch.Stop();
                         insertRows();
                     }
                     else
@@ -139,6 +142,10 @@ namespace RSSReaderHT2020
                 createInformationMessage("Enter URL");
             }
         }
+        private void ProgressReported(object sender, int progress)
+        {
+            loadProgressBar.Value = progress;
+        }
         private void savePodcastBtn_Click(object sender, EventArgs e)
         {
             if(validator.ComboBoxHasSelected(comboBoxCategory) && validator.ComboBoxHasSelected(comboBoxInterval))
@@ -154,6 +161,7 @@ namespace RSSReaderHT2020
 
                         podcastController.UpdatePodcast(name, interval, new Category(category), selectedPodcast);
                         podcastController.SavePodcastData();
+                        setUpdatedTimer();
                         podcastBindingSource.Clear();
                         insertRows();
                     }
@@ -252,7 +260,6 @@ namespace RSSReaderHT2020
                 createInformationMessage("Select a category.");
             }
         }
-
         private void dataGridPodcast_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBoxPodcast.Items.Clear();
@@ -271,12 +278,10 @@ namespace RSSReaderHT2020
             comboBoxInterval.SelectedItem = currentObject.updatingInterval;
             comboBoxCategory.SelectedItem = currentObject.category.namn;
         }
-
         private void comboBoxSortera_SelectedIndexChanged(object sender, EventArgs e)
         {
         
         }
-
         private void FilterList(string findStr, BindingSource bs)
         {
             List<Podcast> podcasts = podcastController.GetPodcastData();
@@ -290,7 +295,6 @@ namespace RSSReaderHT2020
 
             dataGridPodcast.DataSource = bs;
         }
-
         private void textBoxFilterCategory_TextChanged(object sender, EventArgs e)
         {
             string text = textBoxFilterCategory.Text;
@@ -307,12 +311,79 @@ namespace RSSReaderHT2020
             }
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void setUpdatedTimer()
         {
+            string interval = comboBoxInterval.SelectedItem.ToString();
+            int selectedInterval = 0;
 
+            switch (Int32.Parse(interval))
+            {
+                case 1:
+                    selectedInterval = 60000;
+                    break;
+                case 2:
+                    selectedInterval = 120000;
+                    break;
+                case 3:
+                    selectedInterval = 180000;
+                    break;
+            }
+
+            var timer = new Timer
+            {
+                Interval = selectedInterval,
+                Enabled = true,
+                Tag = textBoxURL.Text,
+            };
+
+            timer.Tick += new EventHandler(timeTracker_Tick);
+            timer.Start();
+        }
+        private void createTimer()
+        {
+            List<Podcast> podcasts = podcastController.GetPodcastData();
+            int selectedInterval = 0;
+            foreach (Podcast podcast in podcasts)
+            {
+                switch (podcast.updatingInterval)
+                {
+                    case 1:
+                        selectedInterval = 60000;
+                        break;
+                    case 2:
+                        selectedInterval = 120000;
+                        break;
+                    case 3:
+                        selectedInterval = 180000;
+                        break;
+                }
+
+                var timer = new Timer
+                {
+                    Interval = selectedInterval,
+                    Enabled = true,
+                    Tag = podcast.URL,
+                };
+                timer.Tick += new EventHandler(timeTracker_Tick);
+                timer.Start();
+            }
+        }
+        private void timeTracker_Tick(object sender, EventArgs e)
+        {
+            Console.WriteLine("HIT!");
+            Timer timer = (Timer)sender;
+            string url = (string)timer.Tag;
+            var progress = new Progress<int>();
+            var watch = Stopwatch.StartNew();
+            progress.ProgressChanged += ProgressReported;
+            lblState.Text = "Loading...";
+            podcastController.UpdatePodcast(url, progress);
+            watch.Stop();
+            lblState.Text = "Feed updated successfully";
+            insertRows();
         }
 
-        private void textBoxPodcast_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxInterval_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
