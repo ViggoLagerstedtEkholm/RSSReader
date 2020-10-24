@@ -31,7 +31,7 @@ namespace DAL.Repositories
         {
             return base.GetAll();
         }
-        public override void Update(string newName, int interval, Category category, int index)
+        public void Update(string newName, int interval, Category category, int index)
         {
             list[index].name= newName;
             list[index].category = category;

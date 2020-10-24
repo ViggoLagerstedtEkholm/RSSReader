@@ -4,6 +4,7 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.ServiceModel.Syndication;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,24 +41,7 @@ namespace DAL
             return list;
         }
 
-        public virtual void Update(string newName, int interval, Category category, int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(int index, T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual void Update(string newItem, int index)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update(string index, string entity)
-        {
-            throw new NotImplementedException();
-        }
+        public void Update(string a, string b)
+        {}
     }
 }
