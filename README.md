@@ -23,3 +23,10 @@ Application functionality:
 4. Modifying all data which includes (Updating, Deleting, Adding).
 
 This requirement specification was created for the C# OOP class for Fall 2020.
+
+Future improvements:
+1. Add parallel threading to update all feeds.
+2. Make the UI more stylish.
+3. Add a database.
+4. Fetch the audio for all podcasts so you can also listen to the podcasts.
+5. Add favorites etc...
