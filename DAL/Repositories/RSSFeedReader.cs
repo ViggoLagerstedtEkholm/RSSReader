@@ -64,7 +64,6 @@ namespace DAL
             {
                 foreach (SyndicationItem item in feed.Items)
                 {
-                    progress.Report(episodeList.Count * 100 / feed.Items.Count());
                     episodeList.Add(new Episode(item.Title.Text, item.Summary.Text));
                 }
             });
