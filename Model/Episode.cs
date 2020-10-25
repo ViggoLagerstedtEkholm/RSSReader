@@ -11,11 +11,12 @@ namespace Model
     {
         public string name { get; set; }
         public string description { get; set; }
-
-        public Episode(string name, string description)
+        public string soundFile { get; set; }
+        public Episode(string name, string description, string soundFile)
         {
             this.name = name;
             this.description = description;
+            this.soundFile = soundFile;
         }
 
         public Episode()

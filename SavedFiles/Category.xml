@@ -1,21 +1,15 @@
 <?xml version="1.0"?>
 <ArrayOfCategory xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Category>
-    <namn>NY</namn>
+    <namn>Sport</namn>
   </Category>
   <Category>
-    <namn>bb</namn>
+    <namn>News</namn>
   </Category>
   <Category>
-    <namn>NY</namn>
+    <namn>Entertainment</namn>
   </Category>
   <Category>
-    <namn>Nöje</namn>
-  </Category>
-  <Category>
-    <namn>aaa</namn>
-  </Category>
-  <Category>
-    <namn>Art</namn>
+    <namn>Politics</namn>
   </Category>
 </ArrayOfCategory>

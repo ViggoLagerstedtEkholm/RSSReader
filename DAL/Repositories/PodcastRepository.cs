@@ -33,12 +33,14 @@ namespace DAL.Repositories
         {
             return base.GetAll();
         }
-        public void Update(string URL, string newName, int interval, Category category, int index)
+        public void Update(string URL, string newName, int interval, Category category, int index, List<Episode> episodes, int episodeAmount)
         {
             list[index].URL = URL;
             list[index].name = newName;
             list[index].category = category;
             list[index].updatingInterval = interval;
+            list[index].episodes = episodes;
+            list[index].amountOfEpisodes = episodeAmount;
         }
         public async Task Update(List<Podcast> podcasts, IProgress<int> progress, ListBox console)
         {

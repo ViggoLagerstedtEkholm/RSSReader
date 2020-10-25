@@ -55,11 +55,10 @@
             this.categoryTextBox = new System.Windows.Forms.TextBox();
             this.listBoxCategory = new System.Windows.Forms.ListBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBoxPodcast = new System.Windows.Forms.ListBox();
+            this.dataGridViewEpisode = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.loadProgressBar = new System.Windows.Forms.ProgressBar();
             this.timeTracker = new System.Windows.Forms.Timer(this.components);
-            this.radioBtnAutomatic = new System.Windows.Forms.RadioButton();
             this.listBoxConsole = new System.Windows.Forms.ListBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -67,6 +66,7 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEpisode)).BeginInit();
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -131,6 +131,7 @@
             this.dataGridPodcast.Size = new System.Drawing.Size(898, 199);
             this.dataGridPodcast.TabIndex = 4;
             this.dataGridPodcast.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPodcast_CellClick);
+            this.dataGridPodcast.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPodcast_CellContentClick);
             // 
             // label7
             // 
@@ -344,7 +345,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.textBoxPodcast);
+            this.panel4.Controls.Add(this.dataGridViewEpisode);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(12, 374);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -352,15 +353,28 @@
             this.panel4.Size = new System.Drawing.Size(1424, 393);
             this.panel4.TabIndex = 6;
             // 
-            // textBoxPodcast
+            // dataGridViewEpisode
             // 
-            this.textBoxPodcast.FormattingEnabled = true;
-            this.textBoxPodcast.ItemHeight = 16;
-            this.textBoxPodcast.Location = new System.Drawing.Point(19, 43);
-            this.textBoxPodcast.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBoxPodcast.Name = "textBoxPodcast";
-            this.textBoxPodcast.Size = new System.Drawing.Size(1391, 340);
-            this.textBoxPodcast.TabIndex = 0;
+            this.dataGridViewEpisode.AllowUserToAddRows = false;
+            this.dataGridViewEpisode.AllowUserToResizeColumns = false;
+            this.dataGridViewEpisode.AllowUserToResizeRows = false;
+            this.dataGridViewEpisode.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEpisode.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewEpisode.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            this.dataGridViewEpisode.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridViewEpisode.ColumnHeadersHeight = 50;
+            this.dataGridViewEpisode.GridColor = System.Drawing.Color.White;
+            this.dataGridViewEpisode.Location = new System.Drawing.Point(22, 43);
+            this.dataGridViewEpisode.Name = "dataGridViewEpisode";
+            this.dataGridViewEpisode.ReadOnly = true;
+            this.dataGridViewEpisode.RowHeadersVisible = false;
+            this.dataGridViewEpisode.RowHeadersWidth = 51;
+            this.dataGridViewEpisode.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewEpisode.RowTemplate.Height = 24;
+            this.dataGridViewEpisode.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewEpisode.Size = new System.Drawing.Size(1388, 331);
+            this.dataGridViewEpisode.TabIndex = 4;
+            this.dataGridViewEpisode.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEpisode_CellClick);
             // 
             // label4
             // 
@@ -373,25 +387,14 @@
             // 
             // loadProgressBar
             // 
-            this.loadProgressBar.Location = new System.Drawing.Point(269, 772);
+            this.loadProgressBar.Location = new System.Drawing.Point(12, 772);
             this.loadProgressBar.Name = "loadProgressBar";
-            this.loadProgressBar.Size = new System.Drawing.Size(1167, 23);
+            this.loadProgressBar.Size = new System.Drawing.Size(1424, 23);
             this.loadProgressBar.TabIndex = 8;
             // 
             // timeTracker
             // 
             this.timeTracker.Tick += new System.EventHandler(this.timeTracker_Tick);
-            // 
-            // radioBtnAutomatic
-            // 
-            this.radioBtnAutomatic.AutoSize = true;
-            this.radioBtnAutomatic.Location = new System.Drawing.Point(12, 776);
-            this.radioBtnAutomatic.Name = "radioBtnAutomatic";
-            this.radioBtnAutomatic.Size = new System.Drawing.Size(237, 21);
-            this.radioBtnAutomatic.TabIndex = 10;
-            this.radioBtnAutomatic.TabStop = true;
-            this.radioBtnAutomatic.Text = "Show updated data automatically";
-            this.radioBtnAutomatic.UseVisualStyleBackColor = true;
             // 
             // listBoxConsole
             // 
@@ -418,7 +421,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1832, 799);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.radioBtnAutomatic);
             this.Controls.Add(this.loadProgressBar);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -436,9 +438,9 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEpisode)).EndInit();
             this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -456,7 +458,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ListBox textBoxPodcast;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button removeCategoryBtn;
         private System.Windows.Forms.Button newCategoryBtn;
@@ -473,9 +474,9 @@
         private System.Windows.Forms.TextBox textBoxFilterCategory;
         private System.Windows.Forms.ProgressBar loadProgressBar;
         private System.Windows.Forms.Timer timeTracker;
-        private System.Windows.Forms.RadioButton radioBtnAutomatic;
         private System.Windows.Forms.ListBox listBoxConsole;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.DataGridView dataGridViewEpisode;
     }
 }
 
