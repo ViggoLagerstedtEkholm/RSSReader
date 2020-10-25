@@ -35,9 +35,9 @@ namespace BL
         {
             return podcastRepository.GetAll();
         }
-        public void UpdatePodcast(string URL, string name, int interval, Category category, Podcast podcast)
+        public void UpdatePodcast(string URL, string name, int interval, Category category, int index)
         {
-            podcastRepository.Update(URL, name, interval, category, podcast);
+            podcastRepository.Update(URL, name, interval, category, index);
         }
         public async Task UpdatePodcastBatch(List<Podcast> podcasts, IProgress<int> progress, ListBox console)
         {
