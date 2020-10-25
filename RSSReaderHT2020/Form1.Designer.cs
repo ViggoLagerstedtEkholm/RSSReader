@@ -59,12 +59,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.loadProgressBar = new System.Windows.Forms.ProgressBar();
             this.timeTracker = new System.Windows.Forms.Timer(this.components);
-            this.lblState = new System.Windows.Forms.Label();
+            this.radioBtnAutomatic = new System.Windows.Forms.RadioButton();
+            this.listBoxConsole = new System.Windows.Forms.ListBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPodcast)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxURL
@@ -252,7 +255,6 @@
             this.comboBoxInterval.Name = "comboBoxInterval";
             this.comboBoxInterval.Size = new System.Drawing.Size(112, 24);
             this.comboBoxInterval.TabIndex = 6;
-            this.comboBoxInterval.SelectedIndexChanged += new System.EventHandler(this.comboBoxInterval_SelectedIndexChanged);
             // 
             // panel3
             // 
@@ -371,29 +373,52 @@
             // 
             // loadProgressBar
             // 
-            this.loadProgressBar.Location = new System.Drawing.Point(1300, 772);
+            this.loadProgressBar.Location = new System.Drawing.Point(269, 772);
             this.loadProgressBar.Name = "loadProgressBar";
-            this.loadProgressBar.Size = new System.Drawing.Size(136, 23);
+            this.loadProgressBar.Size = new System.Drawing.Size(1167, 23);
             this.loadProgressBar.TabIndex = 8;
             // 
             // timeTracker
             // 
             this.timeTracker.Tick += new System.EventHandler(this.timeTracker_Tick);
             // 
-            // lblState
+            // radioBtnAutomatic
             // 
-            this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(1078, 778);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(0, 17);
-            this.lblState.TabIndex = 9;
+            this.radioBtnAutomatic.AutoSize = true;
+            this.radioBtnAutomatic.Location = new System.Drawing.Point(12, 776);
+            this.radioBtnAutomatic.Name = "radioBtnAutomatic";
+            this.radioBtnAutomatic.Size = new System.Drawing.Size(237, 21);
+            this.radioBtnAutomatic.TabIndex = 10;
+            this.radioBtnAutomatic.TabStop = true;
+            this.radioBtnAutomatic.Text = "Show updated data automatically";
+            this.radioBtnAutomatic.UseVisualStyleBackColor = true;
+            // 
+            // listBoxConsole
+            // 
+            this.listBoxConsole.FormattingEnabled = true;
+            this.listBoxConsole.HorizontalScrollbar = true;
+            this.listBoxConsole.ItemHeight = 16;
+            this.listBoxConsole.Location = new System.Drawing.Point(14, 13);
+            this.listBoxConsole.Name = "listBoxConsole";
+            this.listBoxConsole.Size = new System.Drawing.Size(345, 708);
+            this.listBoxConsole.TabIndex = 12;
+            // 
+            // panel5
+            // 
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel5.Controls.Add(this.listBoxConsole);
+            this.panel5.Location = new System.Drawing.Point(1443, 27);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(377, 740);
+            this.panel5.TabIndex = 13;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1451, 799);
-            this.Controls.Add(this.lblState);
+            this.ClientSize = new System.Drawing.Size(1832, 799);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.radioBtnAutomatic);
             this.Controls.Add(this.loadProgressBar);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -411,6 +436,7 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -447,7 +473,9 @@
         private System.Windows.Forms.TextBox textBoxFilterCategory;
         private System.Windows.Forms.ProgressBar loadProgressBar;
         private System.Windows.Forms.Timer timeTracker;
-        private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.RadioButton radioBtnAutomatic;
+        private System.Windows.Forms.ListBox listBoxConsole;
+        private System.Windows.Forms.Panel panel5;
     }
 }
 
