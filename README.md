@@ -28,5 +28,5 @@ Future improvements:
 1. Add parallel threading to update all feeds.
 2. Make the UI more stylish.
 3. Add a database.
-4. Fetch the audio for all podcasts so you can also listen to the podcasts.
+4. Add MP3 audio controls.
 5. Add favorites etc...
