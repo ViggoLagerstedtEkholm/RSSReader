@@ -1,5 +1,5 @@
 # RSSReader
-This project involves creating a RSS feed reader that uses a multitier architecture to seperate the and in this case the "Repository pattern",
+This project involves creating a RSS feed reader that uses a multitier architecture and in this case the "Repository pattern",
 1. Bussiness layer.
 2. Data access layer.
 3. Data layer.
