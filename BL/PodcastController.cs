@@ -35,9 +35,14 @@ namespace BL
         {
             return podcastRepository.GetAll();
         }
-        public void UpdatePodcast(string URL, string name, int interval, Category category, int index)
+        public async Task UpdatePodcast(string URL, string name, int interval, Category category, int index, IProgress<int> progress)
         {
-            podcastRepository.Update(URL, name, interval, category, index);
+            await Task.Run(() =>
+            {
+                var episodesList = podcastRepository.reader.GetEpisodes(URL, progress);
+                int episodeAmount = podcastRepository.reader.GetAmountOfEpisodes(URL);
+                podcastRepository.Update(URL, name, interval, category, index, episodesList.Result, episodeAmount);
+            });
         }
         public async Task UpdatePodcastBatch(List<Podcast> podcasts, IProgress<int> progress, ListBox console)
         {
@@ -50,6 +55,10 @@ namespace BL
         public void DeletePodcast(int index)
         {
             podcastRepository.Delete(index);
+        }
+        public void DeletePodcast(Podcast podcast)
+        {
+            podcastRepository.Delete(podcast);
         }
 
         public void SavePodcastData()

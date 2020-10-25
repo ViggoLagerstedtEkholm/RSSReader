@@ -31,35 +31,33 @@ namespace BL
         {
             categoryRepository.Update(currentNamne, newName);
         }
-        public void DeleteCategory(string name, PodcastController podcastController)
+        public bool DeleteCategory(string name, PodcastController podcastController)
         {
-            Console.WriteLine("Selected name to remove: " + name);
             List<Category> list = categoryRepository.GetAll();
+            bool deletedPodcast = true;
 
-            //Gå igenom varje kategori
             foreach(Category aCategory in list.ToList())
             {
                 if (aCategory.namn.Equals(name))
                 {
-                    if (podcastController.RetrieveAllPodcasts().ToList().Count > 0)
+                    if (podcastController.RetrieveAllPodcasts().Count > 0)
                     {
-                        for(int i = 0; i < podcastController.RetrieveAllPodcasts().ToList().Count; i++)
+                        foreach(Podcast podcast in podcastController.RetrieveAllPodcasts().ToList())
                         {
-                            if (podcastController.RetrieveAllPodcasts()[i].category.namn.Equals(name))
+                            if (podcast.category.namn.Equals(name))
                             {
                                 var confirmResult = MessageBox.Show("Are you sure you want to delete all podcasts with selected category?",
                                          "Confirm Delete!!",
                                          MessageBoxButtons.YesNo);
                                 if (confirmResult == DialogResult.Yes)
                                 {
-                                    categoryRepository.Delete(aCategory);
-                                    podcastController.DeletePodcast(i);
+                                    podcastController.DeletePodcast(podcast);
                                     podcastController.SavePodcastData();
+                                    categoryRepository.Delete(aCategory);
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("Reached!");
                                 categoryRepository.Delete(aCategory);
                             }
                         }
@@ -71,6 +69,7 @@ namespace BL
                     }
                 }
             }
+            return deletedPodcast;
         }
 
         public void saveCategoryData()
