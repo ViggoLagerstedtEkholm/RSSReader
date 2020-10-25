@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BL
 {
@@ -34,13 +35,13 @@ namespace BL
         {
             return podcastRepository.GetAll();
         }
-        public void UpdatePodcast(string name, int interval, Category category, int index)
+        public void UpdatePodcast(string URL, string name, int interval, Category category, Podcast podcast)
         {
-            podcastRepository.Update(name, interval, category, index);
+            podcastRepository.Update(URL, name, interval, category, podcast);
         }
-        public void UpdatePodcast(string URL, IProgress<int> progress)
+        public async Task UpdatePodcastBatch(List<Podcast> podcasts, IProgress<int> progress, ListBox console)
         {
-            podcastRepository.Update(URL, progress);
+             await podcastRepository.Update(podcasts, progress, console);
         }
         public void UpdatePodcast(string currentCategory, string newCategory)
         {
