@@ -24,6 +24,7 @@ Application functionality:
 2. The data layer accesses local files both XML and JSON to store/retrieve data. (With this pattern we can with ease implement a database instead!)
 3. Automatic fetching of RSS feeds using asynchronous threading to update the data real time.
 4. Modifying all data which includes (Updating, Deleting, Adding).
+5. Play the soundfiles after the application downloads the MP3 file locally. 
 
 This requirement specification was created for the C# OOP class for Fall 2020.
 
