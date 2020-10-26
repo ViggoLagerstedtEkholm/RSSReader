@@ -1,6 +1,6 @@
 ﻿namespace RSSReaderHT2020
 {
-    partial class episodePlayerForm
+    partial class EpisodePlayerForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnStart = new System.Windows.Forms.Button();
+            this.BtnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.lblName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblProgress = new System.Windows.Forms.Label();
-            this.btnRetry = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.richTextBoxDescription = new System.Windows.Forms.RichTextBox();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblStatusText = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.linkLabelLink = new System.Windows.Forms.LinkLabel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblStatusText = new System.Windows.Forms.Label();
+            this.lblProgress = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
+            this.btnRetry = new System.Windows.Forms.Button();
+            this.richTextBoxDescription = new System.Windows.Forms.RichTextBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnStart
+            // BtnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(73, 245);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(164, 62);
-            this.btnStart.TabIndex = 0;
-            this.btnStart.Text = "start";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.BtnStart.Location = new System.Drawing.Point(73, 245);
+            this.BtnStart.Name = "BtnStart";
+            this.BtnStart.Size = new System.Drawing.Size(164, 62);
+            this.BtnStart.TabIndex = 0;
+            this.BtnStart.Text = "start";
+            this.BtnStart.UseVisualStyleBackColor = true;
+            this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
             // btnStop
             // 
@@ -62,7 +62,7 @@
             this.btnStop.TabIndex = 1;
             this.btnStop.Text = "stop";
             this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.btnStop.Click += new System.EventHandler(this.BtnStop_Click);
             // 
             // progressBar1
             // 
@@ -92,65 +92,23 @@
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Controls.Add(this.lblName);
             this.panel1.Controls.Add(this.progressBar1);
-            this.panel1.Controls.Add(this.btnStart);
+            this.panel1.Controls.Add(this.BtnStart);
             this.panel1.Controls.Add(this.btnStop);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1018, 426);
             this.panel1.TabIndex = 5;
             // 
-            // lblProgress
+            // linkLabelLink
             // 
-            this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(14, 48);
-            this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(0, 17);
-            this.lblProgress.TabIndex = 5;
-            // 
-            // btnRetry
-            // 
-            this.btnRetry.Location = new System.Drawing.Point(73, 313);
-            this.btnRetry.Name = "btnRetry";
-            this.btnRetry.Size = new System.Drawing.Size(328, 47);
-            this.btnRetry.TabIndex = 4;
-            this.btnRetry.Text = "Retry";
-            this.btnRetry.UseVisualStyleBackColor = true;
-            this.btnRetry.Click += new System.EventHandler(this.btnRetry_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(73, 366);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(328, 46);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // richTextBoxDescription
-            // 
-            this.richTextBoxDescription.Location = new System.Drawing.Point(486, 67);
-            this.richTextBoxDescription.Name = "richTextBoxDescription";
-            this.richTextBoxDescription.Size = new System.Drawing.Size(513, 293);
-            this.richTextBoxDescription.TabIndex = 6;
-            this.richTextBoxDescription.Text = "";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(483, 363);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(52, 17);
-            this.lblStatus.TabIndex = 7;
-            this.lblStatus.Text = "Status:";
-            // 
-            // lblStatusText
-            // 
-            this.lblStatusText.AutoSize = true;
-            this.lblStatusText.Location = new System.Drawing.Point(537, 363);
-            this.lblStatusText.Name = "lblStatusText";
-            this.lblStatusText.Size = new System.Drawing.Size(0, 17);
-            this.lblStatusText.TabIndex = 8;
+            this.linkLabelLink.AutoSize = true;
+            this.linkLabelLink.Location = new System.Drawing.Point(51, 13);
+            this.linkLabelLink.Name = "linkLabelLink";
+            this.linkLabelLink.Size = new System.Drawing.Size(34, 17);
+            this.linkLabelLink.TabIndex = 11;
+            this.linkLabelLink.TabStop = true;
+            this.linkLabelLink.Text = "Link";
+            this.linkLabelLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabelLink_LinkClicked);
             // 
             // label1
             // 
@@ -162,26 +120,68 @@
             this.label1.Text = "Link:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // linkLabelLink
+            // lblStatusText
             // 
-            this.linkLabelLink.AutoSize = true;
-            this.linkLabelLink.Location = new System.Drawing.Point(51, 13);
-            this.linkLabelLink.Name = "linkLabelLink";
-            this.linkLabelLink.Size = new System.Drawing.Size(34, 17);
-            this.linkLabelLink.TabIndex = 11;
-            this.linkLabelLink.TabStop = true;
-            this.linkLabelLink.Text = "Link";
-            this.linkLabelLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelLink_LinkClicked);
+            this.lblStatusText.AutoSize = true;
+            this.lblStatusText.Location = new System.Drawing.Point(537, 363);
+            this.lblStatusText.Name = "lblStatusText";
+            this.lblStatusText.Size = new System.Drawing.Size(0, 17);
+            this.lblStatusText.TabIndex = 8;
             // 
-            // episodePlayerForm
+            // lblProgress
+            // 
+            this.lblProgress.AutoSize = true;
+            this.lblProgress.Location = new System.Drawing.Point(14, 48);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(0, 17);
+            this.lblProgress.TabIndex = 5;
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(483, 363);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(52, 17);
+            this.lblStatus.TabIndex = 7;
+            this.lblStatus.Text = "Status:";
+            // 
+            // btnRetry
+            // 
+            this.btnRetry.Location = new System.Drawing.Point(73, 313);
+            this.btnRetry.Name = "btnRetry";
+            this.btnRetry.Size = new System.Drawing.Size(328, 47);
+            this.btnRetry.TabIndex = 4;
+            this.btnRetry.Text = "Retry";
+            this.btnRetry.UseVisualStyleBackColor = true;
+            this.btnRetry.Click += new System.EventHandler(this.BtnRetry_Click);
+            // 
+            // richTextBoxDescription
+            // 
+            this.richTextBoxDescription.Location = new System.Drawing.Point(486, 67);
+            this.richTextBoxDescription.Name = "richTextBoxDescription";
+            this.richTextBoxDescription.Size = new System.Drawing.Size(513, 293);
+            this.richTextBoxDescription.TabIndex = 6;
+            this.richTextBoxDescription.Text = "";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(73, 366);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(328, 46);
+            this.btnCancel.TabIndex = 3;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
+            // 
+            // EpisodePlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1037, 450);
             this.Controls.Add(this.panel1);
-            this.Name = "episodePlayerForm";
+            this.Name = "EpisodePlayerForm";
             this.Text = "episodePlayerForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.episodePlayerForm_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EpisodePlayerForm_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -190,7 +190,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnStart;
+        private System.Windows.Forms.Button BtnStart;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label lblName;

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class ExceptionHandler : Exception
+    public class InvalidURLException : Exception
     {
-        public ExceptionHandler(string message) : base(message)
+        public InvalidURLException(string message) : base(message)
         {
-            //base.Message("test");
         }
     }
 }

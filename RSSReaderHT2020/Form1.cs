@@ -26,28 +26,27 @@ namespace RSSReaderHT2020
     {
         private PodcastController podcastController;
         private CategoryContoller categoryContoller;
-        private Validator validator;
+        private readonly Validator validator;
         private readonly int[] intervalNumbers = new int[] { 1, 2, 3};
-        private BindingSource podcastBindingSource = new BindingSource();
-        private BindingSource episodeBindingSource = new BindingSource();
+        private readonly BindingSource podcastBindingSource = new BindingSource();
+        private readonly BindingSource episodeBindingSource = new BindingSource();
         private Timer timer;
-        private List<List<Podcast>> lista = new List<List<Podcast>>();
-        private List<Podcast> Interval1 = new List<Podcast>();
-        private List<Podcast> Interval2 = new List<Podcast>();
-        private List<Podcast> Interval3 = new List<Podcast>();
+        private readonly List<List<Podcast>> lista = new List<List<Podcast>>();
+        private readonly List<Podcast> Interval1 = new List<Podcast>();
+        private readonly List<Podcast> Interval2 = new List<Podcast>();
+        private readonly List<Podcast> Interval3 = new List<Podcast>();
         private bool canBind = true;
         public Form1()
         {
             InitializeComponent();
             validator = new Validator();
             this.Size = new Size(1400, 700);
-            createControllers();
-            setComponentStates();
-            loadData();
-            createTimerData();
-            //createEventBinders();
+            CreateControllers();
+            SetComponentStates();
+            LoadData();
+            CreateTimerData();
         }
-        private void loadData()
+        private void LoadData()
         {
             for (int i = 0; i < categoryContoller.GetAllCategoryData().Count; i++)
             {
@@ -65,165 +64,179 @@ namespace RSSReaderHT2020
             dataGridPodcast.DataSource = podcastBindingSource;
         }
 
-        private void clearTimer()
+        private void ClearTimer()
         {
             lista.Clear();
             Interval1.Clear();
             Interval2.Clear();
             Interval3.Clear();
         }
-        private void createControllers()
+        private void CreateControllers()
         {
             this.categoryContoller = new CategoryContoller();
             this.podcastController = new PodcastController();
         }
-        private void createInformationMessage(string message)
+        private void CreateInformationMessage(string message)
         {
             MessageBox.Show(message, "Some title",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private void setComponentStates()
+        private void SetComponentStates()
         {
             for(int i = 0; i < intervalNumbers.Length; i++)
             {
                 comboBoxInterval.Items.Add(intervalNumbers[i]);
             }
-            insertCommandConsole("Waiting...");
+            InsertCommandConsole("Waiting...");
         }
-        private void insertCommandConsole(string text)
+        private void InsertCommandConsole(string text)
         {
             string time = DateTime.Now.ToString("h:mm:ss tt");
             listBoxConsole.Items.Add(time + "- " + text);
         }
-        private void update()
-        {
-            listBoxCategory.Items.Clear();
-            
-            foreach (Category cat in categoryContoller.RetrieveAllCategories())
-            {
-                listBoxCategory.Items.Add(cat.namn);
-            }
-
-            insertCategories();
-        }
-        private void insertCategories()
+        private void InsertCategories()
         {
             comboBoxCategory.Items.Clear();
 
             for (int i = 0; i < listBoxCategory.Items.Count; i++)
             {
                 comboBoxCategory.Items.Add(listBoxCategory.Items[i]);
-                Console.WriteLine("item:: " + listBoxCategory.Items[i]);
             }
         }
-        private void insertRows()
+        private void InsertPodcasts()
         {
             dataGridPodcast.Rows.Clear();
 
             foreach(Podcast aPodcast in podcastController.RetrieveAllPodcasts())
             {
-                //dataGridPodcast.Rows.Add(aPodcast.name, aPodcast.updatingInterval, 1, aPodcast.category.namn);
                 podcastBindingSource.Add(aPodcast);
             }
 
             dataGridPodcast.DataSource = podcastBindingSource;
         }
-        //Podcast https://api.sr.se/api/rss/pod/3795
-        private async void newPodcastBtn_Click(object sender, EventArgs e)
+
+        private void UpdateCategoryList()
         {
-            if (!validator.TextBoxisNullorEmpty(textBoxURL))
+            listBoxCategory.Items.Clear();
+
+            foreach (Category cat in categoryContoller.RetrieveAllCategories())
+            {
+                listBoxCategory.Items.Add(cat.namn);
+            }
+
+            InsertCategories();
+        }
+        
+        //Podcast https://api.sr.se/api/rss/pod/3795
+        private async void NewPodcastBtn_Click(object sender, EventArgs e)
+        {
+            if (!validator.TextBoxisNullorEmpty(textBoxURL) && validator.URLIsValid(textBoxURL.Text))
             {
                 if (!validator.TextBoxisNullorEmpty(textBoxNamn))
                 {
                     if (validator.ComboBoxHasSelected(comboBoxInterval) && validator.ComboBoxHasSelected(comboBoxCategory))
                     {
+                        InsertCommandConsole("Adding item...");
                         int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
                         var progress = new Progress<int>();
-                        insertCommandConsole("Item added.");
                         var watch = Stopwatch.StartNew();
                         progress.ProgressChanged += ProgressReported;
-                        await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString(), progress);
+
+                        await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString());
+                        
                         watch.Stop();
                         podcastController.SavePodcastData();
-                        clearTimer();
-                        createTimerData();
-                        insertRows();
-
+                        ClearTimer();
+                        CreateTimerData();
+                        InsertPodcasts();
+                        InsertCommandConsole("Item added.");
                     }
                     else
                     {
-                        createInformationMessage("Select interval and category.");
+                        CreateInformationMessage("Select interval and category.");
                     }
                 }
                 else
                 {
-                    createInformationMessage("Enter name.");
+                    CreateInformationMessage("Enter name.");
                 }
             }
             else
             {
-                createInformationMessage("Enter URL");
+                CreateInformationMessage("Enter a valid URL.");
             }
         }
 
-        private async void savePodcastBtn_Click(object sender, EventArgs e)
+        private async void SavePodcastBtn_Click(object sender, EventArgs e)
         {
-            if(validator.ComboBoxHasSelected(comboBoxCategory) && validator.ComboBoxHasSelected(comboBoxInterval))
+            if (!validator.TextBoxisNullorEmpty(textBoxURL) && validator.URLIsValid(textBoxURL.Text))
             {
-                if (!validator.TextBoxisNullorEmpty(textBoxNamn))
+                if (validator.ComboBoxHasSelected(comboBoxCategory) && validator.ComboBoxHasSelected(comboBoxInterval))
                 {
-                    if (validator.DataGridViewHasSelected(dataGridPodcast))
+                    if (!validator.TextBoxisNullorEmpty(textBoxNamn))
                     {
-                        string category = comboBoxCategory.SelectedItem.ToString();
-                        int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
-                        string name = textBoxNamn.Text;
-                        string URL = textBoxURL.Text;
-                        int index = dataGridPodcast.CurrentCell.RowIndex;
-                        var progress = new Progress<int>();
+                        if (validator.DataGridViewHasSelected(dataGridPodcast))
+                        {
+                            InsertCommandConsole("Starting save...");
+                            string category = comboBoxCategory.SelectedItem.ToString();
+                            int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
+                            string name = textBoxNamn.Text;
+                            string URL = textBoxURL.Text;
+                            int index = dataGridPodcast.CurrentCell.RowIndex;
 
-                        await podcastController.UpdatePodcast(URL, name, interval, new Category(category), index, progress);
-                        podcastController.SavePodcastData();
-                        insertRows();
-                        clearTimer();
-                        createTimerData();
-                        insertCommandConsole("Item saved.");
-                        
+                            await podcastController.UpdatePodcast(URL, name, interval, new Category(category), index);
+
+                            podcastController.SavePodcastData();
+                            InsertPodcasts();
+                            ClearTimer();
+                            CreateTimerData();
+                            InsertCommandConsole("Item saved.");
+                        }
+                        else
+                        {
+                            CreateInformationMessage("Select a podcast.");
+                        }
+
                     }
                     else
                     {
-                        createInformationMessage("Select a podcast.");
+                        CreateInformationMessage("Enter name.");
                     }
                 }
                 else
                 {
-                    createInformationMessage("Enter name.");
+                    CreateInformationMessage("Select interval and category.");
                 }
             }
             else
             {
-                createInformationMessage("Select interval and category.");
+                CreateInformationMessage("Enter valid URL.");
             }
         }
-        private void removePodcastBtn_Click(object sender, EventArgs e)
+        private void RemovePodcastBtn_Click(object sender, EventArgs e)
         {
             if (validator.DataGridViewHasSelected(dataGridPodcast))
             {
-                int selectedPodcast = dataGridPodcast.CurrentRow.Index;
-                Podcast currentObject = (Podcast)dataGridPodcast.CurrentRow.DataBoundItem;
-                podcastController.DeletePodcast(selectedPodcast);
+                for (int index = 0; index < dataGridPodcast.SelectedRows.Count; index++)
+                {
+                    var selectedRow = dataGridPodcast.SelectedRows[index];
+                    var podcast = (Podcast)selectedRow.DataBoundItem;
+
+                    podcastController.DeletePodcast(podcast);
+                }
+
                 podcastController.SavePodcastData();
-                podcastBindingSource.Clear();
-                clearTimer();
-                createTimerData();
-                insertCommandConsole("Item removed.");
-                insertRows();
+                ClearTimer();
+                CreateTimerData();
+                InsertPodcasts();
+                InsertCommandConsole("Item removed.");
             }
             else
             {
-                createInformationMessage("Select a podcast.");
+                CreateInformationMessage("Select a podcast.");
             }
         }
-        private void newCategoryBtn_Click(object sender, EventArgs e)
+        private void NewCategoryBtn_Click(object sender, EventArgs e)
         {
             if (!validator.TextBoxisNullorEmpty(categoryTextBox))
             {
@@ -234,15 +247,16 @@ namespace RSSReaderHT2020
                 {
                     listBoxCategory.Items.Add(cat.namn);
                 }
-                categoryContoller.saveCategoryData();
-                insertCategories();
+                categoryContoller.SaveCategoryData();
+                InsertCategories();
+                InsertCommandConsole("Category added.");
             }
             else
             {
-                createInformationMessage("Enter a category");
+                CreateInformationMessage("Enter a category");
             }
         }
-        private void removeCategoryBtn_Click(object sender, EventArgs e)
+        private void RemoveCategoryBtn_Click(object sender, EventArgs e)
         {
             if (validator.ListBoxHasSelected(listBoxCategory))
             {
@@ -250,65 +264,53 @@ namespace RSSReaderHT2020
 
                 bool shouldUpdate = categoryContoller.DeleteCategory(selectedCategory, podcastController);
                 comboBoxCategory.Items.Clear();
-                categoryContoller.saveCategoryData();
+                categoryContoller.SaveCategoryData();
                 if (shouldUpdate)
                 {
-                    clearTimer();
-                    createTimerData();
+                    ClearTimer();
+                    CreateTimerData();
                 }
-                insertRows();
-                update();
+                InsertPodcasts();
+                UpdateCategoryList();
+                InsertCommandConsole("Category removed.");
             }
             else
             {
-                createInformationMessage("Select a category.");
+                CreateInformationMessage("Select a category.");
             }
         }
-        private void renameBtn_Click(object sender, EventArgs e)
+        private void RenameBtn_Click(object sender, EventArgs e)
         {
             if (validator.ListBoxHasSelected(listBoxCategory))
             {
                 string selectedCategory = listBoxCategory.GetItemText(listBoxCategory.SelectedItem);
                 string newCategory = Interaction.InputBox("Prompt", "Title", "Default", 100, 100);
 
-                if (!newCategory.Equals(""))
+                if (!validator.StringIsEmpty(newCategory))
                 {
                     categoryContoller.RenameCategory(selectedCategory, newCategory);
                     podcastController.UpdatePodcast(selectedCategory, newCategory);
+
                     comboBoxCategory.Items.Clear();
                     comboBoxCategory.SelectedIndex = comboBoxCategory.FindStringExact(newCategory);
-                    categoryContoller.saveCategoryData();
+
+                    categoryContoller.SaveCategoryData();
                     podcastController.SavePodcastData();
-                    insertRows();
-                    insertCategories();
-                    update();
+
+                    InsertPodcasts();
+                    InsertCategories();
+                    UpdateCategoryList();
+                    InsertCommandConsole("Category renamed.");
                 }
                 else
                 {
-                    createInformationMessage("Enter a valid name.");
+                    CreateInformationMessage("Enter a valid name.");
                 }
             }
             else
             {
-                createInformationMessage("Select a category.");
+                CreateInformationMessage("Select a category.");
             }
-        }
-        private void dataGridPodcast_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            episodeBindingSource.Clear();
-
-            Podcast currentObject = (Podcast)dataGridPodcast.CurrentRow.DataBoundItem;
-
-            foreach(Episode episode in currentObject.episodes)
-            {
-                episodeBindingSource.Add(episode);
-            }
-            dataGridViewEpisode.DataSource = episodeBindingSource;
-
-            textBoxNamn.Text = currentObject.name;
-            textBoxURL.Text = currentObject.URL;
-            comboBoxInterval.SelectedItem = currentObject.updatingInterval;
-            comboBoxCategory.SelectedItem = currentObject.category.namn;
         }
         private void FilterList(string findStr, BindingSource bs)
         {
@@ -323,10 +325,10 @@ namespace RSSReaderHT2020
 
             dataGridPodcast.DataSource = bs;
         }
-        private void textBoxFilterCategory_TextChanged(object sender, EventArgs e)
+        private void TextBoxFilterCategory_TextChanged(object sender, EventArgs e)
         {
             string text = textBoxFilterCategory.Text;
-            if (text.Equals(""))
+            if (validator.StringIsEmpty(text))
             {
                 podcastBindingSource.Clear();
 
@@ -339,12 +341,11 @@ namespace RSSReaderHT2020
             }
         }
 
-        private void createTimerData()
+        private void CreateTimerData()
         {
-            //clearTimer();
             List<Podcast> podcasts = podcastController.GetPodcastData();
-            Console.WriteLine("Timer: " + podcasts.Count);
             int selectedInterval = 0;
+
             foreach (Podcast podcast in podcasts)
             {
                 switch (podcast.updatingInterval)
@@ -364,10 +365,6 @@ namespace RSSReaderHT2020
             lista.Add(Interval1);
             lista.Add(Interval2);
             lista.Add(Interval3);
-
-            Console.WriteLine("Interval 1:" + Interval1.Count);
-            Console.WriteLine("Interval 2:" + Interval2.Count);
-            Console.WriteLine("Interval 3:" + Interval3.Count);
 
             for (int i = 0; i < lista.Count; i++)
             {
@@ -394,43 +391,39 @@ namespace RSSReaderHT2020
 
                 if (canBind)
                 {
-                    timer.Tick += new EventHandler(timeTracker_Tick);
+                    timer.Tick += new EventHandler(TimeTracker_Tick);
                     timer.Start();
                 }
             }
 
             canBind = false;
         }
-        private void timeTracker_Tick(object sender, EventArgs e)
+        private void TimeTracker_Tick(object sender, EventArgs e)
         {
             Timer timer = (Timer)sender;
             List<Podcast> batch = (List<Podcast>)timer.Tag;
 
-            foreach(Podcast podcast in batch)
-            {
-                Console.WriteLine("Updating interval: " + podcast.updatingInterval);
-            }
-            batchUpdate(batch);
+            BatchUpdate(batch);
         }
 
-        private async void batchUpdate(List<Podcast> batch)
+        private async void BatchUpdate(List<Podcast> batch)
         {
             var progress = new Progress<int>();
             var watch = Stopwatch.StartNew();
             progress.ProgressChanged += ProgressReported;
-            Console.WriteLine(batch.Count);
+
             if(batch.Count > 0)
             {
                 try
                 {
-                    insertCommandConsole("Loading...");
+                    InsertCommandConsole("Loading...");
                     await podcastController.UpdatePodcastBatch(batch, progress, listBoxConsole);
                     watch.Stop();
-                    insertCommandConsole("Feed updated successfully...");
-                    insertCommandConsole($"Total execution time: " + (watch.ElapsedMilliseconds));
-                    insertRows();
+                    InsertCommandConsole("Feed updated successfully...");
+                    InsertCommandConsole($"Total execution time (ms): " + (watch.ElapsedMilliseconds));
+                    InsertPodcasts();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     listBoxConsole.Items.Add("Error, don't add items while its loading.");
                     listBoxConsole.Items.Add("Make sure to be connected to the internet.");
@@ -441,18 +434,31 @@ namespace RSSReaderHT2020
         {
             loadProgressBar.Value = progress;        
         }
-        private void dataGridPodcast_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void DataGridViewEpisode_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Episode currentObject = (Episode)dataGridViewEpisode.CurrentRow.DataBoundItem;
+            Form form = new EpisodePlayerForm(currentObject, validator);
+            form.Show();
 
         }
 
-        private void dataGridViewEpisode_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridPodcast_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Episode currentObject = (Episode)dataGridViewEpisode.CurrentRow.DataBoundItem;
-            Console.WriteLine(currentObject.soundFile);
-            Form form = new episodePlayerForm(currentObject);
-            form.Show();
+            episodeBindingSource.Clear();
 
+            Podcast currentObject = (Podcast)dataGridPodcast.CurrentRow.DataBoundItem;
+
+            foreach (Episode episode in currentObject.episodes)
+            {
+                episodeBindingSource.Add(episode);
+            }
+            dataGridViewEpisode.DataSource = episodeBindingSource;
+
+            textBoxNamn.Text = currentObject.name;
+            textBoxURL.Text = currentObject.URL;
+            comboBoxInterval.SelectedItem = currentObject.updatingInterval;
+            comboBoxCategory.SelectedItem = currentObject.category.namn;
         }
     }
 }

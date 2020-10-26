@@ -4,12 +4,12 @@
     <namn>Sport</namn>
   </Category>
   <Category>
-    <namn>News</namn>
-  </Category>
-  <Category>
     <namn>Entertainment</namn>
   </Category>
   <Category>
     <namn>Politics</namn>
+  </Category>
+  <Category>
+    <namn>News</namn>
   </Category>
 </ArrayOfCategory>

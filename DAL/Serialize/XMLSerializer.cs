@@ -11,7 +11,7 @@ namespace DAL.Serialize
 {
     public class XMLSerializer<T> : ISerializers<T>
     {
-        private string designatedFileFolder;
+        private readonly string designatedFileFolder;
         public XMLSerializer()
         {
             string workingDirectory = Environment.CurrentDirectory;

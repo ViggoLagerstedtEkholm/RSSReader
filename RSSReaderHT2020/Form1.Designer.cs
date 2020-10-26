@@ -97,7 +97,7 @@
             this.textBoxFilterCategory.Name = "textBoxFilterCategory";
             this.textBoxFilterCategory.Size = new System.Drawing.Size(137, 22);
             this.textBoxFilterCategory.TabIndex = 7;
-            this.textBoxFilterCategory.TextChanged += new System.EventHandler(this.textBoxFilterCategory_TextChanged);
+            this.textBoxFilterCategory.TextChanged += new System.EventHandler(this.TextBoxFilterCategory_TextChanged);
             // 
             // label6
             // 
@@ -130,8 +130,7 @@
             this.dataGridPodcast.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridPodcast.Size = new System.Drawing.Size(898, 199);
             this.dataGridPodcast.TabIndex = 4;
-            this.dataGridPodcast.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPodcast_CellClick);
-            this.dataGridPodcast.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridPodcast_CellContentClick);
+            this.dataGridPodcast.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridPodcast_CellClick);
             // 
             // label7
             // 
@@ -188,7 +187,7 @@
             this.newPodcastBtn.TabIndex = 11;
             this.newPodcastBtn.Text = "New";
             this.newPodcastBtn.UseVisualStyleBackColor = true;
-            this.newPodcastBtn.Click += new System.EventHandler(this.newPodcastBtn_Click);
+            this.newPodcastBtn.Click += new System.EventHandler(this.NewPodcastBtn_Click);
             // 
             // removePodcastBtn
             // 
@@ -199,7 +198,7 @@
             this.removePodcastBtn.TabIndex = 6;
             this.removePodcastBtn.Text = "Remove";
             this.removePodcastBtn.UseVisualStyleBackColor = true;
-            this.removePodcastBtn.Click += new System.EventHandler(this.removePodcastBtn_Click);
+            this.removePodcastBtn.Click += new System.EventHandler(this.RemovePodcastBtn_Click);
             // 
             // savePodcastBtn
             // 
@@ -210,7 +209,7 @@
             this.savePodcastBtn.TabIndex = 6;
             this.savePodcastBtn.Text = "Save";
             this.savePodcastBtn.UseVisualStyleBackColor = true;
-            this.savePodcastBtn.Click += new System.EventHandler(this.savePodcastBtn_Click);
+            this.savePodcastBtn.Click += new System.EventHandler(this.SavePodcastBtn_Click);
             // 
             // label3
             // 
@@ -300,7 +299,7 @@
             this.renameBtn.TabIndex = 11;
             this.renameBtn.Text = "Rename";
             this.renameBtn.UseVisualStyleBackColor = true;
-            this.renameBtn.Click += new System.EventHandler(this.renameBtn_Click);
+            this.renameBtn.Click += new System.EventHandler(this.RenameBtn_Click);
             // 
             // removeCategoryBtn
             // 
@@ -311,7 +310,7 @@
             this.removeCategoryBtn.TabIndex = 9;
             this.removeCategoryBtn.Text = "Remove";
             this.removeCategoryBtn.UseVisualStyleBackColor = true;
-            this.removeCategoryBtn.Click += new System.EventHandler(this.removeCategoryBtn_Click);
+            this.removeCategoryBtn.Click += new System.EventHandler(this.RemoveCategoryBtn_Click);
             // 
             // newCategoryBtn
             // 
@@ -322,7 +321,7 @@
             this.newCategoryBtn.TabIndex = 8;
             this.newCategoryBtn.Text = "New";
             this.newCategoryBtn.UseVisualStyleBackColor = true;
-            this.newCategoryBtn.Click += new System.EventHandler(this.newCategoryBtn_Click);
+            this.newCategoryBtn.Click += new System.EventHandler(this.NewCategoryBtn_Click);
             // 
             // categoryTextBox
             // 
@@ -374,7 +373,7 @@
             this.dataGridViewEpisode.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEpisode.Size = new System.Drawing.Size(1388, 331);
             this.dataGridViewEpisode.TabIndex = 4;
-            this.dataGridViewEpisode.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEpisode_CellClick);
+            this.dataGridViewEpisode.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewEpisode_CellClick);
             // 
             // label4
             // 
@@ -394,7 +393,7 @@
             // 
             // timeTracker
             // 
-            this.timeTracker.Tick += new System.EventHandler(this.timeTracker_Tick);
+            this.timeTracker.Tick += new System.EventHandler(this.TimeTracker_Tick);
             // 
             // listBoxConsole
             // 

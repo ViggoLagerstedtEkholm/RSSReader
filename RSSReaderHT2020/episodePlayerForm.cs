@@ -1,5 +1,7 @@
-﻿using Model;
+﻿using DAL;
+using Model;
 using NAudio.Wave;
+using RSSReader;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +10,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,31 +18,38 @@ using System.Windows.Forms;
 
 namespace RSSReaderHT2020
 {
-    public partial class episodePlayerForm : Form
+    public partial class EpisodePlayerForm : Form
     {
-        private Episode selectedEpisode;
-        private string designatedFileFolder;
-        private IWavePlayer waveOutDevice = new WaveOut();
+        private readonly Episode selectedEpisode;
+        private readonly string designatedFileFolder;
+        private readonly IWavePlayer waveOutDevice = new WaveOut();
         private AudioFileReader audioFileReader;
         private bool isCreated = false;
-        private CancellationTokenSource source;
-        private WebClient client = new WebClient();
-        public episodePlayerForm(Episode episode)
+        private readonly WebClient client = new WebClient();
+        private readonly Validator validator;
+        public EpisodePlayerForm(Episode episode, Validator validator)
         {
             InitializeComponent();
-            this.selectedEpisode = episode;
-            btnRetry.Enabled = false;
-            linkLabelLink.Text = selectedEpisode.soundFile;
+            this.validator = validator;
+            selectedEpisode = episode;
+            SetComponentStates();
+            
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             designatedFileFolder = projectDirectory + @"\SavedFiles";
-            lblName.Text = episode.name;
-            richTextBoxDescription.Text = episode.description;
-       
-            downLoadEpisode(validStringNameGenerator(selectedEpisode.name));
+
+            DownLoadEpisode(ValidStringNameGenerator(selectedEpisode.Name));
         }
 
-        private string validStringNameGenerator(string name)
+        private void SetComponentStates()
+        {
+            btnRetry.Enabled = false;
+            linkLabelLink.Text = selectedEpisode.SoundFile;
+            lblName.Text = selectedEpisode.Name;
+            richTextBoxDescription.Text = selectedEpisode.Description;
+        }
+
+        private string ValidStringNameGenerator(string name)
         {
             foreach (char c in System.IO.Path.GetInvalidFileNameChars())
             {
@@ -48,7 +58,7 @@ namespace RSSReaderHT2020
 
             return name;
         }
-        private void downLoadEpisode(string fileName)
+        private void DownLoadEpisode(string fileName)
         {
             string filePath = designatedFileFolder + @"\" + fileName + ".mp3";
             bool fileExist = File.Exists(filePath);
@@ -60,18 +70,15 @@ namespace RSSReaderHT2020
             else
             {
                 lblStatusText.Text = "Not downloaded!";
-                if (!selectedEpisode.soundFile.Equals("NONE"))
+                if (!selectedEpisode.SoundFile.Equals("NONE"))
                 {
                     using (client)
                     {
-                        client.DownloadProgressChanged += wc_DownloadProgressChanged;
-                        client.DownloadFileCompleted += wc_DownloadFileCompleted;
+                        client.DownloadProgressChanged += Wc_DownloadProgressChanged;
+                        client.DownloadFileCompleted += Wc_DownloadFileCompleted;
                         client.DownloadFileAsync(
-                            // Param1 = Link of file
-                            new System.Uri(selectedEpisode.soundFile),
-                            // Param2 = Path to save
-                            filePath,
-                                source
+                            new System.Uri(selectedEpisode.SoundFile),
+                            filePath
                         );
                     }
                 }
@@ -82,38 +89,18 @@ namespace RSSReaderHT2020
                
             }
         }
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            if (progressBar1.Value == progressBar1.Maximum)
-            {
-                try
-                {
-                    audioFileReader = new AudioFileReader(designatedFileFolder + @"\" + validStringNameGenerator(selectedEpisode.name) + ".mp3");
-
-                    waveOutDevice.Init(audioFileReader);
-                    waveOutDevice.Play();
-                    isCreated = true;
-                }
-                catch(Exception ex)
-                {
-                    Console.WriteLine("Could not play sound.");
-                }
-
-            }
-        }
-        void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        void Wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            //Console.WriteLine(e.ProgressPercentage + "% | " + e.BytesReceived + " bytes out of " + e.TotalBytesToReceive + " bytes retrieven.");
             lblProgress.Text = e.ProgressPercentage + "% | " + e.BytesReceived + " bytes out of " + e.TotalBytesToReceive + " bytes retrieven.";
         }
 
-        private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
+        private void Wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
             if (e.Cancelled)
             {
                 MessageBox.Show("The download has been cancelled");
-                File.Delete(designatedFileFolder + @"\" + validStringNameGenerator(selectedEpisode.name) + ".mp3");
+                File.Delete(designatedFileFolder + @"\" + ValidStringNameGenerator(selectedEpisode.Name) + ".mp3");
                 Console.WriteLine("File deleted.");
                 btnRetry.Enabled = true;
 
@@ -129,33 +116,57 @@ namespace RSSReaderHT2020
             lblStatusText.Text = "Downloaded!";
             MessageBox.Show("File succesfully downloaded");
         }
-        private void btnStop_Click(object sender, EventArgs e)
-        {
-            waveOutDevice.Stop();
-        }
-        private void episodePlayerForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void EpisodePlayerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             client.CancelAsync();
             waveOutDevice.Stop();
+
             if (isCreated)
             {
                 audioFileReader.Dispose();
             }
+            
             waveOutDevice.Dispose();
         }
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             client.CancelAsync();
         }
-        private void btnRetry_Click(object sender, EventArgs e)
+        private void BtnRetry_Click(object sender, EventArgs e)
         {
-            downLoadEpisode(validStringNameGenerator(selectedEpisode.name));
+            DownLoadEpisode(ValidStringNameGenerator(selectedEpisode.Name));
             btnRetry.Enabled = false;
         }
-
-        private void linkLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void BtnStart_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(selectedEpisode.soundFile);
+            if (progressBar1.Value == progressBar1.Maximum)
+            {
+                try
+                {
+                    audioFileReader = new AudioFileReader(designatedFileFolder + @"\" + ValidStringNameGenerator(selectedEpisode.Name) + ".mp3");
+
+                    waveOutDevice.Init(audioFileReader);
+                    waveOutDevice.Play();
+                    isCreated = true;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Could not play sound.");
+                }
+            }
+        }
+
+        private void LinkLabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (validator.URLIsValid(selectedEpisode.SoundFile))
+            {
+                System.Diagnostics.Process.Start(selectedEpisode.SoundFile);
+            }
+        }
+
+        private void BtnStop_Click(object sender, EventArgs e)
+        {
+            waveOutDevice.Stop();
         }
     }
 }

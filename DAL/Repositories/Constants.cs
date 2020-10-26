@@ -8,7 +8,6 @@ namespace DAL.Repositories
 {
     public sealed class Constants
     {
-
         public static readonly Constants category = new Constants("Category");
         public static readonly Constants podcast = new Constants("Podcast");
 
@@ -16,7 +15,6 @@ namespace DAL.Repositories
         {
             Value = value;
         }
-
         public string Value { get; private set; }
         
     }

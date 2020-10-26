@@ -9,14 +9,14 @@ namespace Model
     [Serializable]
     public class Episode
     {
-        public string name { get; set; }
-        public string description { get; set; }
-        public string soundFile { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string SoundFile { get; set; }
         public Episode(string name, string description, string soundFile)
         {
-            this.name = name;
-            this.description = description;
-            this.soundFile = soundFile;
+            this.Name = name;
+            this.Description = description;
+            this.SoundFile = soundFile;
         }
 
         public Episode()

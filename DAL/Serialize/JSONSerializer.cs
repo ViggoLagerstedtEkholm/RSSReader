@@ -13,9 +13,9 @@ namespace DAL.Serialize
 {
     class JSONSerializer<T> : ISerializers<T>
     {
-        private JsonSerializer jsonSerializer;
-        private JsonSerializerSettings settings;
-        private string designatedFileFolder;
+        private readonly JsonSerializer jsonSerializer;
+        private readonly JsonSerializerSettings settings;
+        private readonly string designatedFileFolder;
         public JSONSerializer()
         {
             jsonSerializer = new JsonSerializer();
@@ -25,7 +25,6 @@ namespace DAL.Serialize
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             designatedFileFolder = projectDirectory + @"\SavedFiles";
         }
-
         public void Serialize<T>(T serializeObject, string name, bool append)
         {
             string jsonData = JsonConvert.SerializeObject(serializeObject, settings);

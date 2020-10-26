@@ -55,10 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\CategoryRepository.cs" />
     <Compile Include="Repositories\IDataHandler.cs" />
+    <Compile Include="Repositories\ExceptionHandle.cs" />
     <Compile Include="Repositories\IRepositories.cs" />
     <Compile Include="Repositories\PodcastRepository.cs" />
     <Compile Include="Repositories\RSSFeedReader.cs" />
-    <Compile Include="Repositories\ExceptionHandler.cs" />
     <Compile Include="Serialize\ISerializers.cs" />
     <Compile Include="Serialize\JSONSerializer.cs" />
     <Compile Include="Serialize\XMLSerializer.cs" />

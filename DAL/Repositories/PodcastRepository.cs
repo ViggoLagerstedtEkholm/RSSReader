@@ -19,7 +19,6 @@ namespace DAL.Repositories
         public override void Create(Podcast entity)
         {
             base.Create(entity);
-            Console.WriteLine("Length: " + list.Count);
         }
         public override void Delete(Podcast entity)
         {
@@ -48,10 +47,11 @@ namespace DAL.Repositories
             List<Episode> updatedEpisodes = new List<Episode>();
             foreach(Podcast podcast in podcasts)
             {
-                updatedEpisodes = await Task.Run (() => reader.GetEpisodes(podcast.URL, progress));
+                updatedEpisodes = await Task.Run (() => reader.GetEpisodes(podcast.URL));
                 episodes.Add(updatedEpisodes);
                 console.Items.Add($"{podcast.URL} downloaded: {updatedEpisodes.Count} characters long.\n");
                 progress.Report(episodes.Count * 100 / podcasts.Count);
+
                 foreach(Podcast aPodcast in GetAll())
                 {
                     if (aPodcast.URL.Equals(podcast.URL))
@@ -61,24 +61,9 @@ namespace DAL.Repositories
                     }
                 }
                 SaveChanges();
-                Console.WriteLine("Name: " + podcast.name + "Interval " + podcast.updatingInterval);
             }
         }
-        public async void Update(string URL, IProgress<int> progress)
-        {
-            List<Episode> updatedEpisodes = await reader.GetEpisodes(URL, progress);
-
-            foreach (Podcast podcast in GetAll())
-            {
-                if (podcast.URL.Equals(URL))
-                {
-                    podcast.episodes = updatedEpisodes;
-                    podcast.amountOfEpisodes = reader.GetAmountOfEpisodes(URL);
-                }
-            }
-        }
-
-        public void Update(string currentCategory, string newCategory)
+        public override void Update(string currentCategory, string newCategory)
         {
             foreach(Podcast podcast in list)
             {
@@ -88,16 +73,10 @@ namespace DAL.Repositories
                 }
             }
         }
-
         public void SaveChanges()
         {
-            foreach(Podcast podcast in list)
-            {
-                Console.WriteLine(podcast.URL);
-            }
             objectSerializer.Serialize(list, Constants.podcast.Value, true);
         }
-
         public List<Podcast> GetAllData()
         {
             List<Podcast> test = objectSerializer.DeserializeList(Constants.podcast.Value);

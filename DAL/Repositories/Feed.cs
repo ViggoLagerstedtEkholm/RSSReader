@@ -23,7 +23,6 @@ namespace DAL
             reader = new RSSFeedReader();
             this.list = list;
         }
-
         public virtual void Create(T entity) 
         {
             list.Add(entity);
@@ -40,8 +39,6 @@ namespace DAL
         {
             return list;
         }
-
-        public void Update(string a, string b)
-        {}
+        public abstract void Update(string a, string b);
     }
 }
