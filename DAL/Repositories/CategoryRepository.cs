@@ -20,21 +20,17 @@ namespace DAL.Repositories
         }
         public override void Create(Category entity)
         {
-            list.Add(entity);
+            base.Create(entity);
         }
         public override void Delete(Category entity)
         {
             base.Delete(entity);
         }
-        public override void Delete(int index)
-        {
-            base.Delete(index);
-        }
         public override List<Category> GetAll()
         {
             return base.GetAll();
         }
-        public void Update(string currentCategory, string newCategory)
+        public override void Update(string currentCategory, string newCategory)
         {
             foreach (Category aCategory in list)
             {
