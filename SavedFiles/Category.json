@@ -1,23 +1,14 @@
 [
   {
-    "namn": "aa"
+    "Namn": "News"
   },
   {
-    "namn": "bb"
+    "Namn": "Sport"
   },
   {
-    "namn": "cc"
+    "Namn": "Politics"
   },
   {
-    "namn": "aa"
-  },
-  {
-    "namn": "NYDATA"
-  },
-  {
-    "namn": "aa"
-  },
-  {
-    "namn": "b"
+    "Namn": "Entertainment"
   }
 ]

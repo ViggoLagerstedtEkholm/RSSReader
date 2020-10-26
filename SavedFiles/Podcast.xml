@@ -3,7 +3,7 @@
   <Podcast>
     <URL>http://joeroganexp.joerogan.libsynpro.com/rss</URL>
     <category>
-      <namn>Entertainment</namn>
+      <Namn>Entertainment</Namn>
     </category>
     <updatingInterval>3</updatingInterval>
     <episodes>
@@ -8770,7 +8770,7 @@ The raw audio from Joe Rogan's weekly live USTREAM video show with Brian Redban.
   <Podcast>
     <URL>https://rss.art19.com/1619</URL>
     <category>
-      <namn>News</namn>
+      <Namn>News</Namn>
     </category>
     <updatingInterval>3</updatingInterval>
     <episodes>
@@ -8816,7 +8816,7 @@ The raw audio from Joe Rogan's weekly live USTREAM video show with Brian Redban.
   <Podcast>
     <URL>https://feeds.megaphone.fm/ADL9840290619</URL>
     <category>
-      <namn>Sport</namn>
+      <Namn>Sport</Namn>
     </category>
     <updatingInterval>2</updatingInterval>
     <episodes>
@@ -10027,7 +10027,7 @@ Learn more about your ad choices. Visit megaphone.fm/adchoices</Description>
   <Podcast>
     <URL>https://feeds.megaphone.fm/unlocking-us</URL>
     <category>
-      <namn>News</namn>
+      <Namn>News</Namn>
     </category>
     <updatingInterval>1</updatingInterval>
     <episodes>
@@ -10216,7 +10216,7 @@ In this episode we talk about how her theory of â€œempowerment through empathyâ€
   <Podcast>
     <URL>https://feeds.megaphone.fm/WWO8086402096</URL>
     <category>
-      <namn>Politics</namn>
+      <Namn>Politics</Namn>
     </category>
     <updatingInterval>3</updatingInterval>
     <episodes>

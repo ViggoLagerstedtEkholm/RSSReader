@@ -15,7 +15,6 @@ namespace DAL
     abstract public class Feed<T> : IRepositories<T>
     {
         public RSSFeedReader reader;
-        public ISerializers<T> objectSerializer;
         public List<T> list;
 
         public Feed(List<T> list)

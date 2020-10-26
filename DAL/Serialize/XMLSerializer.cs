@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace DAL.Serialize
 {
-    public class XMLSerializer<T> : ISerializers<T>
+    public class XMLSerializer
     {
         private readonly string designatedFileFolder;
         public XMLSerializer()
@@ -19,24 +20,25 @@ namespace DAL.Serialize
             designatedFileFolder = projectDirectory + @"\SavedFiles";
         }
 
-        public void Serialize<T>(T serializeObject, string name, bool append)
+        public void Serialize(List<Podcast> serializeObject, string name)
         {
-            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            Type type = serializeObject.GetType();
+            XmlSerializer serializer = new XmlSerializer(type);
             using (FileStream outFile = new FileStream(designatedFileFolder + @"\" + name + ".xml",
                 FileMode.Create, FileAccess.Write))
             {
                 serializer.Serialize(outFile, serializeObject);
             }
         }
-        public List<T> DeserializeList(string name)
+        public List<Podcast> DeserializeList(string name)
         {
-            List<T> objects;
+            List<Podcast> objects;
 
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
             using (FileStream inFile = new FileStream(designatedFileFolder + @"\" + name + ".xml",
                 FileMode.Open, FileAccess.Read))
             {
-                objects = (List<T>)xmlSerializer.Deserialize(inFile);
+                objects = (List<Podcast>)xmlSerializer.Deserialize(inFile);
             }
 
             return objects;

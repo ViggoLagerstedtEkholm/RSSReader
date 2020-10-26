@@ -50,8 +50,8 @@ namespace RSSReaderHT2020
         {
             for (int i = 0; i < categoryContoller.GetAllCategoryData().Count; i++)
             {
-                listBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
-                comboBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].namn);
+                listBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].Namn);
+                comboBoxCategory.Items.Add(categoryContoller.GetAllCategoryData()[i].Namn);
             }
             LoadPodcasts();
         }
@@ -121,7 +121,7 @@ namespace RSSReaderHT2020
 
             foreach (Category cat in categoryContoller.RetrieveAllCategories())
             {
-                listBoxCategory.Items.Add(cat.namn);
+                listBoxCategory.Items.Add(cat.Namn);
             }
 
             InsertCategories();
@@ -245,7 +245,7 @@ namespace RSSReaderHT2020
 
                 foreach(Category cat in categoryContoller.RetrieveAllCategories())
                 {
-                    listBoxCategory.Items.Add(cat.namn);
+                    listBoxCategory.Items.Add(cat.Namn);
                 }
                 categoryContoller.SaveCategoryData();
                 InsertCategories();
@@ -318,7 +318,7 @@ namespace RSSReaderHT2020
 
             List<Podcast> filteredList = podcasts.FindAll(delegate (Podcast obj)
             {
-                return obj.category.namn.Contains(findStr);
+                return obj.category.Namn.Contains(findStr);
             });
 
             bs.DataSource = filteredList;
@@ -458,7 +458,7 @@ namespace RSSReaderHT2020
             textBoxNamn.Text = currentObject.name;
             textBoxURL.Text = currentObject.URL;
             comboBoxInterval.SelectedItem = currentObject.updatingInterval;
-            comboBoxCategory.SelectedItem = currentObject.category.namn;
+            comboBoxCategory.SelectedItem = currentObject.category.Namn;
         }
     }
 }

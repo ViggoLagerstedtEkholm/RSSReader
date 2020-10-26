@@ -38,13 +38,13 @@ namespace BL
 
             foreach(Category aCategory in list.ToList())
             {
-                if (aCategory.namn.Equals(name))
+                if (aCategory.Namn.Equals(name))
                 {
                     if (podcastController.RetrieveAllPodcasts().Count > 0)
                     {
                         foreach(Podcast podcast in podcastController.RetrieveAllPodcasts().ToList())
                         {
-                            if (podcast.category.namn.Equals(name))
+                            if (podcast.category.Namn.Equals(name))
                             {
                                 var confirmResult = MessageBox.Show("Are you sure you want to delete all podcasts with selected category?",
                                          "Confirm Delete!!",

@@ -9,14 +9,14 @@ namespace Model
     [Serializable]
     public class Category
     {
-        public string namn { get; set; }
+        public string Namn { get; set; }
         public override string ToString()
         {
-            return namn;
+            return Namn;
         }
         public Category(string name)
         {
-            this.namn = name;
+            this.Namn = name;
         }
 
         public Category()

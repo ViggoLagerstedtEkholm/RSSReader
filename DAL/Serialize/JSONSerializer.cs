@@ -4,28 +4,24 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DAL.Serialize
 {
-    class JSONSerializer<T> : ISerializers<T>
+    public class JSONSerializer
     {
-        private readonly JsonSerializer jsonSerializer;
         private readonly JsonSerializerSettings settings;
         private readonly string designatedFileFolder;
         public JSONSerializer()
         {
-            jsonSerializer = new JsonSerializer();
             settings = new JsonSerializerSettings { Formatting = Newtonsoft.Json.Formatting.Indented };
 
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             designatedFileFolder = projectDirectory + @"\SavedFiles";
         }
-        public void Serialize<T>(T serializeObject, string name, bool append)
+        public void Serialize(object serializeObject, string name)
         {
             string jsonData = JsonConvert.SerializeObject(serializeObject, settings);
 
@@ -36,14 +32,14 @@ namespace DAL.Serialize
 
             Console.WriteLine(jsonData);
         }
-        public List<T> DeserializeList(string name)
+        public List<Category> DeserializeList(string name)
         {
-            List<T> objectReturned = new List<T>();
+            List<Category> objectReturned = new List<Category>();
 
             using (StreamReader r = new StreamReader(designatedFileFolder + @"\" + name + ".json"))
             {
                 string json = r.ReadToEnd();
-                objectReturned = JsonConvert.DeserializeObject<List<T>>(json);
+                objectReturned = JsonConvert.DeserializeObject<List<Category>>(json);
             }
 
             return objectReturned;

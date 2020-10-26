@@ -14,9 +14,10 @@ namespace DAL.Repositories
 {
     public class CategoryRepository : Feed<Category>, IDataHandler<Category>
     {
+        private readonly JSONSerializer objectSerializer;
         public CategoryRepository() : base(new List<Category>())
         {
-            objectSerializer = new XMLSerializer<Category>();
+            objectSerializer = new JSONSerializer();
         }
         public override void Create(Category entity)
         {
@@ -34,15 +35,15 @@ namespace DAL.Repositories
         {
             foreach (Category aCategory in list)
             {
-                if (aCategory.namn.Equals(currentCategory))
+                if (aCategory.Namn.Equals(currentCategory))
                 {
-                    aCategory.namn = newCategory;
+                    aCategory.Namn = newCategory;
                 }
             }
         }
         public void SaveChanges()
         {
-            objectSerializer.Serialize(list, Constants.category.Value, true);
+            objectSerializer.Serialize(list, Constants.category.Value);
         }
         public List<Category> GetAllData()
         {

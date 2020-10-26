@@ -59,7 +59,6 @@
     <Compile Include="Repositories\IRepositories.cs" />
     <Compile Include="Repositories\PodcastRepository.cs" />
     <Compile Include="Repositories\RSSFeedReader.cs" />
-    <Compile Include="Serialize\ISerializers.cs" />
     <Compile Include="Serialize\JSONSerializer.cs" />
     <Compile Include="Serialize\XMLSerializer.cs" />
   </ItemGroup>

@@ -12,9 +12,10 @@ namespace DAL.Repositories
 {
     public class PodcastRepository : Feed<Podcast>, IDataHandler<Podcast>
     {
+        private readonly XMLSerializer objectSerializer;
         public PodcastRepository() : base(new List<Podcast>())
         {
-            objectSerializer = new XMLSerializer<Podcast>();
+            objectSerializer = new XMLSerializer();
         }
         public override void Create(Podcast entity)
         {
@@ -67,15 +68,15 @@ namespace DAL.Repositories
         {
             foreach(Podcast podcast in list)
             {
-                if (podcast.category.namn.Equals(currentCategory))
+                if (podcast.category.Namn.Equals(currentCategory))
                 {
-                    podcast.category.namn = newCategory;
+                    podcast.category.Namn = newCategory;
                 }
             }
         }
         public void SaveChanges()
         {
-            objectSerializer.Serialize(list, Constants.podcast.Value, true);
+            objectSerializer.Serialize(list, Constants.podcast.Value);
         }
         public List<Podcast> GetAllData()
         {
