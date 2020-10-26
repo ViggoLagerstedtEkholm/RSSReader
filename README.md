@@ -1,6 +1,5 @@
 # RSSReader
-
-![main](https://user-images.githubusercontent.com/60555651/97228677-8e6f5300-17d7-11eb-871e-8355c1d1e249.PNG)
+![main2](https://user-images.githubusercontent.com/60555651/97228934-e3ab6480-17d7-11eb-867f-89b8a0a157dc.PNG)
 ![episode](https://user-images.githubusercontent.com/60555651/97228687-9202da00-17d7-11eb-8179-e51e411879f6.PNG)
 
 This project involves creating a RSS feed reader that uses a multitier architecture and in this case the "Repository pattern",
