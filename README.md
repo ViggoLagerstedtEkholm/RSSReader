@@ -1,5 +1,5 @@
 # RSSReader
-![main2](https://user-images.githubusercontent.com/60555651/97228934-e3ab6480-17d7-11eb-867f-89b8a0a157dc.PNG)
+![main3](https://user-images.githubusercontent.com/60555651/97229689-08eca280-17d9-11eb-87c2-25039fc5eca9.PNG)
 ![episode](https://user-images.githubusercontent.com/60555651/97228687-9202da00-17d7-11eb-8179-e51e411879f6.PNG)
 
 This project involves creating a RSS feed reader that uses a multitier architecture and in this case the "Repository pattern",
@@ -24,6 +24,7 @@ Application functionality:
 2. The data layer accesses local files both XML and JSON to store/retrieve data. (With this pattern we can with ease implement a database instead!)
 3. Automatic fetching of RSS feeds using asynchronous threading to update the data real time.
 4. Modifying all data which includes (Updating, Deleting, Adding).
+5. Play the soundfiles after the application downloads the MP3 file locally. 
 
 This requirement specification was created for the C# OOP class for Fall 2020.
 
