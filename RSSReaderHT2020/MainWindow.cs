@@ -22,7 +22,7 @@ using System.Xml;
 
 namespace RSSReaderHT2020
 {
-    public partial class Form1 : Form
+    public partial class MainWindow : Form
     {
         private PodcastController podcastController;
         private CategoryContoller categoryContoller;
@@ -36,7 +36,7 @@ namespace RSSReaderHT2020
         private readonly List<Podcast> Interval2 = new List<Podcast>();
         private readonly List<Podcast> Interval3 = new List<Podcast>();
         private bool canBind = true;
-        public Form1()
+        public MainWindow()
         {
             InitializeComponent();
             validator = new Validator();
