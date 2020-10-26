@@ -14,7 +14,7 @@ namespace BL
 {
     public class CategoryContoller
     {
-        private CategoryRepository categoryRepository;
+        private readonly CategoryRepository categoryRepository;
         public CategoryContoller()
         {
             categoryRepository = new CategoryRepository();
@@ -64,7 +64,6 @@ namespace BL
                     }
                     else
                     {
-                        Console.WriteLine("Reached!");
                         categoryRepository.Delete(aCategory);
                     }
                 }
@@ -72,7 +71,7 @@ namespace BL
             return deletedPodcast;
         }
 
-        public void saveCategoryData()
+        public void SaveCategoryData()
         {
             categoryRepository.SaveChanges();
         }
