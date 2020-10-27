@@ -35,7 +35,7 @@ namespace BL
         {
             List<Category> list = categoryRepository.GetAll();
             bool shouldUpdate = false;
-        
+            var confirmResult = DialogResult.None;
             //Check if the podcast collection is empty, if so we should just delete all categories that match the selected category.
             if (podcastController.RetrieveAllPodcasts().Count > 0)
             {
@@ -45,7 +45,7 @@ namespace BL
                     //For every podcast that matches the category do...
                     foreach (var podcast in podcastController.RetrieveAllPodcasts().ToList().Where(podcast => podcast.category.Namn.Equals(name)))
                     {
-                        var confirmResult = MessageBox.Show("Are you sure you want to delete all podcasts with selected category?",
+                        confirmResult = MessageBox.Show("Are you sure you want to delete all podcasts with selected category?",
                         "Confirm Delete!!",
                         MessageBoxButtons.YesNo);
                         if (confirmResult == DialogResult.Yes)
@@ -59,8 +59,11 @@ namespace BL
                     //For every podcast that doesnt match the category do...
                     foreach (var podcast in podcastController.RetrieveAllPodcasts().ToList().Where(podcast => !podcast.category.Namn.Equals(name)))
                     {
-                        shouldUpdate = true;
-                        categoryRepository.Delete(aCategory);
+                        if(confirmResult != DialogResult.No)
+                        {
+                            shouldUpdate = true;
+                            categoryRepository.Delete(aCategory);
+                        }
                     }
                 }
 

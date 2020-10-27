@@ -1,52 +1,6 @@
 <?xml version="1.0"?>
 <ArrayOfPodcast xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Podcast>
-    <URL>https://rss.art19.com/1619</URL>
-    <category>
-      <Namn>News</Namn>
-    </category>
-    <updatingInterval>3</updatingInterval>
-    <episodes>
-      <Episode>
-        <Name>Episode 5: The Land of Our Fathers, Part 2</Name>
-        <Description>&lt;p&gt;The Provosts, a family of sugar-cane farmers in Louisiana, had worked the same land for generations. When it became harder and harder to keep hold of that land, June Provost and his wife, Angie, didn’t know why — and then a phone call changed their understanding of everything. In the finale of “1619,” we hear the rest of June and Angie’s story, and its echoes in a past case that led to the largest civil rights settlement in American history.&lt;/p&gt;&lt;p&gt;On today’s episode: June and Angie Provost; Adizah Eghan and Annie Brown, producers for “1619”; and Khalil Gibran Muhammad, a professor of history, race and public policy at Harvard University and the author of “The Condemnation of Blackness.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/10/11/podcasts/1619-slavery-farm-loan-discrimination.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/17bdc8f1-733b-400a-9e24-f2a2b72c9217.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 5: The Land of Our Fathers, Part 1</Name>
-        <Description>&lt;p&gt;More than a century and a half after the promise of 40 acres and a mule, the story of black land ownership in America remains one of loss and dispossession. June and Angie Provost, who trace their family line to the enslaved workers on Louisiana’s sugar-cane plantations, know this story well.&amp;nbsp;&lt;/p&gt;&lt;p&gt;On today’s episode: The Provosts spoke with Adizah Eghan and Annie Brown, producers for “1619.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/10/04/podcasts/1619-slavery-sugar-farm-land.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/c1175505-511e-4690-8aac-26da19297b59.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 4: How the Bad Blood Started</Name>
-        <Description>&lt;p&gt;Black Americans were denied access to doctors and hospitals for decades. From the shadows of this exclusion, they pushed to create the nation’s first federal health care programs. On today’s episode: Jeneen Interlandi, a member of The New York Times’s editorial board and a writer for The Times Magazine, and Yaa Gyasi, the author of “Homegoing.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/1619podcast" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/85056324-9b0f-48af-8fef-3e03965aa11f.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 3: The Birth of American Music</Name>
-        <Description>&lt;p&gt;Black music, forged in captivity, became the sound of complete artistic freedom. It also became the sound of America. On today’s episode: Wesley Morris, a critic-at-large for The New York Times.&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/09/06/podcasts/1619-black-american-music-appropriation.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode contains explicit language.&lt;/em&gt;&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/e370e560-26ec-4c44-928d-f6a0ffcf9b0a.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 2: The Economy That Slavery Built</Name>
-        <Description>&lt;p&gt;The institution of slavery turned a poor, fledgling nation into a financial powerhouse, and the cotton plantation was America’s first big business. Behind the system, and built into it, was the whip. On today’s episode: Matthew Desmond, a contributing writer for The New York Times Magazine and the author of “Evicted,” and Jesmyn Ward, the author of “Sing, Unburied, Sing.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at&amp;nbsp;&lt;a href="https://www.nytimes.com/2019/08/23/podcasts/1619-slavery-anniversary.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode includes scenes of graphic violence.&lt;/em&gt;&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/ca49d1fa-0980-4ac1-a35e-46d5e764aeee.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 1: The Fight for a True Democracy</Name>
-        <Description>&lt;p&gt;America was founded on the ideal of democracy. Black people fought to make it one.&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/08/23/podcasts/1619-slavery-anniversary.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode includes scenes of graphic violence.&lt;/em&gt;&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/7b201348-f800-4707-8ffb-2302fa20b420.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Introducing ‘1619’</Name>
-        <Description>&lt;p&gt;In August of&amp;nbsp;1619, a ship carrying more than 20 enslaved Africans arrived in the English colony of Virginia. America was not yet America, but this was the moment it began. No aspect of the country that would be formed here has been untouched by the 250 years of slavery that followed. On the 400th anniversary of this fateful moment, it is time to tell the story.&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/9ebb46a0-7187-4b74-b4b1-f556f0926846.mp3</SoundFile>
-      </Episode>
-    </episodes>
-    <name>NY Times</name>
-    <amountOfEpisodes>7</amountOfEpisodes>
-  </Podcast>
-  <Podcast>
     <URL>https://feeds.megaphone.fm/ADL9840290619</URL>
     <category>
       <Namn>Sport</Namn>
@@ -10025,12 +9979,254 @@ The raw audio from Joe Rogan's weekly live USTREAM video show with Brian Redban.
     <amountOfEpisodes>1727</amountOfEpisodes>
   </Podcast>
   <Podcast>
+    <URL>https://rss.art19.com/1619</URL>
+    <category>
+      <Namn>News</Namn>
+    </category>
+    <updatingInterval>2</updatingInterval>
+    <episodes>
+      <Episode>
+        <Name>Episode 5: The Land of Our Fathers, Part 2</Name>
+        <Description>&lt;p&gt;The Provosts, a family of sugar-cane farmers in Louisiana, had worked the same land for generations. When it became harder and harder to keep hold of that land, June Provost and his wife, Angie, didn’t know why — and then a phone call changed their understanding of everything. In the finale of “1619,” we hear the rest of June and Angie’s story, and its echoes in a past case that led to the largest civil rights settlement in American history.&lt;/p&gt;&lt;p&gt;On today’s episode: June and Angie Provost; Adizah Eghan and Annie Brown, producers for “1619”; and Khalil Gibran Muhammad, a professor of history, race and public policy at Harvard University and the author of “The Condemnation of Blackness.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/10/11/podcasts/1619-slavery-farm-loan-discrimination.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
+        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/17bdc8f1-733b-400a-9e24-f2a2b72c9217.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Episode 5: The Land of Our Fathers, Part 1</Name>
+        <Description>&lt;p&gt;More than a century and a half after the promise of 40 acres and a mule, the story of black land ownership in America remains one of loss and dispossession. June and Angie Provost, who trace their family line to the enslaved workers on Louisiana’s sugar-cane plantations, know this story well.&amp;nbsp;&lt;/p&gt;&lt;p&gt;On today’s episode: The Provosts spoke with Adizah Eghan and Annie Brown, producers for “1619.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/10/04/podcasts/1619-slavery-sugar-farm-land.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
+        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/c1175505-511e-4690-8aac-26da19297b59.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Episode 4: How the Bad Blood Started</Name>
+        <Description>&lt;p&gt;Black Americans were denied access to doctors and hospitals for decades. From the shadows of this exclusion, they pushed to create the nation’s first federal health care programs. On today’s episode: Jeneen Interlandi, a member of The New York Times’s editorial board and a writer for The Times Magazine, and Yaa Gyasi, the author of “Homegoing.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/1619podcast" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
+        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/85056324-9b0f-48af-8fef-3e03965aa11f.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Episode 3: The Birth of American Music</Name>
+        <Description>&lt;p&gt;Black music, forged in captivity, became the sound of complete artistic freedom. It also became the sound of America. On today’s episode: Wesley Morris, a critic-at-large for The New York Times.&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/09/06/podcasts/1619-black-american-music-appropriation.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode contains explicit language.&lt;/em&gt;&lt;/p&gt;</Description>
+        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/e370e560-26ec-4c44-928d-f6a0ffcf9b0a.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Episode 2: The Economy That Slavery Built</Name>
+        <Description>&lt;p&gt;The institution of slavery turned a poor, fledgling nation into a financial powerhouse, and the cotton plantation was America’s first big business. Behind the system, and built into it, was the whip. On today’s episode: Matthew Desmond, a contributing writer for The New York Times Magazine and the author of “Evicted,” and Jesmyn Ward, the author of “Sing, Unburied, Sing.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at&amp;nbsp;&lt;a href="https://www.nytimes.com/2019/08/23/podcasts/1619-slavery-anniversary.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode includes scenes of graphic violence.&lt;/em&gt;&lt;/p&gt;</Description>
+        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/ca49d1fa-0980-4ac1-a35e-46d5e764aeee.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Episode 1: The Fight for a True Democracy</Name>
+        <Description>&lt;p&gt;America was founded on the ideal of democracy. Black people fought to make it one.&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/08/23/podcasts/1619-slavery-anniversary.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode includes scenes of graphic violence.&lt;/em&gt;&lt;/p&gt;</Description>
+        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/7b201348-f800-4707-8ffb-2302fa20b420.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Introducing ‘1619’</Name>
+        <Description>&lt;p&gt;In August of&amp;nbsp;1619, a ship carrying more than 20 enslaved Africans arrived in the English colony of Virginia. America was not yet America, but this was the moment it began. No aspect of the country that would be formed here has been untouched by the 250 years of slavery that followed. On the 400th anniversary of this fateful moment, it is time to tell the story.&lt;/p&gt;</Description>
+        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/9ebb46a0-7187-4b74-b4b1-f556f0926846.mp3</SoundFile>
+      </Episode>
+    </episodes>
+    <name>1619 by The New York Times</name>
+    <amountOfEpisodes>7</amountOfEpisodes>
+  </Podcast>
+  <Podcast>
+    <URL>https://feeds.megaphone.fm/unlocking-us</URL>
+    <category>
+      <Namn>Entertainment</Namn>
+    </category>
+    <updatingInterval>3</updatingInterval>
+    <episodes>
+      <Episode>
+        <Name>Introducing My New Podcast: Dare to Lead</Name>
+        <Description>What does it take to be a leader at any level? Join me every Monday on the Dare to Lead podcast as I unpack the skill-sets of courage-building, and talk to as many change-makers, culture-shifters, and troublemakers as possible. Together, we’ll have conversations that help us show up, step up, and dare to lead.
+
+In this first solo episode, I talk about my passion for this work, what we’ve been learning about courageous leadership and skill building, and the differences between armored and daring leadership.
+
+Listen now and follow Dare to Lead for free, only on Spotify! </Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT7096359221.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Joe Biden on Empathy, Unity and Courage</Name>
+        <Description>My thoughts on power and leadership, and a conversation on empathy, unity, and courage with Vice President Joe Biden, the 2020 Democratic Presidential Nominee.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT6544962083.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Emily and Amelia Nagoski on Burnout and How to Complete the Stress Cycle   </Name>
+        <Description>Burnout. We're all experiencing it and we're all desperate for a way through it. In this episode, I talk to Drs. Emily and Amelia Nagoski about what causes burnout, what it does to our bodies, and how we can move through the emotional exhaustion. This has been a game-changer for me and for my family!</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT9325175762.mp3?updated=1602684793</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Jason Sudeikis &amp; Brendan Hunt on Ted Lasso</Name>
+        <Description>As the self-appointed president of the TLFC (Ted Lasso Fan Club), it was a blast to talk to Jason Sudeikis, the co-creator, writer, and executive producer who plays Ted Lasso, and Brendan Hunt, the co-creator and writer who plays Coach Beard on the Apple TV+ hit series. The show follows the adventures of a small-time college football coach from Kansas hired to coach a professional soccer team in England, despite having no experience coaching soccer. We talk about the show's interesting origin story, writers' room inspirations, and why intention is critical to the creative process. It's a fun conversation about a show that is unapologetically awkward, brave, and kind.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT7224524046.mp3?updated=1602035721</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Bishop Michael Curry on Love &amp; Hope in Troubling Times</Name>
+        <Description>The Most Rev. Michael Curry is Presiding Bishop of The Episcopal Church, and on this episode, we talk about love. Messy, hard, complicated love. I ask him how we can transcend fear in a scarcity-based culture and what we can learn from those who came before us. We also talk about the church, how to develop beloved community, and the scrappy, gritty, work of love that is my definition of faith. Plus, Bishop Curry shares his playlist with one song that I really didn’t expect.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT8171626007.mp3?updated=1601419371</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>On My Mind: RBG, Surge Capacity, and Play as an Energy Source</Name>
+        <Description>In this episode, I share my thoughts on the power of dissent, what happens when we max out our surge capacity during a crisis, and how time spent without purpose can refuel and reconnect us.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT4591444919.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Sonya Renee Taylor on "The Body is Not an Apology"</Name>
+        <Description>In this episode Sonya Renee Taylor and I talk about body shame, radical self-love, and social justice. This conversation was a big unlocking for me - especially when it comes to understanding the connection between how we think about our bodies and oppression.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT4911739521.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Scott Sonenshein on Stretching and Chasing</Name>
+        <Description>In this episode, researcher and professor Dr. Scott Sonenshein and I talk about the art and science of being scrappy, why outsiders are sometimes better than experts, and why comparison is truly the thief of joy. This book turned things upside down for me - in the best way. I hope the conversation does the same for you.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT9098866030.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené on Day 2</Name>
+        <Description>So glad to be back! Launching our second season with a conversation on one of my favorite subjects (and least favorite experiences): Day 2! It sounds easy enough, but Day 2 is no joke. It’s the messy middle - the point of no return. Join us as we talk about navigating what's next and why it's always best to stumble through the darkness together.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/GLT3813026712.mp3?updated=1599150946</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Introducing: It Was Said (w Jon Meacham)</Name>
+        <Description>Welcome to It Was Said, a 10-episode limited documentary series looking back on some of the most powerful, impactful and timeless speeches in American history. Join Pulitzer Prize winning and best-selling author-historian, Jon Meacham, Peabody-nominated C13Originals Studios and HISTORY, as we take you through 10 speeches. Season One of It Was Said draws on a selection of speeches from powerful figures in history where Meacham will offer expert insight and analysis into their origins, the orator, the context of the times they were given, why they are still relevant today, and the importance of never forgetting them. Each episode of this documentary podcast series will also bring together some of the top historians, authors and journalists relevant to each respective speech and figure. Subscribe and listen to It Was Said for free now, wherever you listen to podcasts.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD4206318979.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené on Ask Me Anything, Part 2 of 2</Name>
+        <Description>We received so many thoughtful and tough AMA questions from listeners that it took us two episodes to cover the most popular topics. In Part 2, I unpack one of the most asked questions: How do parents build shame resilience in our children? I'm also answering another popular question: Are there TV series and/or films that I think do a great job of accurately capturing emotions and the human experience? While there are SO many that do that well, I share a few of my current favorites.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD5447024152.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené on Ask Me Anything, Part 1 of 2</Name>
+        <Description>I said, “Ask Me Anything,” and the Unlocking Us community came through with the tough questions. To be honest, I thought I’d get some easy, fun ones—but no, all deep-end questions. In fact, we had hundreds and hundreds of tough, smart, thoughtful questions submitted, and in today’s episode I answer five of them. We cover ‘fake news,’ disappointment vs self-pity, religion and shame, when something is shame-worthy, and we’re just getting started.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD1483621377.mp3?updated=1594168767</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené on Shame and Accountability</Name>
+        <Description>In today’s solo episode, I share my thoughts about why accountability is a prerequisite for change, and why we need to get our heads and hearts around the difference between being held accountable for racism and feeling shame, and being shamed. I share my personal stories of being held accountable and holding myself accountable, as well as my strategies for pulling my “thinking brain” back online when I’m experiencing the flight and fight energy fueled by shame.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD3445234893.mp3?updated=1593568630</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Judd Apatow on Vulnerability and Laughter</Name>
+        <Description>I'm talking with Judd Apatow, who has directed, produced, and written many of the biggest comedy films and hit TV shows of the last two decades. We look at what's funny, why it's funny, and why laughter creates connection. We also uncover that thin line between humor and grief and what it means to tell the stories of our lives in a way that we recognize ourselves and our shared humanity.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD5253444287.mp3?updated=1593136796</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Gina Chavez and Carrie Rodriguez on the Heart and Soul of Music</Name>
+        <Description>Meet Carrie Rodriguez and Gina Chavez, the musicians who created and perform the music you hear every week on Unlocking Us. Artists and activists, Gina and Carrie integrate stories, culture, and the heart of past generations into their music to create artful and hopeful futures. You can hear it in their music, and you can see it in their lives. I’m so grateful that our weekly Unlocking Us conversations begin and end with their soulful sounds.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD6376871411.mp3?updated=1592960600</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Laverne Cox on Transgender Representation, Advocacy + the Power of Love</Name>
+        <Description>In this episode, I talk to artist, advocate, executive producer, and all-around amazing woman and friend Laverne Cox about her new, groundbreaking documentary, Disclosure: Trans Lives on Screen, the importance of policy protection for the trans community, and the seismic shifts in the world today. We also discuss the complexities of intersectionality and accountability, the difference between discomfort and safety, and the ultimate power of seeking love and living in the light.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD1922327857.mp3?updated=1597687200</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Austin Channing Brown on I’m Still Here: Black Dignity in a World Made for Whiteness</Name>
+        <Description>Austin Channing Brown’s anti-racism work is critical to changing our world, and her ability to talk about what is good and true about love, about our faith, and about loving each other is transformative. She is a writer, a speaker, and a media producer providing inspired leadership on racial justice in America. In this episode, we connect on her book I’m Still Here: Black Dignity in a World Made for Whiteness, and talk about her online television show, The Next Question.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD9752686924.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Ibram X. Kendi on How to Be an Antiracist</Name>
+        <Description>I'm talking with professor Ibram Kendi, New York Times bestselling author of How to Be an Antiracist and the Director of the Antiracist Research and Policy Center at American University. We talk about racial disparities, policy, and equality, but we really focus on How to Be an Antiracist, which is a groundbreaking approach to understanding uprooting racism and inequality in our society and in ourselves.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD5180796840.mp3?updated=1591136436</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Reese Witherspoon &amp; Kerry Washington on Little Fires Everywhere</Name>
+        <Description>Reese Witherspoon and Kerry Washington are true creatives and storytellers, working to make timely art that is honest and vulnerable and truth-telling. Here’s part two of my conversation on Little Fires Everywhere. This episode covers how Reese and Kerry worked with a team of other creatives to bring Celeste’s words to life. We talked about the challenges and responsibilities of creating authentic, living, breathing characters with complex internal thoughts. We talked about motherhood and how it connects us, changes us, and changes as it goes. And we talked about creating art that honors ordinary, complicated people from completely different backgrounds, while connecting us all together.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD2294381553.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené and Celeste Ng on Little Fires Everywhere</Name>
+        <Description>My conversation with Celeste Ng is the first of two episodes on Little Fires Everywhere, where I'll cover the book and the series. We talked about the writing process, the stories that we tell, and the stories that define us. We also covered how our hometowns shape us, how parenting is a shame minefield, and how we all have the power to mourn moments even while we’re in them. Celeste also filled us in on what she thinks about the series and what it felt like watching Reese Witherspoon and Kerry Washington create a show from her novel. I loved this episode as a reader, as a writer, and as an observer of what it means to be human.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD2140620783.mp3?updated=1596902976</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Jay Duplass and Mark Duplass on The Power of Paradox</Name>
+        <Description>Jay and Mark Duplass are two of my favorite humans. They are film-makers, writers, directors, producers, actors, and activists. They’re also partners, fathers, and brothers who believe in connection, love, and the importance of small moments. In this episode we talk about their memoir, Like Brothers, and how so much of what we crave in life comes from straddling the paradoxes inherent in love, creativity, and relationships.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD5502417546.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Harriet Lerner and Brené - I’m Sorry: How To Apologize &amp; Why It Matters, Part 2 of 2</Name>
+        <Description>This two-episode special is based on a course that Dr. Harriet Lerner and I did together on her groundbreaking book, “Why Won’t You Apologize?: Healing Big Betrayals and Everyday Hurts.” You can expect authentic, hard conversations (and one helluva role play) about making mistakes, healing hurts, and being brave. Harriet is a friend, mentor, and teacher. Her work has shaped my career and made my life better. During a time of deep uncertainty and anxiety - when many of us have struggled to be our best selves all of the time - apologizing has never been more important.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD5471237036.mp3?updated=1588894457</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Harriet Lerner and Brené - I’m Sorry: How To Apologize &amp; Why It Matters, Part 1 of 2</Name>
+        <Description>This two-episode special is based on a course that Dr. Harriet Lerner and I did together on her groundbreaking book, “Why Won’t You Apologize?: Healing Big Betrayals and Everyday Hurts.” You can expect authentic, hard conversations (and one helluva role play) about making mistakes, healing hurts, and being brave. Harriet is a friend, mentor, and teacher. Her work has shaped my career and made my life better. During a time of deep uncertainty and anxiety - when many of us have struggled to be our best selves all of the time - apologizing has never been more important. (</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD4620460797.mp3?updated=1596902873</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené with Sue Monk Kidd and Jen Hatmaker on Longing, Belonging and Faith</Name>
+        <Description>In this episode, I talk to two women who provide wise counsel for those of us who have struggled with belonging and faith (and still do on occasion). Sue Monk Kidd and Jen Hatmaker are dissident daughters, brave leaders, and the very best companions for a contemplative journey.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD8862558205.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Dr. Vivek Murthy and Brené on loneliness and connection</Name>
+        <Description>Have you ever struggled with feeling lonely - even when you’re surrounded by people you love? I have. It’s painful and confusing. In this episode, I talk to Dr. Vivek Murthy, a physician and the 19th Surgeon General of the United States, about loneliness and the physical and emotional toll that social disconnection takes on us. We talk about his new book, TOGETHER, and what it takes for each of us to tilt the world toward love and connection.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD2411345172.mp3?updated=1596902239</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Dr. Marc Brackett and Brené on “Permission to Feel”</Name>
+        <Description>Dr. Marc Brackett has dedicated his life to studying emotions and to teaching us what he’s learning. In this episode, we talk about how emotional literacy - being able to recognize, name, and understand our feelings - affects everything from learning, decision making, and creativity, to relationships, health, and performance.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD8806349642.mp3?updated=1588186269</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Alicia Keys and Brené on More Myself</Name>
+        <Description>Alicia’s book, More Myself: A Journey, is a masterclass in authenticity and vulnerability. In this episode, Alicia and I talk about the quiet, subtle experiences that fuel our need to armor up and self-protect, and the courage behind owning our worth, listening to our own voice, and living with our own “girl on fire” energy.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD7571229156.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené on Anxiety, Calm + Over/Under-Functioning</Name>
+        <Description>We all have patterned ways of managing our day-to-day anxiety, and these patterns often reflect the roles and expectations of our first families. 
+In this episode, we’ll talk about over and under-functioning in anxious times, why anxiety is contagious, and how we can cultivate a calm practice. 
+ </Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD4966506848.mp3?updated=1596901860</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>David Kessler and Brené on Grief and Finding Meaning</Name>
+        <Description>Grief expert David Kessler takes us by the hand and walks us into what he's learned about love, loss, and finding meaning. As someone who has a lot of fear about grief and grieving, this conversation is not what I expected. The only word I can use to describe what I learned from David is "beautiful."</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD3014883723.mp3?updated=1596901512</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené on Comparative Suffering, the 50/50 Myth, and Settling the Ball</Name>
+        <Description>We have collectively hit weary. This is especially true for the brave folks on the front lines of this pandemic and for the people who love and support them. And, it’s also true for all of us. In this episode, I talk about strategies for falling apart, staying connected + kind, and giving ourselves permission to feel hard things.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD2205454780.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Glennon Doyle and Brené on Untamed</Name>
+        <Description>Strap yourselves in! In this episode, I talk to my dear friend and sister Cheetah, Glennon – author of the New York Times #1 bestseller, Untamed. This is an honest conversation about walking away from the lifelong training that keeps us small, quiet, and afraid, and embracing our wild, brave hearts.
+Glennon is the author of two #1 New York times bestsellers – Untamed and Love Warrior. She’s the author of the New York Times bestseller, Carry On, Warrior, an activist, and the founder of Together Rising, an all-women led nonprofit organization that has revolutionized grassroots philanthropy – raising over $25 Million for women, families and children in crisis. She lives in Florida with her wife and three children.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD5374600195.mp3?updated=1596903268</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Tarana Burke and Brené on Being Heard and Seen</Name>
+        <Description>Tarana is a good friend and one of my favorite people on earth. She has been working at the intersection of racial justice and gender equity for nearly three decades, and she started the “Me Too” Movement in 2006.  In 2017, when the #metoo hashtag went viral, Tarana emerged as a global leader in the evolving conversation around sexual violence.
+In this episode we talk about how her theory of “empowerment through empathy” is changing the way the world thinks and talks about sexual violence, consent, and social justice. AND, we also talk/cry/laugh about falling in love, running as fast as we can from love, and the perils of sharing a bathroom with the guys we love.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD3262194496.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Brené on FFTs</Name>
+        <Description>The first Unlocking Us podcast is here! Along with the excitement of sending this into the world, I’m feeling equal doses of fear, awkwardness, and vulnerability. In this episode I talk about my strategy for staying in tough first times versus tapping out and shutting down. When we get to the point that we only do things that we’re already good at doing, we stop growing. And truly living.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD4124100729.mp3</SoundFile>
+      </Episode>
+      <Episode>
+        <Name>Introducing: Unlocking Us</Name>
+        <Description>Join researcher and #1 New York Times best-selling author Brené Brown as she unpacks and explores the ideas, stories, experiences, books, films, and music that reflect the universal experiences of being human, from the bravest moments to the most brokenhearted.  Subscribe now for updates.</Description>
+        <SoundFile>https://chtbl.com/track/42D75/traffic.megaphone.fm/CAD9323382862.mp3?updated=1600456328</SoundFile>
+      </Episode>
+    </episodes>
+    <name>Unlucking us</name>
+    <amountOfEpisodes>34</amountOfEpisodes>
+  </Podcast>
+  <Podcast>
     <URL>https://feeds.megaphone.fm/WWO8086402096</URL>
     <category>
       <Namn>Politics</Namn>
     </category>
-    <updatingInterval>3</updatingInterval>
+    <updatingInterval>2</updatingInterval>
     <episodes>
+      <Episode>
+        <Name>Ep. 1124 - Grin And Barrett</Name>
+        <Description>Amy Coney Barrett joins the Supreme Court; Democrats lose their minds; and the media continue to white knight for Joe Biden as we move one week from the 2020 election.
+Get your copy of "How to Destroy America in Three Easy Steps" here: https://utm.io/uHjV
+If you like The Ben Shapiro Show, become a member TODAY with promo code: SHAPIRO and enjoy the exclusive benefits for 10% off at https://www.dailywire.com/shapiro</Description>
+        <SoundFile>https://www.podtrac.com/pts/redirect.mp3/pdst.fm/e/chtbl.com/track/8G441/traffic.megaphone.fm/WWO4632248316.mp3</SoundFile>
+      </Episode>
       <Episode>
         <Name>Ep. 1123 - Using Covid To Take Down Trump</Name>
         <Description>White House chief of staff Mark Meadows says the United States can’t control the pandemic; Gavin Newsom rolls out insane new Thanksgiving restrictions; and the Left tries to manipulate social media into censoring conservatives.
@@ -12504,61 +12700,8 @@ Date: 08-25-2019</Description>
         <Description>Democrats formulate their 2020 narrative, the Omar-Tlaib BDS Train continues to roll, and Antifa gets more favorable media coverage. Date: 08-19-2019</Description>
         <SoundFile>https://soundcloud.com/benshapiroshow/ep842</SoundFile>
       </Episode>
-      <Episode>
-        <Name>Piers Morgan | The Ben Shapiro Show Sunday Special Ep. 64</Name>
-        <Description>Piers Morgan — best-selling author, journalist, television personality, and host of "Good Morning Britain" — joins Ben to discuss celebrity, the news media, Trump, liberals, gun control, and much more. 
-
-Date: 08-18-2019</Description>
-        <SoundFile>https://soundcloud.com/benshapiroshow/sundayspecialep64</SoundFile>
-      </Episode>
     </episodes>
     <name>The Ben Shapiro Show</name>
     <amountOfEpisodes>350</amountOfEpisodes>
-  </Podcast>
-  <Podcast>
-    <URL>https://rss.art19.com/1619</URL>
-    <category>
-      <Namn>News</Namn>
-    </category>
-    <updatingInterval>2</updatingInterval>
-    <episodes>
-      <Episode>
-        <Name>Episode 5: The Land of Our Fathers, Part 2</Name>
-        <Description>&lt;p&gt;The Provosts, a family of sugar-cane farmers in Louisiana, had worked the same land for generations. When it became harder and harder to keep hold of that land, June Provost and his wife, Angie, didn’t know why — and then a phone call changed their understanding of everything. In the finale of “1619,” we hear the rest of June and Angie’s story, and its echoes in a past case that led to the largest civil rights settlement in American history.&lt;/p&gt;&lt;p&gt;On today’s episode: June and Angie Provost; Adizah Eghan and Annie Brown, producers for “1619”; and Khalil Gibran Muhammad, a professor of history, race and public policy at Harvard University and the author of “The Condemnation of Blackness.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/10/11/podcasts/1619-slavery-farm-loan-discrimination.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/17bdc8f1-733b-400a-9e24-f2a2b72c9217.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 5: The Land of Our Fathers, Part 1</Name>
-        <Description>&lt;p&gt;More than a century and a half after the promise of 40 acres and a mule, the story of black land ownership in America remains one of loss and dispossession. June and Angie Provost, who trace their family line to the enslaved workers on Louisiana’s sugar-cane plantations, know this story well.&amp;nbsp;&lt;/p&gt;&lt;p&gt;On today’s episode: The Provosts spoke with Adizah Eghan and Annie Brown, producers for “1619.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/10/04/podcasts/1619-slavery-sugar-farm-land.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/c1175505-511e-4690-8aac-26da19297b59.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 4: How the Bad Blood Started</Name>
-        <Description>&lt;p&gt;Black Americans were denied access to doctors and hospitals for decades. From the shadows of this exclusion, they pushed to create the nation’s first federal health care programs. On today’s episode: Jeneen Interlandi, a member of The New York Times’s editorial board and a writer for The Times Magazine, and Yaa Gyasi, the author of “Homegoing.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/1619podcast" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/85056324-9b0f-48af-8fef-3e03965aa11f.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 3: The Birth of American Music</Name>
-        <Description>&lt;p&gt;Black music, forged in captivity, became the sound of complete artistic freedom. It also became the sound of America. On today’s episode: Wesley Morris, a critic-at-large for The New York Times.&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/09/06/podcasts/1619-black-american-music-appropriation.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode contains explicit language.&lt;/em&gt;&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/e370e560-26ec-4c44-928d-f6a0ffcf9b0a.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 2: The Economy That Slavery Built</Name>
-        <Description>&lt;p&gt;The institution of slavery turned a poor, fledgling nation into a financial powerhouse, and the cotton plantation was America’s first big business. Behind the system, and built into it, was the whip. On today’s episode: Matthew Desmond, a contributing writer for The New York Times Magazine and the author of “Evicted,” and Jesmyn Ward, the author of “Sing, Unburied, Sing.”&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at&amp;nbsp;&lt;a href="https://www.nytimes.com/2019/08/23/podcasts/1619-slavery-anniversary.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode includes scenes of graphic violence.&lt;/em&gt;&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/ca49d1fa-0980-4ac1-a35e-46d5e764aeee.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Episode 1: The Fight for a True Democracy</Name>
-        <Description>&lt;p&gt;America was founded on the ideal of democracy. Black people fought to make it one.&lt;/p&gt;&lt;p&gt;“1619” is a New York Times audio series hosted by Nikole Hannah-Jones. You can find more information about it at &lt;a href="https://www.nytimes.com/2019/08/23/podcasts/1619-slavery-anniversary.html" target="_blank"&gt;nytimes.com/1619podcast&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;em&gt;This episode includes scenes of graphic violence.&lt;/em&gt;&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/7b201348-f800-4707-8ffb-2302fa20b420.mp3</SoundFile>
-      </Episode>
-      <Episode>
-        <Name>Introducing ‘1619’</Name>
-        <Description>&lt;p&gt;In August of&amp;nbsp;1619, a ship carrying more than 20 enslaved Africans arrived in the English colony of Virginia. America was not yet America, but this was the moment it began. No aspect of the country that would be formed here has been untouched by the 250 years of slavery that followed. On the 400th anniversary of this fateful moment, it is time to tell the story.&lt;/p&gt;</Description>
-        <SoundFile>https://dts.podtrac.com/redirect.mp3/chtbl.com/track/8DB4DB/rss.art19.com/episodes/9ebb46a0-7187-4b74-b4b1-f556f0926846.mp3</SoundFile>
-      </Episode>
-    </episodes>
-    <name>1619 by The New York Times</name>
-    <amountOfEpisodes>7</amountOfEpisodes>
   </Podcast>
 </ArrayOfPodcast>

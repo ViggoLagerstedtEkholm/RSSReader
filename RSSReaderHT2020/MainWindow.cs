@@ -450,7 +450,7 @@ namespace RSSReaderHT2020
 
             Podcast currentObject = (Podcast)dataGridPodcast.CurrentRow.DataBoundItem;
 
-            foreach (Episode episode in currentObject.episodes)
+            foreach(Episode episode in currentObject.episodes)
             {
                 episodeBindingSource.Add(episode);
             }
