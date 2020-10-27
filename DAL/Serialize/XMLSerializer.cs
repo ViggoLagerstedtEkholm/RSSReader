@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace DAL.Serialize
 {
-    public class XMLSerializer
+    internal class XMLSerializer
     {
         private readonly string designatedFileFolder;
         public XMLSerializer()

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Serialize
 {
-    public class JSONSerializer
+    internal class JSONSerializer
     {
         private readonly JsonSerializerSettings settings;
         private readonly string designatedFileFolder;
