@@ -47,7 +47,6 @@ namespace DAL
             return amountOfEpisodes;
         }
 
-        //https://www.c-sharpcorner.com/UploadFile/70dbe6/fetch-rss-feed-content-from-linq-to-xml/
         public async Task<List<Episode>> GetEpisodes(string url)
         {
             List<Episode> episodeList = new List<Episode>();
