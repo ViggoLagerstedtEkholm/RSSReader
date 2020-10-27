@@ -267,12 +267,12 @@ namespace RSSReaderHT2020
                 categoryContoller.SaveCategoryData();
                 if (shouldUpdate)
                 {
+                    InsertCommandConsole("Category removed.");
                     ClearTimer();
                     CreateTimerData();
                 }
                 InsertPodcasts();
                 UpdateCategoryList();
-                InsertCommandConsole("Category removed.");
             }
             else
             {
