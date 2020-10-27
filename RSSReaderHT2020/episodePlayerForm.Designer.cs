@@ -42,6 +42,7 @@
             this.btnRetry = new System.Windows.Forms.Button();
             this.richTextBoxDescription = new System.Windows.Forms.RichTextBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.BtnDownload = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +84,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.BtnDownload);
             this.panel1.Controls.Add(this.linkLabelLink);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblStatusText);
@@ -174,6 +176,16 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
+            // BtnDownload
+            // 
+            this.BtnDownload.Location = new System.Drawing.Point(17, 101);
+            this.BtnDownload.Name = "BtnDownload";
+            this.BtnDownload.Size = new System.Drawing.Size(131, 47);
+            this.BtnDownload.TabIndex = 12;
+            this.BtnDownload.Text = "Download";
+            this.BtnDownload.UseVisualStyleBackColor = true;
+            this.BtnDownload.Click += new System.EventHandler(this.BtnDownload_Click);
+            // 
             // EpisodePlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -205,5 +217,6 @@
         private System.Windows.Forms.Label lblStatusText;
         private System.Windows.Forms.LinkLabel linkLabelLink;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BtnDownload;
     }
 }

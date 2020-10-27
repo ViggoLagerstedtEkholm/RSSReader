@@ -245,6 +245,7 @@ namespace RSSReaderHT2020
 
                 foreach(Category cat in categoryContoller.RetrieveAllCategories())
                 {
+                    
                     listBoxCategory.Items.Add(cat.Namn);
                 }
                 categoryContoller.SaveCategoryData();

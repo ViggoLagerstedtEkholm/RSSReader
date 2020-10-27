@@ -37,8 +37,6 @@ namespace RSSReaderHT2020
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.Parent.FullName;
             designatedFileFolder = projectDirectory + @"\SavedFiles";
-
-            DownLoadEpisode(ValidStringNameGenerator(selectedEpisode.Name));
         }
 
         private void SetComponentStates()
@@ -167,6 +165,11 @@ namespace RSSReaderHT2020
         private void BtnStop_Click(object sender, EventArgs e)
         {
             waveOutDevice.Stop();
+        }
+
+        private void BtnDownload_Click(object sender, EventArgs e)
+        {
+            DownLoadEpisode(ValidStringNameGenerator(selectedEpisode.Name));
         }
     }
 }
