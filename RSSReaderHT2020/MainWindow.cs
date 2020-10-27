@@ -127,7 +127,6 @@ namespace RSSReaderHT2020
             InsertCategories();
         }
         
-        //Podcast https://api.sr.se/api/rss/pod/3795
         private async void NewPodcastBtn_Click(object sender, EventArgs e)
         {
             if (!validator.TextBoxisNullorEmpty(textBoxURL) && validator.URLIsValid(textBoxURL.Text))
@@ -424,7 +423,7 @@ namespace RSSReaderHT2020
                     InsertCommandConsole($"Total execution time (ms): " + (watch.ElapsedMilliseconds));
                     InsertPodcasts();
                 }
-                catch (Exception)
+                catch (ExceptionHandle)
                 {
                     listBoxConsole.Items.Add("Error, don't add items while its loading.");
                     listBoxConsole.Items.Add("Make sure to be connected to the internet.");

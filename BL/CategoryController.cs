@@ -59,6 +59,7 @@ namespace BL
                     //For every podcast that doesnt match the category do...
                     foreach (var podcast in podcastController.RetrieveAllPodcasts().ToList().Where(podcast => !podcast.category.Namn.Equals(name)))
                     {
+                        //Don't delete the category if the user pressed no.
                         if(confirmResult != DialogResult.No)
                         {
                             shouldUpdate = true;
@@ -66,7 +67,6 @@ namespace BL
                         }
                     }
                 }
-
             }
             else
             {
