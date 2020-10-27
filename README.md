@@ -1,4 +1,9 @@
 # RSSReader
+Want to listen to your faviorite podcasts? 
+Want to be able to see new episodes as fast as possible?
+If yes, subscribe to different feeds and give them your own categories and updating intervals because it's all customizable. 
+This is RSSReader, your place for podcasts.
+
 ![main3](https://user-images.githubusercontent.com/60555651/97229689-08eca280-17d9-11eb-87c2-25039fc5eca9.PNG)
 ![episode](https://user-images.githubusercontent.com/60555651/97228687-9202da00-17d7-11eb-8179-e51e411879f6.PNG)
 
