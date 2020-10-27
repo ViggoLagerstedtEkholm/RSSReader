@@ -8,9 +8,10 @@ This is RSSReader, your place for podcasts.
 ![episode](https://user-images.githubusercontent.com/60555651/97228687-9202da00-17d7-11eb-8179-e51e411879f6.PNG)
 
 This project involves creating a RSS feed reader that uses a multitier architecture and in this case the "Repository pattern",
-1. Bussiness layer.
-2. Data access layer.
-3. Data layer.
+1. Presentation layer
+2. Bussiness layer.
+3. Data access layer.
+4. Data layer.
 
 More about it here: https://en.wikipedia.org/wiki/Multitier_architecture
 
@@ -25,7 +26,7 @@ Example: If you have a Microsoft SQL database and want to change it to mySQL you
 There are also several more benefits with this pattern.
 
 Application functionality:
-1. The application built is using C# .NET with Winform as the presentation of components.
+1. The application built is using Winform as the presentation of components and C# as backend.
 2. The data layer accesses local files both XML and JSON to store/retrieve data. (With this pattern we can with ease implement a database instead!)
 3. Automatic fetching of RSS feeds using asynchronous threading to update the data real time.
 4. Modifying all data which includes (Updating, Deleting, Adding).
