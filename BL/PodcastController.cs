@@ -56,12 +56,10 @@ namespace BL
         {
             podcastRepository.Delete(podcast);
         }
-
         public void SavePodcastData()
         {
             podcastRepository.SaveChanges();
         }
-
         public List<Podcast> GetPodcastData()
         {
             return podcastRepository.GetAllData();

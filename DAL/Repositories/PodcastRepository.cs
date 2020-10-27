@@ -46,32 +46,25 @@ namespace DAL.Repositories
         {
             List<List<Episode>> episodes = new List<List<Episode>>();
             List<Episode> updatedEpisodes = new List<Episode>();
-            foreach(Podcast podcast in podcasts)
+
+            foreach (Podcast podcast in podcasts)
             {
-                updatedEpisodes = await Task.Run (() => reader.GetEpisodes(podcast.URL));
+                updatedEpisodes = await Task.Run(() => reader.GetEpisodes(podcast.URL));
                 episodes.Add(updatedEpisodes);
                 console.Items.Add($"{podcast.URL} downloaded: {updatedEpisodes.Count} characters long.\n");
                 progress.Report(episodes.Count * 100 / podcasts.Count);
 
-                foreach(Podcast aPodcast in GetAll())
-                {
-                    if (aPodcast.URL.Equals(podcast.URL))
-                    {
-                        aPodcast.episodes = updatedEpisodes;
-                        aPodcast.amountOfEpisodes = reader.GetAmountOfEpisodes(podcast.URL);
-                    }
-                }
-                SaveChanges();
+                podcast.episodes = updatedEpisodes;
+                podcast.amountOfEpisodes = reader.GetAmountOfEpisodes(podcast.URL);
             }
+
+            SaveChanges();
         }
         public override void Update(string currentCategory, string newCategory)
         {
-            foreach(Podcast podcast in list)
+            foreach (var podcast in list.Where(podcast => podcast.category.Namn.Equals(currentCategory)))
             {
-                if (podcast.category.Namn.Equals(currentCategory))
-                {
-                    podcast.category.Namn = newCategory;
-                }
+                podcast.category.Namn = newCategory;
             }
         }
         public void SaveChanges()

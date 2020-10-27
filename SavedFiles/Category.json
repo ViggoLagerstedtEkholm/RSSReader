@@ -1,14 +1,14 @@
 [
   {
-    "Namn": "News"
-  },
-  {
-    "Namn": "Sport"
-  },
-  {
     "Namn": "Politics"
   },
   {
     "Namn": "Entertainment"
+  },
+  {
+    "Namn": "News"
+  },
+  {
+    "Namn": "Sport"
   }
 ]
