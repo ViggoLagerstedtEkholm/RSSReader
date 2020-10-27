@@ -34,7 +34,7 @@ namespace BL
         public bool DeleteCategory(string name, PodcastController podcastController)
         {
             List<Category> list = categoryRepository.GetAll();
-            bool deletedPodcast = true;
+            bool shouldUpdate = false;
         
             //Check if the podcast collection is empty, if so we should just delete all categories that match the selected category.
             if (podcastController.RetrieveAllPodcasts().Count > 0)
@@ -53,29 +53,29 @@ namespace BL
                             podcastController.DeletePodcast(podcast);
                             podcastController.SavePodcastData();
                             categoryRepository.Delete(aCategory);
-                            deletedPodcast = true;
+                            shouldUpdate = true;
                         }
                     }
                     //For every podcast that doesnt match the category do...
                     foreach (var podcast in podcastController.RetrieveAllPodcasts().ToList().Where(podcast => !podcast.category.Namn.Equals(name)))
                     {
-                        if (!deletedPodcast)
-                        {
-                            categoryRepository.Delete(aCategory);
-                        }
+                        shouldUpdate = true;
+                        categoryRepository.Delete(aCategory);
                     }
                 }
+
             }
             else
             {
-                //Delete all categories.
+                //Delete all categories with specified name because there are no podcasts that can have this category.
                 foreach (var aCategory in categoryRepository.GetAll().ToList().Where(aCategory => aCategory.Namn.Equals(name)))
                 {
+                    shouldUpdate = true;
                     categoryRepository.Delete(aCategory);
                 }
             }
 
-            return deletedPodcast;
+            return shouldUpdate;
         }
 
         public void SaveCategoryData()
