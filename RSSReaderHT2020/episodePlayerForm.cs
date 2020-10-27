@@ -49,10 +49,11 @@ namespace RSSReaderHT2020
 
         private string ValidStringNameGenerator(string name)
         {
-            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+            //Creates a valid file name that then can be used.
+            Path.GetInvalidFileNameChars().ToList().ForEach(character =>
             {
-                name = name.Replace(c, '_');
-            }
+                name = name.Replace(character, '_');
+            });
 
             return name;
         }

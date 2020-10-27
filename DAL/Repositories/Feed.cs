@@ -16,7 +16,6 @@ namespace DAL
     {
         public RSSFeedReader reader;
         public List<T> list;
-
         public Feed(List<T> list)
         {
             reader = new RSSFeedReader();

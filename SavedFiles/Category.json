@@ -1,8 +1,5 @@
 [
   {
-    "Namn": "Sport"
-  },
-  {
     "Namn": "Politics"
   },
   {
@@ -10,5 +7,8 @@
   },
   {
     "Namn": "Entertainment"
+  },
+  {
+    "Namn": "Sport"
   }
 ]

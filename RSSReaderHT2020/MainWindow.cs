@@ -57,10 +57,11 @@ namespace RSSReaderHT2020
         }
         private void LoadPodcasts()
         {
-            foreach (Podcast pod in podcastController.GetPodcastData())
+            podcastController.GetPodcastData().ForEach(pod =>
             {
                 podcastBindingSource.Add(pod);
-            }
+            });
+
             dataGridPodcast.DataSource = podcastBindingSource;
         }
 
@@ -107,10 +108,10 @@ namespace RSSReaderHT2020
         {
             dataGridPodcast.Rows.Clear();
 
-            foreach(Podcast aPodcast in podcastController.RetrieveAllPodcasts())
+            podcastController.RetrieveAllPodcasts().ForEach(aPodcast =>
             {
                 podcastBindingSource.Add(aPodcast);
-            }
+            });
 
             dataGridPodcast.DataSource = podcastBindingSource;
         }
@@ -119,10 +120,10 @@ namespace RSSReaderHT2020
         {
             listBoxCategory.Items.Clear();
 
-            foreach (Category cat in categoryContoller.RetrieveAllCategories())
+            categoryContoller.RetrieveAllCategories().ForEach(cat =>
             {
                 listBoxCategory.Items.Add(cat.Namn);
-            }
+            });
 
             InsertCategories();
         }
@@ -242,11 +243,11 @@ namespace RSSReaderHT2020
                 listBoxCategory.Items.Clear();
                 categoryContoller.CreateCategoryObject(categoryTextBox.Text);
 
-                foreach(Category cat in categoryContoller.RetrieveAllCategories())
+                categoryContoller.RetrieveAllCategories().ForEach(cat =>
                 {
-                    
                     listBoxCategory.Items.Add(cat.Namn);
-                }
+                });
+
                 categoryContoller.SaveCategoryData();
                 InsertCategories();
                 InsertCommandConsole("Category added.");
@@ -346,7 +347,7 @@ namespace RSSReaderHT2020
             List<Podcast> podcasts = podcastController.GetPodcastData();
             int selectedInterval = 0;
 
-            foreach (Podcast podcast in podcasts)
+            podcasts.ForEach(podcast =>
             {
                 switch (podcast.updatingInterval)
                 {
@@ -360,7 +361,7 @@ namespace RSSReaderHT2020
                         Interval3.Add(podcast);
                         break;
                 }
-            }
+            });
 
             lista.Add(Interval1);
             lista.Add(Interval2);
@@ -383,7 +384,6 @@ namespace RSSReaderHT2020
 
                 timer = new Timer
                 {
-
                     Interval = selectedInterval,
                     Enabled = true,
                     Tag = lista[i],
@@ -449,10 +449,11 @@ namespace RSSReaderHT2020
 
             Podcast currentObject = (Podcast)dataGridPodcast.CurrentRow.DataBoundItem;
 
-            foreach(Episode episode in currentObject.episodes)
+            currentObject.episodes.ForEach(episode =>
             {
                 episodeBindingSource.Add(episode);
-            }
+            });
+
             dataGridViewEpisode.DataSource = episodeBindingSource;
 
             textBoxNamn.Text = currentObject.name;
