@@ -1,5 +1,5 @@
 # RSSReader
-Want to listen to your faviorite podcasts? 
+Want to listen to your favorite podcasts? 
 Want to be able to see new episodes as fast as possible?
 If yes, subscribe to different feeds and give them your own categories and updating intervals because it's all customizable. 
 This is RSSReader, your place for podcasts.
