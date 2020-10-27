@@ -35,6 +35,7 @@ namespace BL
         {
             List<Category> list = categoryRepository.GetAll();
             bool deletedPodcast = true;
+        
             //Check if the podcast collection is empty, if so we should just delete all categories that match the selected category.
             if (podcastController.RetrieveAllPodcasts().Count > 0)
             {
@@ -52,19 +53,23 @@ namespace BL
                             podcastController.DeletePodcast(podcast);
                             podcastController.SavePodcastData();
                             categoryRepository.Delete(aCategory);
+                            deletedPodcast = true;
                         }
                     }
                     //For every podcast that doesnt match the category do...
                     foreach (var podcast in podcastController.RetrieveAllPodcasts().ToList().Where(podcast => !podcast.category.Namn.Equals(name)))
                     {
-                        categoryRepository.Delete(aCategory);
+                        if (!deletedPodcast)
+                        {
+                            categoryRepository.Delete(aCategory);
+                        }
                     }
                 }
             }
             else
             {
-                //Delete all matching categories.
-                foreach (var aCategory in categoryRepository.GetAll().Where(aCategory => aCategory.Namn.Equals(name)))
+                //Delete all categories.
+                foreach (var aCategory in categoryRepository.GetAll().ToList().Where(aCategory => aCategory.Namn.Equals(name)))
                 {
                     categoryRepository.Delete(aCategory);
                 }
