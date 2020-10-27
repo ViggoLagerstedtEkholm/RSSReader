@@ -8,9 +8,10 @@ This is RSSReader, your place for podcasts.
 ![episode](https://user-images.githubusercontent.com/60555651/97228687-9202da00-17d7-11eb-8179-e51e411879f6.PNG)
 
 This project involves creating a RSS feed reader that uses a multitier architecture and in this case the "Repository pattern",
-1. Bussiness layer.
-2. Data access layer.
-3. Data layer.
+1. Presentation layer
+2. Bussiness layer.
+3. Data access layer.
+4. Data layer.
 
 More about it here: https://en.wikipedia.org/wiki/Multitier_architecture
 
