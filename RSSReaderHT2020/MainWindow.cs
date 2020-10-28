@@ -137,18 +137,19 @@ namespace RSSReaderHT2020
                     if (validator.ComboBoxHasSelected(comboBoxInterval) && validator.ComboBoxHasSelected(comboBoxCategory))
                     {
                         InsertCommandConsole("Adding item...");
-                        int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
-                        var progress = new Progress<int>();
-                        var watch = Stopwatch.StartNew();
-                        progress.ProgressChanged += ProgressReported;
 
-                        await podcastController.CreatePodcastObject(textBoxURL.Text, textBoxNamn.Text, interval, comboBoxCategory.SelectedItem.ToString());
+                        int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
+                        string category = comboBoxCategory.SelectedItem.ToString();
+                        string name = textBoxNamn.Text;
+                        string URL = textBoxURL.Text;
+
+                        await podcastController.CreatePodcastObject(URL, name, interval, category);
                         
-                        watch.Stop();
                         podcastController.SavePodcastData();
                         ClearTimer();
                         CreateTimerData();
                         InsertPodcasts();
+
                         InsertCommandConsole("Item added.");
                     }
                     else
@@ -178,6 +179,7 @@ namespace RSSReaderHT2020
                         if (validator.DataGridViewHasSelected(dataGridPodcast))
                         {
                             InsertCommandConsole("Starting save...");
+
                             string category = comboBoxCategory.SelectedItem.ToString();
                             int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
                             string name = textBoxNamn.Text;
@@ -190,6 +192,7 @@ namespace RSSReaderHT2020
                             InsertPodcasts();
                             ClearTimer();
                             CreateTimerData();
+
                             InsertCommandConsole("Item saved.");
                         }
                         else
@@ -229,6 +232,7 @@ namespace RSSReaderHT2020
                 ClearTimer();
                 CreateTimerData();
                 InsertPodcasts();
+
                 InsertCommandConsole("Item removed.");
             }
             else
@@ -250,6 +254,7 @@ namespace RSSReaderHT2020
 
                 categoryContoller.SaveCategoryData();
                 InsertCategories();
+
                 InsertCommandConsole("Category added.");
             }
             else
@@ -269,6 +274,7 @@ namespace RSSReaderHT2020
                 if (shouldUpdate)
                 {
                     InsertCommandConsole("Category removed.");
+
                     ClearTimer();
                     CreateTimerData();
                 }
@@ -301,6 +307,7 @@ namespace RSSReaderHT2020
                     InsertPodcasts();
                     InsertCategories();
                     UpdateCategoryList();
+
                     InsertCommandConsole("Category renamed.");
                 }
                 else
