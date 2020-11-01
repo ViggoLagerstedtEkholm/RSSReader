@@ -69,7 +69,7 @@ namespace BL
                     .ForEach(podcast =>
                     {
                         //Don't delete the category if the user pressed no.
-                        if (confirmResult == DialogResult.Yes)
+                        if (confirmResult != DialogResult.No)
                         {
                             shouldUpdate = true;
                             categoryRepository.Delete(aCategory);
