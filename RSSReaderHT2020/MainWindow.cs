@@ -424,7 +424,7 @@ namespace RSSReaderHT2020
                 try
                 {
                     InsertCommandConsole("Loading...");
-                    await podcastController.UpdatePodcastBatch(batch, progress, listBoxConsole);
+                    await podcastController.UpdatePodcastBatch(batch.ToList(), progress, listBoxConsole);
                     watch.Stop();
                     InsertCommandConsole("Feed updated successfully...");
                     InsertCommandConsole($"Total execution time (ms): " + (watch.ElapsedMilliseconds));
