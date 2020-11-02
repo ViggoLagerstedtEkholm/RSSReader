@@ -428,7 +428,10 @@ namespace RSSReaderHT2020
                     watch.Stop();
                     InsertCommandConsole("Feed updated successfully...");
                     InsertCommandConsole($"Total execution time (ms): " + (watch.ElapsedMilliseconds));
-                    InsertPodcasts();
+                    if (validator.TextBoxisNullorEmpty(textBoxFilterCategory))
+                    {
+                        InsertPodcasts();
+                    }
                 }
                 catch (ExceptionHandle)
                 {
