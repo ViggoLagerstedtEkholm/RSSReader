@@ -17,18 +17,16 @@ namespace BL
         {
             podcastRepository = new PodcastRepository();
         }
-        public async Task<Podcast> CreatePodcastObject(string url, string name, int interval, string category)
+        public async Task CreatePodcastObject(string url, string name, int interval, string category)
         {
-            Podcast podcast = new Podcast();
             await Task.Run(() =>
             {
                 var episodesList= podcastRepository.reader.GetEpisodes(url);
                 int episodeAmount = podcastRepository.reader.GetAmountOfEpisodes(url);
 
-                podcastRepository.Create(podcast = new Podcast(url, new Category(category), interval, episodesList.Result, name, episodeAmount));
+                podcastRepository.Create(new Podcast(url, new Category(category), interval, episodesList.Result, name, episodeAmount));
             });
 
-            return podcast;
         }
         public List<Podcast> RetrieveAllPodcasts()
         {
