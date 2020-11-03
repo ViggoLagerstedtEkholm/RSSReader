@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,16 +11,12 @@ namespace RSSReader
 {
     public class Validator
     {
-        public bool StringIsEmpty(string input)
+        public void StringIsEmpty(string input)
         {
-            bool result = false;
-
             if (input.Equals(""))
             {
-                result = true;
+                throw new InvalidStringException();
             }
-
-            return result;
         }
         public bool URLIsValid(string url)
         {
@@ -35,55 +32,39 @@ namespace RSSReader
                 response.Close();
                 return (response.StatusCode == HttpStatusCode.OK);
             }
-            catch
+            catch (InvalidURLException)
             {
-                return false;
+                throw new InvalidURLException();
             }
         }
 
-        public bool ListBoxHasSelected(ListBox listBox)
+        public void ListBoxHasSelected(ListBox listBox)
         {
-            bool result = true;
-
             if(listBox.SelectedIndex == -1)
             {
-                result = false;
+                throw new InvalidListBoxException();
             }
-
-            return result;
         }
-        public bool DataGridViewHasSelected(DataGridView table)
+        public void DataGridViewHasSelected(DataGridView table)
         {
-            bool result = true;
-
             if (!(table.SelectedRows.Count > 0))
             {
-                result = false;
+                throw new InvalidDataGridException();
             }
-
-            return result;
         }
-        public bool ComboBoxHasSelected(ComboBox comboBox)
+        public void ComboBoxHasSelected(ComboBox comboBox)
         {
-            bool result = true;
-
             if (!(comboBox.SelectedIndex > -1))
             {
-                result = false;
+                throw new InvalidComboBoxException();
             }
-
-            return result;
         }
-        public bool TextBoxisNullorEmpty(TextBox textBox)
+        public void TextBoxisNullorEmpty(TextBox textBox)
         {
-            bool result = true;
-
-            if (!String.IsNullOrEmpty(textBox.Text))
+            if (String.IsNullOrEmpty(textBox.Text))
             {
-                result = false;
+                throw new InvalidTextException();
             }
-
-            return result;
         }
     }
 }

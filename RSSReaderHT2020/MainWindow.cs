@@ -1,5 +1,6 @@
 ﻿using BL;
 using DAL;
+using DAL.Exceptions;
 using DAL.Repositories;
 using DAL.Serialize;
 using Microsoft.VisualBasic;
@@ -130,96 +131,90 @@ namespace RSSReaderHT2020
         
         private async void NewPodcastBtn_Click(object sender, EventArgs e)
         {
-            if (!validator.TextBoxisNullorEmpty(textBoxURL) && validator.URLIsValid(textBoxURL.Text))
+            try
             {
-                if (!validator.TextBoxisNullorEmpty(textBoxNamn))
-                {
-                    if (validator.ComboBoxHasSelected(comboBoxInterval) && validator.ComboBoxHasSelected(comboBoxCategory))
-                    {
-                        InsertCommandConsole("Adding item...");
+                InsertCommandConsole("Adding item...");
+                validator.ComboBoxHasSelected(comboBoxCategory);
+                validator.ComboBoxHasSelected(comboBoxInterval);
+                validator.TextBoxisNullorEmpty(textBoxNamn);
+                validator.TextBoxisNullorEmpty(textBoxURL);
+                validator.URLIsValid(textBoxURL.Text);
 
-                        int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
-                        string category = comboBoxCategory.SelectedItem.ToString();
-                        string name = textBoxNamn.Text;
-                        string URL = textBoxURL.Text;
+                int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
+                string category = comboBoxCategory.SelectedItem.ToString();
+                string name = textBoxNamn.Text;
+                string URL = textBoxURL.Text;
 
-                        await podcastController.CreatePodcastObject(URL, name, interval, category);
-                        
-                        podcastController.SavePodcastData();
-                        ClearTimer();
-                        CreateTimerData();
-                        InsertPodcasts();
+                await podcastController.CreatePodcastObject(URL, name, interval, category);
 
-                        InsertCommandConsole("Item added.");
-                    }
-                    else
-                    {
-                        CreateInformationMessage("Select interval and category.");
-                    }
-                }
-                else
-                {
-                    CreateInformationMessage("Enter name.");
-                }
+                podcastController.SavePodcastData();
+                ClearTimer();
+                CreateTimerData();
+                InsertPodcasts();
+
+                InsertCommandConsole("Item added.");
             }
-            else
+            catch (InvalidTextException textError)
             {
-                CreateInformationMessage("Enter a valid URL.");
+                CreateInformationMessage(textError.ErrorMessage());
+            }
+            catch(InvalidURLException URLError)
+            {
+                CreateInformationMessage(URLError.ErrorMessage());
+            }
+            catch(InvalidComboBoxException comboBoxError)
+            {
+                CreateInformationMessage(comboBoxError.ErrorMessage());
             }
         }
 
         private async void SavePodcastBtn_Click(object sender, EventArgs e)
         {
-            if (!validator.TextBoxisNullorEmpty(textBoxURL) && validator.URLIsValid(textBoxURL.Text))
+            try
             {
-                if (validator.ComboBoxHasSelected(comboBoxCategory) && validator.ComboBoxHasSelected(comboBoxInterval))
-                {
-                    if (!validator.TextBoxisNullorEmpty(textBoxNamn))
-                    {
-                        if (validator.DataGridViewHasSelected(dataGridPodcast))
-                        {
-                            InsertCommandConsole("Starting save...");
+                InsertCommandConsole("Starting save...");
 
-                            string category = comboBoxCategory.SelectedItem.ToString();
-                            int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
-                            string name = textBoxNamn.Text;
-                            string URL = textBoxURL.Text;
-                            int index = dataGridPodcast.CurrentCell.RowIndex;
+                validator.ComboBoxHasSelected(comboBoxCategory);
+                validator.ComboBoxHasSelected(comboBoxInterval);
+                validator.TextBoxisNullorEmpty(textBoxNamn);
+                validator.TextBoxisNullorEmpty(textBoxURL);
+                validator.URLIsValid(textBoxURL.Text);
 
-                            await podcastController.UpdatePodcast(URL, name, interval, new Category(category), index);
+                string category = comboBoxCategory.SelectedItem.ToString();
+                int interval = Int32.Parse(comboBoxInterval.SelectedItem.ToString());
+                string name = textBoxNamn.Text;
+                string URL = textBoxURL.Text;
+                int index = dataGridPodcast.CurrentCell.RowIndex;
 
-                            podcastController.SavePodcastData();
-                            InsertPodcasts();
-                            ClearTimer();
-                            CreateTimerData();
+                await podcastController.UpdatePodcast(URL, name, interval, new Category(category), index);
 
-                            InsertCommandConsole("Item saved.");
-                        }
-                        else
-                        {
-                            CreateInformationMessage("Select a podcast.");
-                        }
+                podcastController.SavePodcastData();
+                InsertPodcasts();
+                ClearTimer();
+                CreateTimerData();
 
-                    }
-                    else
-                    {
-                        CreateInformationMessage("Enter name.");
-                    }
-                }
-                else
-                {
-                    CreateInformationMessage("Select interval and category.");
-                }
+                InsertCommandConsole("Item saved.");
             }
-            else
+
+            catch (InvalidTextException textError)
             {
-                CreateInformationMessage("Enter valid URL.");
+                CreateInformationMessage(textError.ErrorMessage());
+            }
+            catch(InvalidURLException URLError)
+            {
+                CreateInformationMessage(URLError.ErrorMessage());
+            }
+            catch (InvalidComboBoxException comboBoxError)
+            {
+                CreateInformationMessage(comboBoxError.ErrorMessage());
             }
         }
         private void RemovePodcastBtn_Click(object sender, EventArgs e)
         {
-            if (validator.DataGridViewHasSelected(dataGridPodcast))
+            try
             {
+                validator.DataGridViewHasSelected(dataGridPodcast);
+
                 for (int index = 0; index < dataGridPodcast.SelectedRows.Count; index++)
                 {
                     var selectedRow = dataGridPodcast.SelectedRows[index];
@@ -235,15 +230,17 @@ namespace RSSReaderHT2020
 
                 InsertCommandConsole("Item removed.");
             }
-            else
+            catch (InvalidDataGridException dataGridError)
             {
-                CreateInformationMessage("Select a podcast.");
+                CreateInformationMessage(dataGridError.ErrorMessage());
             }
         }
         private void NewCategoryBtn_Click(object sender, EventArgs e)
         {
-            if (!validator.TextBoxisNullorEmpty(categoryTextBox))
+            try
             {
+                validator.TextBoxisNullorEmpty(categoryTextBox);
+
                 listBoxCategory.Items.Clear();
                 categoryContoller.CreateCategoryObject(categoryTextBox.Text);
 
@@ -257,15 +254,17 @@ namespace RSSReaderHT2020
 
                 InsertCommandConsole("Category added.");
             }
-            else
+            catch (InvalidTextException textBoxError)
             {
-                CreateInformationMessage("Enter a category");
+                CreateInformationMessage(textBoxError.ErrorMessage());
             }
         }
         private void RemoveCategoryBtn_Click(object sender, EventArgs e)
         {
-            if (validator.ListBoxHasSelected(listBoxCategory))
+            try
             {
+                validator.ListBoxHasSelected(listBoxCategory);
+
                 string selectedCategory = listBoxCategory.GetItemText(listBoxCategory.SelectedItem);
 
                 bool shouldUpdate = categoryContoller.DeleteCategory(selectedCategory, podcastController);
@@ -281,43 +280,42 @@ namespace RSSReaderHT2020
                 InsertPodcasts();
                 UpdateCategoryList();
             }
-            else
+            catch (InvalidListBoxException listBoxError)
             {
-                CreateInformationMessage("Select a category.");
+                CreateInformationMessage(listBoxError.ErrorMessage());
             }
         }
         private void RenameBtn_Click(object sender, EventArgs e)
         {
-            if (validator.ListBoxHasSelected(listBoxCategory))
+            try
             {
+                validator.ListBoxHasSelected(listBoxCategory);
                 string selectedCategory = listBoxCategory.GetItemText(listBoxCategory.SelectedItem);
                 string newCategory = Interaction.InputBox("Prompt", "Title", "Default", 100, 100);
+                validator.StringIsEmpty(newCategory);
 
-                if (!validator.StringIsEmpty(newCategory))
-                {
-                    categoryContoller.RenameCategory(selectedCategory, newCategory);
-                    podcastController.UpdatePodcast(selectedCategory, newCategory);
+                categoryContoller.RenameCategory(selectedCategory, newCategory);
+                podcastController.UpdatePodcast(selectedCategory, newCategory);
 
-                    comboBoxCategory.Items.Clear();
-                    comboBoxCategory.SelectedIndex = comboBoxCategory.FindStringExact(newCategory);
+                comboBoxCategory.Items.Clear();
+                comboBoxCategory.SelectedIndex = comboBoxCategory.FindStringExact(newCategory);
 
-                    categoryContoller.SaveCategoryData();
-                    podcastController.SavePodcastData();
+                categoryContoller.SaveCategoryData();
+                podcastController.SavePodcastData();
 
-                    InsertPodcasts();
-                    InsertCategories();
-                    UpdateCategoryList();
+                InsertPodcasts();
+                InsertCategories();
+                UpdateCategoryList();
 
-                    InsertCommandConsole("Category renamed.");
-                }
-                else
-                {
-                    CreateInformationMessage("Enter a valid name.");
-                }
-            }
-            else
+                InsertCommandConsole("Category renamed.");
+             }  
+            catch(InvalidListBoxException listBoxError)
             {
-                CreateInformationMessage("Select a category.");
+                CreateInformationMessage(listBoxError.ErrorMessage());
+            }
+            catch(InvalidStringException stringError)
+            {
+                CreateInformationMessage(stringError.ErrorMessage());
             }
         }
         private void FilterList(string findStr, BindingSource bs)
@@ -336,7 +334,7 @@ namespace RSSReaderHT2020
         private void TextBoxFilterCategory_TextChanged(object sender, EventArgs e)
         {
             string text = textBoxFilterCategory.Text;
-            if (validator.StringIsEmpty(text))
+            if (text.Equals(""))
             {
                 podcastBindingSource.Clear();
 
@@ -428,7 +426,7 @@ namespace RSSReaderHT2020
                     watch.Stop();
                     InsertCommandConsole("Feed updated successfully...");
                     InsertCommandConsole($"Total execution time (ms): " + (watch.ElapsedMilliseconds));
-                    if (validator.TextBoxisNullorEmpty(textBoxFilterCategory))
+                    if (textBoxFilterCategory.Text.Equals(""))
                     {
                         InsertPodcasts();
                     }
