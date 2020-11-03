@@ -377,13 +377,13 @@ namespace RSSReaderHT2020
                 switch (i + 1)
                 {
                     case 1:
-                        selectedInterval = 20000;
-                        break;
-                    case 2:
                         selectedInterval = 60000;
                         break;
-                    case 3:
+                    case 2:
                         selectedInterval = 120000;
+                        break;
+                    case 3:
+                        selectedInterval = 180000;
                         break;
                 }
 
