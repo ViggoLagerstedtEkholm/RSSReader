@@ -28,7 +28,7 @@ namespace RSSReader
                 response.Close();
                 return (response.StatusCode == HttpStatusCode.OK);
             }
-            catch (InvalidURLException)
+            catch (UriFormatException)
             {
                 throw new InvalidURLException();
             }
