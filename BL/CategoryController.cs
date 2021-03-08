@@ -31,65 +31,47 @@ namespace BL
         {
             categoryRepository.Update(currentNamne, newName);
         }
-        public bool DeleteCategory(string name, PodcastController podcastController)
+        public void DeleteCategory(string name, PodcastController podcastController)
         {
-            List<Category> list = categoryRepository.GetAll();
-            bool shouldUpdate = false;
-            var confirmResult = DialogResult.None;
+            List<Category> categories = categoryRepository.GetAll();
 
             //Check if the podcast collection is empty, if so we should just delete all categories that match the selected category.
             if (podcastController.RetrieveAllPodcasts().Count > 0)
             {
-                //For every category that matches the category name do...
-                list.ToList().Where(aCategory => aCategory.Namn.ToString().Equals(name))
-                .ToList()
-                .ForEach(aCategory =>
+                var confirmResult = MessageBox.Show("Are you sure you want to delete all podcasts with selected category?", "Confirm Delete.", MessageBoxButtons.YesNo);
+
+                if (confirmResult == DialogResult.Yes)
                 {
-                    //For every podcast that matches the category do...
-                    podcastController.RetrieveAllPodcasts().ToList().ToList().Where(podcast => podcast.category.Namn.ToString().Equals(name))
-                    .ToList()
-                    .ForEach(podcast =>
+                    foreach (Podcast aPodcast in podcastController.RetrieveAllPodcasts().ToList())
                     {
-                        confirmResult = MessageBox.Show("Are you sure you want to delete all podcasts with selected category?",
-                        "Confirm Delete!!",
-                        MessageBoxButtons.YesNo);
-
-                        if (confirmResult == DialogResult.Yes)
+                        if (aPodcast.category.Namn.Equals(name))
                         {
-                            podcastController.DeletePodcast(podcast);
+                            podcastController.DeletePodcast(aPodcast);
+                            foreach(Category aCategory in categories.ToList())
+                            {
+                                if (aCategory.Namn.Equals(name))
+                                {
+                                    categoryRepository.Delete(aCategory);
+                                }
+                            }
                             podcastController.SavePodcastData();
-                            categoryRepository.Delete(aCategory);
-                            shouldUpdate = true;
+                            categoryRepository.SaveChanges();
                         }
-                    });
-
-                    //For every podcast that doesnt match the category do...
-                    podcastController.RetrieveAllPodcasts().ToList().ToList().Where(podcast => !podcast.category.Namn.ToString().Equals(name))
-                    .ToList()
-                    .ForEach(podcast =>
-                    {
-                        //Don't delete the category if the user pressed no.
-                        if (confirmResult != DialogResult.No)
-                        {
-                            shouldUpdate = true;
-                            categoryRepository.Delete(aCategory);
-                        }
-                    });
-                });
+                    }
+                }
             }
             else
             {
                 //Delete all categories with specified name because there are no podcasts that can have this category.
-                list.ToList().Where(aCategory => aCategory.Namn.ToString().Equals(name))
-                .ToList()
-                .ForEach(aCategory =>
+                foreach (Category aCategory in categories)
                 {
-                    shouldUpdate = true;
-                    categoryRepository.Delete(aCategory);
-                });
+                    if (aCategory.Namn.Equals(name))
+                    {
+                        categoryRepository.Delete(aCategory);
+                    }
+                }
             }
-
-            return shouldUpdate;
+            
         }
 
         public void SaveCategoryData()
