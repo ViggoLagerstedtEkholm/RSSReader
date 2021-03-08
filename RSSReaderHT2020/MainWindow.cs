@@ -267,16 +267,15 @@ namespace RSSReaderHT2020
 
                 string selectedCategory = listBoxCategory.GetItemText(listBoxCategory.SelectedItem);
 
-                bool shouldUpdate = categoryContoller.DeleteCategory(selectedCategory, podcastController);
+                categoryContoller.DeleteCategory(selectedCategory, podcastController);
                 comboBoxCategory.Items.Clear();
                 categoryContoller.SaveCategoryData();
-                if (shouldUpdate)
-                {
-                    InsertCommandConsole("Category removed.");
+           
+                InsertCommandConsole("Category removed.");
 
-                    ClearTimer();
-                    CreateTimerData();
-                }
+                ClearTimer();
+                CreateTimerData();
+                
                 InsertPodcasts();
                 UpdateCategoryList();
             }
