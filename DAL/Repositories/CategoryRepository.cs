@@ -33,12 +33,13 @@ namespace DAL.Repositories
         }
         public override void Update(string currentCategory, string newCategory)
         {
-            list.Where(aCategory => aCategory.Namn.ToString().Equals(currentCategory))
-            .ToList()
-            .ForEach(category =>
+            foreach (Category aCategory in list)
             {
-                category.Namn = newCategory;
-            });
+                if (aCategory.Namn.Equals(currentCategory))
+                {
+                    aCategory.Namn = newCategory;
+                }
+            }
         }
         public void SaveChanges()
         {

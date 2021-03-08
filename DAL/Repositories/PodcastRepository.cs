@@ -47,7 +47,6 @@ namespace DAL.Repositories
             List<List<Episode>> episodes = new List<List<Episode>>();
             List<Episode> updatedEpisodes = new List<Episode>();
 
-            //Method can't use LINQ because is messes up the await...
             foreach (Podcast podcast in podcasts)
             {
                 updatedEpisodes = await Task.Run(() => reader.GetEpisodes(podcast.URL));
@@ -63,12 +62,13 @@ namespace DAL.Repositories
         }
         public override void Update(string currentCategory, string newCategory)
         {
-            list.Where(podcast => podcast.category.Namn.ToString().Equals(currentCategory))
-            .ToList()
-            .ForEach(podcast =>
+            foreach(Podcast aPodcast in list)
             {
-                podcast.category.Namn = newCategory;
-            });
+                if (aPodcast.category.Namn.Equals(currentCategory))
+                {
+                    aPodcast.category.Namn = newCategory;
+                }
+            }
         }
         public void SaveChanges()
         {
