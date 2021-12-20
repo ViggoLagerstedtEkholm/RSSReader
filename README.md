@@ -32,7 +32,7 @@ Application functionality:
 4. Modifying all data which includes (Create, Reading, Updating, Deleting).
 5. Play the soundfiles after the application downloads the MP3 file locally. 
 
-This requirement specification was created for the C# OOP class for Fall 2020.
+This requirement specification was created for the C# OOP class for autumn term 2020.
 
 Future improvements/developments:
 1. Add parallel threading to update all feeds.
